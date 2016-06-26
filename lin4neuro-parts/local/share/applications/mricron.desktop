@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MRIcron
+Exec=/usr/local/mricron/mricron
+Icon=mricron
+Terminal=false
+Categories=Neuroimaging;
+StartupNotify=true
+

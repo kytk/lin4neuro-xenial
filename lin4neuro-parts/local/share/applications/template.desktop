@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Comment=
+Exec=
+Icon=
+Categories=Neuroimaging;
+StartupNotify=true
+Terminal=false
+NoDisplay=true
+

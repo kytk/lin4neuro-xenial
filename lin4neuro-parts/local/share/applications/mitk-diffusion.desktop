@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MITK-Diffusion
+Comment=
+Exec=MitkDiffusion.sh
+Icon=mitk.png
+Categories=Neuroimaging;
+StartupNotify=true
+Terminal=false
+NoDisplay=true
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Virtual MRI
+Comment=
+Exec=java -jar /usr/local/vmri/vmri.jar
+Icon=brainmri.png
+Categories=Neuroimaging;
+StartupNotify=true
+Terminal=false

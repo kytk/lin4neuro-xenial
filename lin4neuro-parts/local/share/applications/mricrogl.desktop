@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MRIcroGL
+Exec=/usr/local/mricrogl/MRIcroGL
+Icon=mricrogl.svg
+Terminal=false
+Categories=Neuroimaging;
+StartupNotify=true
+

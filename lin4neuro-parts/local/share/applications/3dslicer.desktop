@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=3D Slicer
+Comment=
+Exec=/usr/local/Slicer/Slicer
+Icon=slicer.png
+Categories=Neuroimaging;
+StartupNotify=true
+Terminal=false

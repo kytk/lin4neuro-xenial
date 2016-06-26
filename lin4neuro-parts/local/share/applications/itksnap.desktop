@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ITK-Snap
+Comment=
+Exec=/usr/local/itksnap/bin/itksnap 
+Icon=itksnap.png
+Categories=Neuroimaging;
+StartupNotify=true
+Terminal=false

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DSI Studio
+Comment=
+Exec=/usr/local/dsistudio/dsi_studio
+Icon=dsistudio.png
+Categories=Neuroimaging;
+StartupNotify=true
+Terminal=false

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MRI Convert
+Comment=
+Exec=MRIConvert
+Icon=mriconvert.png
+Categories=Neuroimaging;
+StartupNotify=true
+Terminal=false

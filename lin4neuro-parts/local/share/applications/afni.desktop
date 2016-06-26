@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=AFNI
+Exec=/usr/local/afni/bin/afni
+Icon=afnilogo.png
+Terminal=false
+Categories=Neuroimaging;
+StartupNotify=true
+

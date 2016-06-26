@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=dcm2nii
+Exec=/usr/local/mricron/dcm2niigui
+Icon=dcm2nii
+Terminal=false
+Categories=Neuroimaging;
+StartupNotify=true
+

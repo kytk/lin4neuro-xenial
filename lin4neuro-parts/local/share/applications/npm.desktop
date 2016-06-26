@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=npm
+Exec=/usr/local/mricron/npm
+Icon=npm
+Terminal=false
+Categories=Neuroimaging;
+StartupNotify=true
+
