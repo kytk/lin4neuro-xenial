@@ -48,7 +48,8 @@ sudo apt-get -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 	shimmer-themes network-manager-gnome xinit git build-essential 	\
 	dkms thunar-archive-plugin file-roller gawk			\ 
 	default-jre default-jdk fonts-noto				\
-	system-config-printer-gnome software-properties-common
+	system-config-printer-gnome software-properties-common		\
+	plymouth-themes plymouth-label
 
 #Installation of misc packages
 echo "Installation of misc packages"

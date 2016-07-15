@@ -73,12 +73,13 @@ sudo cp ./lin4neuro-parts/backgrounds/deep_ocean.png /usr/share/backgrounds
 
 #Copy modified lightdm-gtk-greeter.conf
 echo "Copy modified lightdm-gtk-greeter.conf"
-sudo cp ./lin4neuro-parts/lightdm/lightdm-gtk-greeter-ubuntu.conf /etc/lightdm
+#sudo cp ./lin4neuro-parts/lightdm/lightdm-gtk-greeter-ubuntu.conf /etc/lightdm
+sudo cp ./lin4neuro-parts/lightdm/lightdm-gtk-greeter-ubuntu.conf /usr/share/lightdm
 
 #Settings for auto-login
 echo "Settings for auto-login"
-sudo mkdir -p /etc/lightdm/lightdm.conf.d
-sudo cp ./lin4neuro-parts/lightdm/10-ubuntu.conf /etc/lightdm/lightdm.conf.d
+#sudo mkdir -p /usr/share/lightdm/lightdm.conf.d
+sudo cp ./lin4neuro-parts/lightdm/10-ubuntu.conf /usr/share/lightdm/lightdm.conf.d
 
 #Customize panel 
 echo "Customize panel"
