@@ -45,7 +45,11 @@ LANG=C
 echo "Installation of XFCE 4.12"
 sudo apt-get -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 	xfce4-power-manager-plugins lightdm lightdm-gtk-greeter 	\
-	shimmer-themes network-manager-gnome xinit git build-essential 	\
+	shimmer-themes network-manager-gnome xinit build-essential 	\
+
+exit
+
+sudo apt-get -y install \
 	dkms thunar-archive-plugin file-roller gawk			\ 
 	default-jre default-jdk fonts-noto				\
 	system-config-printer-gnome software-properties-common		\
