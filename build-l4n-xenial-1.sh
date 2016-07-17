@@ -46,14 +46,8 @@ echo "Installation of XFCE 4.12"
 sudo apt-get -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 	xfce4-power-manager-plugins lightdm lightdm-gtk-greeter 	\
 	shimmer-themes network-manager-gnome xinit build-essential 	\
-
-exit
-
-sudo apt-get -y install \
-	dkms thunar-archive-plugin file-roller gawk			\ 
-	default-jre default-jdk fonts-noto				\
+	dkms thunar-archive-plugin file-roller gawk fonts-noto		\ 
 	system-config-printer-gnome software-properties-common		\
-	plymouth-themes plymouth-label
 
 #Installation of misc packages
 echo "Installation of misc packages"
@@ -73,12 +67,12 @@ else
 fi
 
 #Remove xscreensaver
-sudo apt-get -y purge xscreensaver
+#sudo apt-get -y purge xscreensaver
 
 #Installation of Ubuntu-tweak
 #echo "Installation of Ubuntu-tweak"
 #sudo add-apt-repository -y ppa:tualatrix/ppa
 #sudo apt-get update && sudo apt-get -y install ubuntu-tweak
 
-echo "Part1 Finished! Please reboot and run build-l4n-part2.sh."
+echo "Finished! Please reboot and run build-l4n-xenial-2.sh"
 
