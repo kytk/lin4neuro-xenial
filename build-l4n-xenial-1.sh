@@ -46,8 +46,8 @@ echo "Installation of XFCE 4.12"
 sudo apt-get -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 	xfce4-power-manager-plugins lightdm lightdm-gtk-greeter 	\
 	shimmer-themes network-manager-gnome xinit build-essential 	\
-	dkms thunar-archive-plugin file-roller gawk fonts-noto		\ 
-	system-config-printer-gnome software-properties-common		\
+	dkms thunar-archive-plugin file-roller gawk fonts-noto		 
+#	system-config-printer-gnome software-properties-common		\
 
 #Installation of misc packages
 echo "Installation of misc packages"
@@ -60,14 +60,14 @@ if [ $lang == "English" ] ; then
   sudo apt-get -y install firefox firefox-locale-en
 else
 #Japanese-dependent environment
-  echo "Installation of fcitx and firefox"
-  sudo apt-get -y install fcitx fcitx-mozc firefox firefox-locale-ja
+  echo "Installation of firefox"
+  sudo apt-get -y install firefox firefox-locale-ja
   #Change directories to English
   LANG=C xdg-user-dirs-update --force
 fi
 
 #Remove xscreensaver
-#sudo apt-get -y purge xscreensaver
+sudo apt-get -y purge xscreensaver
 
 #Installation of Ubuntu-tweak
 #echo "Installation of Ubuntu-tweak"
