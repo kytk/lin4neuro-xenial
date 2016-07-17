@@ -79,16 +79,18 @@ sudo rm /usr/share/backgrounds/xfce/xfce-teal.jpg
 
 #Copy modified lightdm-gtk-greeter.conf
 echo "Copy modified 01_ubuntu.conf"
+sudo mkdir -p /usr/share/lightdm/lightdm-gtk-greeter.conf.d
 sudo cp ${base_path}/lightdm/lightdm-gtk-greeter.conf.d/01_ubuntu.conf /usr/share/lightdm/lightdm-gtk-greeter.conf.d
 
 #Settings for auto-login
 echo "Settings for auto-login"
-#sudo mkdir -p /usr/share/lightdm/lightdm.conf.d
+sudo mkdir -p /usr/share/lightdm/lightdm.conf.d
 sudo cp ${base_path}/lightdm/lightdm.conf.d/10-ubuntu.conf \
 	/usr/share/lightdm/lightdm.conf.d
 
 #Customize panel 
 echo "Customize panel"
+mkdir -p ~/.config/xfce4/xfconf/xfce-perchannel-xml/
 cp ${base_path}/config/xfce-perchannel-xml/xfce4-panel.xml \
 	~/.config/xfce4/xfconf/xfce-perchannel-xml/
 
