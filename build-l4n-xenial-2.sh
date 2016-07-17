@@ -29,9 +29,11 @@ fi
 #Variable set
 if [ -e ./.lin4neuro_en ] ; then
   full_url="http://neuro.debian.net/lists/xenial.us-nh.full"
+  echo ${full_url}
   rm ./.lin4neuro_en 
 elif [ -e ./.lin4neuro_ja ] ; then
   full_url="http://neuro.debian.net/lists/xenial.jp.full"
+  echo ${full_url}
   rm ./.lin4neuro_ja
 fi
 
@@ -111,7 +113,7 @@ sudo apt-get -y autoremove
 
 #Setting up Neurodebian repository
 echo "Setting up Neurodebian repository"
-wget -O- $full_url | \
+wget -O- ${full_url} | \
 sudo tee /etc/apt/sources.list.d/neurodebian.sources.list
 sudo apt-key adv --recv-keys --keyserver hkp://pgp.mit.edu:80 0xA5D32F012649A5A9
 sudo apt-get update
