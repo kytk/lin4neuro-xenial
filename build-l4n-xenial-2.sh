@@ -26,17 +26,6 @@ if [ -e ./.lin4neuro_ja ] ; then
   fi
 fi
 
-#Variable set
-if [ -e ./.lin4neuro_en ] ; then
-  full_url="http://neuro.debian.net/lists/xenial.us-nh.full"
-  echo ${full_url}
-#  rm ./.lin4neuro_en 
-elif [ -e ./.lin4neuro_ja ] ; then
-  full_url="http://neuro.debian.net/lists/xenial.jp.full"
-  echo ${full_url}
-#  rm ./.lin4neuro_ja
-fi
-
 #Install plymouth-related files
 sudo apt-get -y install plymouth-themes plymouth-label
 
