@@ -1,0 +1,32 @@
+#3D Slicer
+export PATH=$PATH:/usr/local/Slicer/
+
+#AFNI
+export PATH=$PATH:/usr/local/afni/bin
+
+ahdir=`apsearch -afni_help_dir`
+if [ -f "$ahdir/all_progs.COMP.bash" ]
+then
+   . $ahdir/all_progs.COMP.bash
+fi
+
+#c3d
+export PATH=$PATH:/usr/local/c3d/bin
+source $HOME/bin/bashcomp.sh
+
+#ANTs
+export ANTSPATH=/usr/local/ANTs/bin
+export PATH=$PATH:$ANTSPATH
+
+#ITK-SNAP
+export PATH=$PATH:/usr/local/itksnap/bin
+
+#mricroGL
+export PATH=$PATH:/usr/local/mricrogl
+
+#mricron
+export PATH=$PATH:/usr/local/mricron
+
+#ROBEX
+export PATH=$PATH:/usr/local/ROBEX
+
