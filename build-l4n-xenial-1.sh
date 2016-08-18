@@ -45,19 +45,19 @@ done
 #Signature for neurodebian
 sudo apt-key adv --recv-keys --keyserver \
      hkp://pgp.mit.edu:80 0xA5D32F012649A5A9
-sudo apt-get update
+sudo apt update
 
 #Installation of XFCE 4.12
 LANG=C
 echo "Installation of XFCE 4.12"
-sudo apt-get -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
+sudo apt -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 	xfce4-power-manager-plugins lightdm lightdm-gtk-greeter 	\
 	shimmer-themes network-manager-gnome xinit build-essential 	\
 	dkms thunar-archive-plugin file-roller gawk fonts-noto		 
 
 #Installation of misc packages
 echo "Installation of misc packages"
-sudo apt-get -y install wajig imagemagick evince vim gedit \
+sudo apt -y install wajig imagemagick evince vim gedit \
 	unzip zip gparted byobu $MISC_JA
 
 #vim settings
@@ -67,17 +67,17 @@ sed -i -e 's/"set background=dark/set background=dark/' ~/.vimrc
 #English-dependent packages
 if [ $lang == "English" ] ; then
   echo "Installation of firefox"
-  sudo apt-get -y install firefox firefox-locale-en
+  sudo apt -y install firefox firefox-locale-en
 else
 #Japanese-dependent environment
   echo "Installation of firefox"
-  sudo apt-get -y install firefox firefox-locale-ja
+  sudo apt -y install firefox firefox-locale-ja
   #Change directories to English
   LANG=C xdg-user-dirs-update --force
 fi
 
 #Remove xscreensaver
-sudo apt-get -y purge xscreensaver
+sudo apt -y purge xscreensaver
 
 echo "Part1 Finished! The system will reboot. Please run build-l4n-xenial-2.sh."
 
