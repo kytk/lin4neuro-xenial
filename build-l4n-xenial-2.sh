@@ -17,17 +17,8 @@ exec &> >(tee -a "$log")
 #Setting of path of the setting scripts
 base_path=~/git/lin4neuro-xenial/lin4neuro-parts
 
-
-#Delete directories with Japanese names
-if [ -e ./.lin4neuro_ja ] ; then
-  cd
-  if [ -e ドキュメント ]; then
-        rm -r [!a-zA-Z0-9]*
-  fi
-fi
-
 #Install plymouth-related files
-sudo apt-get -y install plymouth-themes plymouth-label
+sudo apt -y install plymouth-themes plymouth-label
 
 #Installation of lin4neuro-logo
 echo "Installation of lin4neuro-logo"
@@ -42,7 +33,7 @@ sudo update-initramfs -u -k all
 #Installation of icons
 echo "Installation of icons"
 mkdir -p ~/.local/share/icons
-cp ${base_path}/icons/* ~/.local/share/icons
+cp -r ${base_path}/icons ~/.local/share/
 
 #Installation of customized menu
 echo "Installation of customized menu"
@@ -98,20 +89,7 @@ cp ${base_path}/config/xfce-perchannel-xml/xfwm4.xml \
 	~/.config/xfce4/xfconf/xfce-perchannel-xml/
 
 #Clean packages
-sudo apt-get -y autoremove
-
-#Setting up Neurodebian repository
-if [ -e ./.lin4neuro_en ] ; then
-  wget -O- http://neuro.debian.net/lists/xenial.us-nh.full | \
-  sudo tee /etc/apt/sources.list.d/neurodebian.sources.list
-#  rm ./.lin4neuro_en 
-elif [ -e ./.lin4neuro_ja ] ; then
-  wget -O- http://neuro.debian.net/lists/xenial.jp.full | \
-  sudo tee /etc/apt/sources.list.d/neurodebian.sources.list
-#  rm ./.lin4neuro_ja
-fi
-sudo apt-key adv --recv-keys --keyserver hkp://pgp.mit.edu:80 0xA5D32F012649A5A9
-sudo apt-get update
+sudo apt -y autoremove
 
 #Installation of FSL
 echo "Installation of FSL"
@@ -126,19 +104,28 @@ cat << FIN >> ~/.bashrc
 FIN
 
 #Install MRIConvert
-sudo apt-get install -y mriconvert
+sudo apt install -y mriconvert
 
 #Install prerequisite packages for AFNI
-#sudo apt-get install -y tcsh xfonts-base python-qt4                    \
-#                        libmotif4 libmotif-dev motif-clients           \
-#                        gsl-bin netpbm gnome-tweak-tool libjpeg62
-#sudo apt-get update
-#sudo ln -s /usr/lib/x86_64-linux-gnu/libgsl.so /usr/lib/libgsl.so.0
-#sudo dpkg -i http://mirrors.kernel.org/ubuntu/pool/main/libx/libxp/libxp6_1.0.2-2_amd64.deb
-#sudo apt-get install -f
-
+sudo apt install -y tcsh xfonts-base python-qt4                    \
+                    libmotif4 libmotif-dev motif-clients           \
+                    gsl-bin netpbm gnome-tweak-tool libjpeg62
+sudo apt update
+sudo ln -s /usr/lib/x86_64-linux-gnu/libgsl.so /usr/lib/libgsl.so.0
+sudo dpkg -i http://mirrors.kernel.org/ubuntu/pool/main/libx/libxp/libxp6_1.0.2-2_amd64.deb
+sudo apt install -f
 
 #Install prerequisite packages for DSI Studio
 #sudo apt-get install -y libboost-thread1.58.0 libboost-program-options1.58.0 qt5-default
 
-echo "Part 2 finished! Please reboot to reflect the customization."
+#Copy bashcom.sh for c3d to ~/bin
+cp -r ${base_path}/bin $HOME
+
+#Add PATH settings to .bashrc
+cat ${base_path}/bashrc/bashrc-addition.txt >> $HOME/.bashrc
+
+echo "Part 2 finished! The system will reboot to reflect the customization."
+echo "Please install several packages later."
+sleep 3
+sudo reboot
+
