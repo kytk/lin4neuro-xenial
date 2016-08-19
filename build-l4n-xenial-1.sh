@@ -71,7 +71,7 @@ if [ $lang == "English" ] ; then
 else
 #Japanese-dependent environment
   echo "Installation of firefox"
-  sudo apt -y install firefox firefox-locale-ja
+  sudo apt -y install fcitx fcitx-mozc firefox firefox-locale-ja
   #Change directories to English
   LANG=C xdg-user-dirs-update --force
 fi
