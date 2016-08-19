@@ -112,7 +112,8 @@ sudo apt install -y tcsh xfonts-base python-qt4                    \
                     gsl-bin netpbm gnome-tweak-tool libjpeg62
 sudo apt update
 sudo ln -s /usr/lib/x86_64-linux-gnu/libgsl.so /usr/lib/libgsl.so.0
-sudo dpkg -i http://mirrors.kernel.org/ubuntu/pool/main/libx/libxp/libxp6_1.0.2-2_amd64.deb
+wget http://mirrors.kernel.org/ubuntu/pool/main/libx/libxp/libxp6_1.0.2-2_amd64.deb
+sudo dpkg -i libxp6_1.0.2-2_amd64.deb
 sudo apt install -f
 
 #Install prerequisite packages for DSI Studio
