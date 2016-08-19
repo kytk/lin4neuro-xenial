@@ -6,7 +6,7 @@
 #ChangeLog
 #20-May-2016: Modify for Xenial (16.04)
 
-MISC_JA=""
+#MISC_JA=""
 log=`date +%Y-%m-%d`-part1.log
 exec &> >(tee -a "$log")
 
@@ -20,7 +20,7 @@ do
   if [ -z "$lang" ] ; then
      continue
   elif [ $lang == "Japanese" ] ; then
-     MISC_JA="nkf unar"
+#     MISC_JA="nkf unar"
 
      #Setup Neurodebian repository
      wget -O- http://neuro.debian.net/lists/xenial.jp.full | \
@@ -71,7 +71,7 @@ if [ $lang == "English" ] ; then
 else
 #Japanese-dependent environment
   echo "Installation of firefox"
-  sudo apt -y install fcitx fcitx-mozc firefox firefox-locale-ja
+  sudo apt -y install fcitx fcitx-mozc unar nkf firefox firefox-locale-ja
   #Change directories to English
   LANG=C xdg-user-dirs-update --force
 fi
