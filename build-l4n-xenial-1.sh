@@ -61,7 +61,7 @@ sudo apt -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 #Installation of misc packages
 echo "Installation of misc packages"
 sudo apt -y install wajig imagemagick evince vim gedit \
-	unzip zip gparted byobu $MISC_JA
+	unzip zip gparted byobu
 
 #vim settings
 cp /usr/share/vim/vimrc ~/.vimrc
@@ -74,7 +74,8 @@ if [ $lang == "English" ] ; then
 else
 #Japanese-dependent environment
   echo "Installation of firefox"
-  sudo apt -y install fcitx fcitx-mozc unar nkf firefox firefox-locale-ja
+  sudo apt -y install fcitx fcitx-mozc fcitx-config-gtk \
+              unar nkf firefox firefox-locale-ja
   #Change directories to English
   LANG=C xdg-user-dirs-update --force
 fi
