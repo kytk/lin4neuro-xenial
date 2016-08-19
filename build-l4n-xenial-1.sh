@@ -7,7 +7,7 @@
 #20-May-2016: Modify for Xenial (16.04)
 
 LANG=C
-sudo apt update; sudo apt upgrade
+sudo apt update; sudo apt -y upgrade
 
 #MISC_JA=""
 log=`date +%Y-%m-%d`-part1.log
