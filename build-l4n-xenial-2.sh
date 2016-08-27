@@ -97,8 +97,8 @@ sudo echo 'FRAMEBUFFER=y' > /etc/initramfs-tools/conf.d/splash
 sudo update-grub
 
 #(Optional)Display GRUB menu
-#sudo sed -i -e 's/GRUB_HIDDEN_TIMEOUT/#GRUB_HIDDEN_TIMEOUT/' /etc/default/grub
-#sudo update-grub
+sudo sed -i -e 's/GRUB_HIDDEN_TIMEOUT/#GRUB_HIDDEN_TIMEOUT/' /etc/default/grub
+sudo update-grub
 
 #Installation of FSL
 echo "Installation of FSL"
@@ -124,6 +124,8 @@ sudo ln -s /usr/lib/x86_64-linux-gnu/libgsl.so /usr/lib/libgsl.so.0
 wget http://mirrors.kernel.org/ubuntu/pool/main/libx/libxp/libxp6_1.0.2-2_amd64.deb
 sudo dpkg -i libxp6_1.0.2-2_amd64.deb
 sudo apt install -f
+
+rm libxp6_1.0.2-2_amd64.deb
 
 #Install prerequisite packages for DSI Studio
 #sudo apt-get install -y libboost-thread1.58.0 libboost-program-options1.58.0 qt5-default
