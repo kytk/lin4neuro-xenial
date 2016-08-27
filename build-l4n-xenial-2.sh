@@ -91,6 +91,15 @@ cp ${base_path}/config/xfce-perchannel-xml/xfwm4.xml \
 #Clean packages
 sudo apt -y autoremove
 
+#GRUB setting for plymouth
+sudo echo 'GRUB_GFXPAYLOAD_LINUX="auto"' >> /etc/default/grub
+sudo echo 'FRAMEBUFFER=y' > /etc/initramfs-tools/conf.d/splash
+sudo update-grub
+
+#(Optional)Display GRUB menu
+#sudo sed -i -e 's/GRUB_HIDDEN_TIMEOUT/#GRUB_HIDDEN_TIMEOUT/' /etc/default/grub
+#sudo update-grub
+
 #Installation of FSL
 echo "Installation of FSL"
 sudo apt-get -y install fsl
@@ -121,9 +130,6 @@ sudo apt install -f
 
 #Copy bashcom.sh for c3d to ~/bin
 cp -r ${base_path}/bin $HOME
-
-#Add PATH settings to .bashrc
-cat ${base_path}/bashrc/bashrc-addition.txt >> $HOME/.bashrc
 
 echo "Part 2 finished! The system will reboot to reflect the customization."
 echo "Please install several packages later."
