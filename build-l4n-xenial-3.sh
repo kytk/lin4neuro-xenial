@@ -1,34 +1,60 @@
 #!/bin/bash
-#Lin4Neuro making script part 3
-#Remastersys
 
-#ChangeLog
-#26-Jan-2016: Comment downloading remastersys
-#17-Jan-2016: Merge Japanese and English version.
-#28-Nov-2015: Update version of remastersys
+#Part3: Check if software is installed.
 
-#Installation of Remastersys
-#echo "Download and install remastersys"
-#wget http://www.nemotos.net/lin4neuro/build/remastersys_4.0.0-5_all.deb
+#Add PATH settings to .bashrc
+cat ${base_path}/bashrc/bashrc-addition.txt >> $HOME/.bashrc
 
-sudo apt-get -y  --no-install-recommends install memtest86+ mkisofs \
-	squashfs-tools casper libdebian-installer4 \
-	user-setup localechooser-data cifs-utils \
-	samba-common libtalloc2 libwbclient0 \
-	ubiquity-frontend-debconf syslinux xresprobe \
-	syslinux-common  ubiquity  bogl-bterm \
-	libiw30 ubiquity-ubuntu-artwork ubiquity-casper rdate \
-	ecryptfs-utils cryptsetup \
-	python3-icu python3-pam archdetect-deb dpkg-repack apt-clone \
-	cryptsetup-bin libecryptfs0 keyutils libnss3-1d \
-	libcryptsetup4 dialog
+#Source .bashrc
+. ~/.bashrc
 
-sudo dpkg -i remastersys_4.0.0-5_all.deb
+echo "Check if neuroimaging software is properly installed."
 
-#Workaround for plymouth
-sudo cp ~/lin4neuro-parts/rs-workaround/plymouth-shutdown.conf /etc/init/
+#AFNI
+if [ ! -e ~/.afnirc ]; then
+    cp /usr/local/afni/bin/AFNI.afnirc ~/.afnirc
+else
+    echo ".afnirc exists"
+fi
 
-#usb-creator
-sudo apt-get -y install usb-creator-common usb-creator-gtk
+if [ ! -e ~/.sumarc ]; then
+    suma -update_env
+else
+    echo ".sumarc exists"
+fi
 
-echo "Part 3 finished! Now ready for remastering. Execute l4n_remastering.sh in lin4neuro-parts"
+afni &
+wait
+
+#Slicer
+Slicer &
+
+#c3d
+c3d
+
+#ANTs
+ANTS
+
+#ITK-SNAP
+itksnap &
+wait
+
+#MRIcroGL
+MRIcroGL &
+wait
+
+
+#MRIcron
+mricron &
+wait
+
+#ROBEX
+ROBEX
+
+#FSL
+fsl &
+wait
+
+#FSLView
+fslview
+
