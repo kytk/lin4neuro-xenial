@@ -104,6 +104,7 @@ sudo update-grub
 echo "Installation of FSL"
 sudo apt -y update
 sudo apt -y install fsl
+sudo apt-get -f install
 
 #PATH settings
 cat << FIN >> ~/.bashrc
