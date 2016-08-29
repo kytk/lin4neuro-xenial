@@ -21,7 +21,7 @@ After installation, login and clone this repository.
     $ cd ~/git
     $ git clone https://github.com/kytk/lin4neuro-xenial.git
 
-## Install XFCE4.10 and XFCE4.12
+## Install XFCE4.12
 
 First, run **build-l4n-xenial-1.sh**.
 
@@ -38,7 +38,7 @@ The script will bring a prompt as following;
 
 Choose 1 or 2 depending on your language.
 
-Then XFCE4.10 is installed and updated to XFCE4.12. Upon installation, the system automatically reboots.
+Then XFCE4.12 is installed. Upon installation, the system automatically reboots.
 
 ## Customization of UI
 
@@ -84,6 +84,7 @@ After installation of the software above, run build-l4n-xenial-3.sh
 This script simply tries to run software listed above.
 If it is not installed correctly, you will see error messages in the terminal. Check it and correct.
 
+<!---
 ## Prepare for remastering
 
 If everything is set, run the script below.
@@ -121,6 +122,7 @@ Now you are ready to remaster the system.
 will make iso in /home/remastersys/remastersys.
 
 You can share the iso with others.
+--->
 
  
 
