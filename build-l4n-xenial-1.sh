@@ -6,6 +6,11 @@
 #ChangeLog
 #20-May-2016: Modify for Xenial (16.04)
 
+#(optional) Force IPv4
+#Comment out if you need IPv6
+echo 'Acquire::ForceIPv4 "true";' | sudo tee /etc/apt/apt.conf.d/99force-ipv4
+echo '--inet4-only=1' >> ~/.wgetrc
+
 LANG=C
 sudo apt update; sudo apt -y upgrade
 
@@ -73,7 +78,7 @@ if [ $lang == "English" ] ; then
   sudo apt -y install firefox firefox-locale-en
 else
 #Japanese-dependent environment
-  echo "Installation of firefox"
+  echo "Installation of firefox and Japanese-related packages"
   sudo apt -y install fcitx fcitx-mozc fcitx-config-gtk \
               unar nkf firefox firefox-locale-ja
   #Change directories to English
@@ -82,6 +87,8 @@ fi
 
 #Remove xscreensaver
 sudo apt -y purge xscreensaver
+
+
 
 echo "Part1 Finished! The system will reboot. Please run build-l4n-xenial-2.sh."
 
