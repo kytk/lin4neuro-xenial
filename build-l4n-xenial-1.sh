@@ -7,14 +7,13 @@
 #20-May-2016: Modify for Xenial (16.04)
 
 #(optional) Force IPv4
-#Comment out if you need IPv6
+#Comment out the following two lines if you need IPv6
 echo 'Acquire::ForceIPv4 "true";' | sudo tee /etc/apt/apt.conf.d/99force-ipv4
 echo '--inet4-only=1' >> ~/.wgetrc
 
 LANG=C
 sudo apt update; sudo apt -y upgrade
 
-#MISC_JA=""
 log=`date +%Y-%m-%d`-part1.log
 exec &> >(tee -a "$log")
 
@@ -28,13 +27,11 @@ do
   if [ -z "$lang" ] ; then
      continue
   elif [ $lang == "Japanese" ] ; then
-#     MISC_JA="nkf unar"
 
      #Setup Neurodebian repository
      wget -O- http://neuro.debian.net/lists/xenial.jp.full | \
      sudo tee /etc/apt/sources.list.d/neurodebian.sources.list
 
-     #touch .lin4neuro_ja
      break
   elif [ $lang == "English" ] ; then
 
@@ -42,7 +39,6 @@ do
      wget -O- http://neuro.debian.net/lists/xenial.us-nh.full | \
      sudo tee /etc/apt/sources.list.d/neurodebian.sources.list
 
-     #touch .lin4neuro_en
      break
   elif [ $lang == "quit" ] ; then
      echo "quit."
@@ -80,15 +76,14 @@ else
 #Japanese-dependent environment
   echo "Installation of firefox and Japanese-related packages"
   sudo apt -y install fcitx fcitx-mozc fcitx-config-gtk \
-              unar nkf firefox firefox-locale-ja
+              unar nkf firefox firefox-locale-ja im-config
   #Change directories to English
   LANG=C xdg-user-dirs-update --force
+  im-config -n fcitx
 fi
 
 #Remove xscreensaver
 sudo apt -y purge xscreensaver
-
-
 
 echo "Part1 Finished! The system will reboot. Please run build-l4n-xenial-2.sh."
 
