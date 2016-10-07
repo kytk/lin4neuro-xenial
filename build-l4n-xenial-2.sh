@@ -15,7 +15,8 @@ log=`date +%Y-%m-%d`-part2.log
 exec &> >(tee -a "$log")
 
 #Setting of path of the setting scripts
-base_path=~/git/lin4neuro-xenial/lin4neuro-parts
+currentdir=`echo $(cd $(dirname $0) && pwd)`
+base_path=$currentdir/lin4neuro-parts
 
 #Install plymouth-related files
 sudo apt -y install plymouth-themes plymouth-label
@@ -92,7 +93,9 @@ cp ${base_path}/config/xfce-perchannel-xml/xfwm4.xml \
 sudo apt -y autoremove
 
 #GRUB setting for plymouth
-sudo /bin/echo -e 'GRUB_GFXPAYLOAD_LINUX=\"auto\"' >> /etc/default/grub
+sudo cat <<  EOD  >>/etc/default/grub
+GRUB_GFXPAYLOAD_LINUX="auto"
+EOD
 sudo sh -c 'echo 'FRAMEBUFFER=y' > /etc/initramfs-tools/conf.d/splash'
 sudo update-grub
 
