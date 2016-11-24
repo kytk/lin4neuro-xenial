@@ -1,7 +1,7 @@
 #!/bin/bash
 #Remastering with Remastersys for XFCE on Ubuntu-mini 14.04
 #Ver. 1.2
-#17-Jan-2016 K. Nemoto
+#23-Nov-2016 K. Nemoto
 
 #Execute as a normal user!
 
@@ -28,7 +28,7 @@ sudo rsync -rp --delete --progress ~/.config/Thunar /etc/skel/.config/
 sudo rsync -rp --delete --progress ~/.local/share/applications /etc/skel/.local/share/
 sudo rsync -rp --delete --progress ~/.local/share/desktop-directories /etc/skel/.local/share/
 sudo rsync -rp --delete --progress ~/.bashrc /etc/skel/
-sudo rsync -rp --delete --progress ~/.icons /etc/skel/
+sudo rsync -rp --delete --progress ~/.local/share/icons /etc/skel/.local/share/
 #sudo rsync -rp --delete --progress ~/Desktop /etc/skel/
 
 
