@@ -33,7 +33,7 @@ sudo update-initramfs -u -k all
 
 #Installation of icons
 echo "Installation of icons"
-mkdir -p ~/.local/share/icons
+#mkdir -p ~/.local/share/icons
 cp -r ${base_path}/icons ~/.local/share/
 
 #Installation of customized menu
