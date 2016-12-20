@@ -2,6 +2,10 @@
 
 #Part3: Check if software is installed.
 
+#Setting of path of the setting scripts
+currentdir=`echo $(cd $(dirname $0) && pwd)`
+base_path=$currentdir/lin4neuro-parts
+
 #Add PATH settings to .bashrc
 cat ${base_path}/bashrc/bashrc-addition.txt >> $HOME/.bashrc
 
