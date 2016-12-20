@@ -62,7 +62,7 @@ sudo apt -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 #Installation of misc packages
 echo "Installation of misc packages"
 sudo apt -y install wajig imagemagick evince vim gedit \
-	unzip zip gparted byobu
+	unzip zip gparted byobu default-jre
 
 #vim settings
 cp /usr/share/vim/vimrc ~/.vimrc
