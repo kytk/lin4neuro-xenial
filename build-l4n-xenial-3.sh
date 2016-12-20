@@ -7,7 +7,12 @@ currentdir=`echo $(cd $(dirname $0) && pwd)`
 base_path=$currentdir/lin4neuro-parts
 
 #Add PATH settings to .bashrc
-cat ${base_path}/bashrc/bashrc-addition.txt >> $HOME/.bashrc
+existrobex=`grep '#ROBEX' ~/.bashrc`
+if [ "$existrobex" != "#ROBEX" ]; then
+    cat ${base_path}/bashrc/bashrc-addition.txt >> $HOME/.bashrc
+else
+    echo ".bashrc setting is already done."
+fi
 
 #Source .bashrc
 . ~/.bashrc
