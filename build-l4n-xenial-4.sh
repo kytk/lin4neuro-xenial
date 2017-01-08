@@ -1,34 +1,33 @@
 #!/bin/bash
-#Lin4Neuro making script part 3
+#Lin4Neuro making script part 4
 #Remastersys
 
 #ChangeLog
+#07-Jan-2017: Modify for L4N-16.04
 #26-Jan-2016: Comment downloading remastersys
 #17-Jan-2016: Merge Japanese and English version.
 #28-Nov-2015: Update version of remastersys
 
+#Setting of path of the setting scripts
+currentdir=`echo $(cd $(dirname $0) && pwd)`
+base_path=$currentdir/lin4neuro-parts
+
+#Installation of required packages for Remastersys
+sudo apt -y install isolinux casper genisoimage squashfs-tools \
+     syslinux-utils
+
 #Installation of Remastersys
-#echo "Download and install remastersys"
-#wget http://www.nemotos.net/lin4neuro/build/remastersys_4.0.0-5_all.deb
+sudo cp -r ${base_path}/remastersys/etc/* /etc
+sudo cp ${base_path}/remastersys/remastersys /usr/bin
+sudo chmod 755 /usr/bin/remastersys
 
-sudo apt-get -y  --no-install-recommends install memtest86+ mkisofs \
-	squashfs-tools casper libdebian-installer4 \
-	user-setup localechooser-data cifs-utils \
-	samba-common libtalloc2 libwbclient0 \
-	ubiquity-frontend-debconf syslinux xresprobe \
-	syslinux-common  ubiquity  bogl-bterm \
-	libiw30 ubiquity-ubuntu-artwork ubiquity-casper rdate \
-	ecryptfs-utils cryptsetup \
-	python3-icu python3-pam archdetect-deb dpkg-repack apt-clone \
-	cryptsetup-bin libecryptfs0 keyutils libnss3-1d \
-	libcryptsetup4 dialog
-
-sudo dpkg -i remastersys_4.0.0-5_all.deb
-
-#Workaround for plymouth
-sudo cp ~/lin4neuro-parts/rs-workaround/plymouth-shutdown.conf /etc/init/
+if [ `echo $LANG` = ja_JP.UTF-8 ]; then
+    sudo mv /etc/remastersys.conf.ja /etc/remastersys.conf
+else
+    sudo mv /etc/remastersys.conf.en /etc/remastersys.conf
+fi
 
 #usb-creator
-sudo apt-get -y install usb-creator-common usb-creator-gtk
+sudo apt -y install usb-creator-common usb-creator-gtk
 
-echo "Part 3 finished! Now ready for remastering. Execute l4n_remastering.sh in lin4neuro-parts"
+echo "Part 4 finished! Now ready for remastering. Execute l4n_remastering.sh"
