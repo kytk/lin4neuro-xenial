@@ -1,0 +1,41 @@
+#Remastersys Global Configuration File
+
+# This is the temporary working directory and won't be included on the cd/dvd
+WORKDIR="/home/remastersys"
+
+# Here you can add any other files or directories to be excluded from the live filesystem
+# Separate each entry with a space
+#EXCLUDES="/usr/src"
+EXCLUDES="/media/sf_L4N_software"
+
+# Here you can change the livecd/dvd username
+LIVEUSER="custom"
+
+#Set the Date
+Date=`date '+%Y%m%d'`
+
+# Here you can change the name of the livecd/dvd label
+LIVECDLABEL="L4N-16.04-x64-en-$Date"
+
+
+# Here you can change the name of the ISO file that is created
+CUSTOMISO="l4n-16.04-x64-en-$Date.iso"
+
+
+# Here you can change the mksquashfs options
+#SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M -no-duplicates "
+
+# High compression ratio "--comp xz" option
+SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M -no-duplicates -comp xz"
+
+
+# Here you can prevent the Install icon from showing up on the desktop in backup mode. 0 - to not show 1 - to show
+BACKUPSHOWINSTALL="1"
+
+
+# Here you can change the url for the usb-creator info
+LIVECDURL="http://www.nemotos.net/lin4neuro"
+
+#DELDEB="openssh-client openssh-server openssh-sftp-server g++ gcc gdb tree sshpass screen  ubuntu-defaults-builder libbsd-dev debconf-utils"
+#OVERWRITE=""
+
