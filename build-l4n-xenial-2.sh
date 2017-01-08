@@ -107,15 +107,21 @@ sudo update-grub
 echo "Installation of FSL"
 sudo apt -y update
 sudo apt -y upgrade
-sudo apt -y install fsl
+sudo apt -y install fsl fsl-5.0-doc-wiki fsl-5.0-doc-wikiattachments
 sudo apt-get -f install
 
 #PATH settings
+if ! grep -q -i 'fsl.sh' ~/bashrc; then
 cat << FIN >> ~/.bashrc
-
 #FSL
 . /etc/fsl/fsl.sh
+FIN
+fi
 
+#modification for FSL-doc
+sudo mkdir /usr/share/fsl/5.0/doc/redirects
+sudo tee /usr/share/fsl/5.0/doc/redirects/index.html <<FIN >/dev/null
+<meta http-equiv="refresh" content="0; url=file:///usr/share/fsl/5.0/doc/wiki/FSL.html" />
 FIN
 
 #Install MRIConvert
@@ -134,7 +140,7 @@ sudo apt install -f
 rm libxp6_1.0.2-2_amd64.deb
 
 #Install prerequisite packages for DSI Studio
-#sudo apt-get install -y libboost-thread1.58.0 libboost-program-options1.58.0 qt5-default
+sudo apt install -y libboost-thread1.58.0 libboost-program-options1.58.0 qt5-default
 
 #Copy bashcom.sh for c3d to ~/bin
 cp -r ${base_path}/bin $HOME
