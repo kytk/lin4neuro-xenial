@@ -1,5 +1,5 @@
 #!/bin/bash
-#Remastering with Remastersys for XFCE on Ubuntu-mini 14.04
+#Remastering with Remastersys for XFCE on Ubuntu-mini 16.04
 #Ver. 1.2
 #23-Nov-2016 K. Nemoto
 
@@ -17,6 +17,17 @@ if [ ! -e /etc/skel/.local ]; then
 	sudo mkdir -p /etc/skel/.local/share/desktop-directories
 fi
 
+#Remove old kernels
+sudo apt-get -y autoremove --purge
+
+#Remove apt cache
+sudo apt-get -y clean
+
+#Remove unnecessary kernels
+sudo purge-old-kernels --keep 1
+
+
+
 #Copy config files based on Ubuntu
 echo "Copy config files based on Ubuntu to /etc/skel ..."
 cd $HOME
@@ -30,7 +41,8 @@ sudo rsync -rp --delete --progress ~/.local/share/desktop-directories /etc/skel/
 sudo rsync -rp --delete --progress ~/.bashrc /etc/skel/
 sudo rsync -rp --delete --progress ~/.local/share/icons /etc/skel/.local/share/
 #sudo rsync -rp --delete --progress ~/Desktop /etc/skel/
-
+sudo rsync -rp --delete --progress ~/.afnirc /etc/skel/
+sudo rsync -rp --delete --progress ~/.sumarc /etc/skel/
 
 #Check if Document direcotry exists in /etc/skel
 cd /etc/skel
