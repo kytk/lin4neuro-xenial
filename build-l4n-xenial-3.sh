@@ -32,7 +32,7 @@ else
     echo ".sumarc exists"
 fi
 
-afni &
+afni_system_check.py -check_all
 wait
 
 #Slicer
