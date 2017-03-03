@@ -57,7 +57,7 @@ echo "Installation of XFCE 4.12"
 sudo apt -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 	xfce4-power-manager-plugins lightdm lightdm-gtk-greeter 	\
 	shimmer-themes network-manager-gnome xinit build-essential 	\
-	dkms thunar-archive-plugin file-roller gawk fonts-noto		 
+	dkms thunar-archive-plugin file-roller gawk fonts-noto xdg-utils
 
 #Installation of misc packages
 echo "Installation of misc packages"
