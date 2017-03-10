@@ -129,15 +129,22 @@ sudo apt install -y mriconvert
 
 #Install prerequisite packages for AFNI
 sudo apt install -y tcsh xfonts-base python-qt4                    \
-                    libmotif4 libmotif-dev motif-clients           \
+                    libmotif-dev motif-clients           \
                     gsl-bin netpbm gnome-tweak-tool libjpeg62
 sudo apt update
 sudo ln -s /usr/lib/x86_64-linux-gnu/libgsl.so /usr/lib/libgsl.so.0
+
+#libxp6
 wget http://mirrors.kernel.org/ubuntu/pool/main/libx/libxp/libxp6_1.0.2-2_amd64.deb
 sudo dpkg -i libxp6_1.0.2-2_amd64.deb
+
+#libmotif4
+wget http://mirrors.kernel.org/ubuntu/pool/universe/m/motif/libmotif4_2.3.4-8ubuntu1_amd64.deb
+sudo dpkg -i libmotif4_2.3.4-8ubuntu1_amd64.deb
+
 sudo apt install -f
 
-rm libxp6_1.0.2-2_amd64.deb
+rm libxp6_1.0.2-2_amd64.deb libmotif4_2.3.4-8ubuntu1_amd64.deb
 
 #Install prerequisite packages for DSI Studio
 sudo apt install -y libboost-thread1.58.0 libboost-program-options1.58.0 qt5-default
