@@ -8,7 +8,7 @@
 
 echo "Begin installation of FreeSurfer"
 echo
-echo "This script will download and install Freesurfer in Ubuntu 14.04"
+echo "This script will download and install Freesurfer in Ubuntu 16.04"
 echo "You need to prepare license.txt beforehand."
 echo "license.txt should be placed in $HOME/Downloads"
 
