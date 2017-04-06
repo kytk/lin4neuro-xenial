@@ -45,36 +45,43 @@ echo "install libjpeg62"
 sudo apt-get install -y libjpeg62
 
 # download freesurfer
-echo "Download Freesurfer to $HOME/Downloads"
-cd $HOME/Downloads
-wget -c ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+echo "Check if Freesurfer file exists in $HOME/Downloads"
 
-## check the archive
-#echo "Check if the downloaded archive is not corrupt."
-#echo "7c03e796e9b81ee69aaa60079c4094f20b945c08  freesurfer-Linux-centos6_x86_64-stable-pub-v5.3.0.tar.gz" > freesurfer-Linux-centos6_x86_64-stable-pub-v5.3.0.tar.gz.sha1
-#
-#sha1sum -c freesurfer-Linux-centos6_x86_64-stable-pub-v5.3.0.tar.gz.sha1
-#
-#if [ "$?" -eq 0 ]; then
-#    echo "Filesize is correct!"
-#    rm freesurfer-Linux-centos6_x86_64-stable-pub-v5.3.0.tar.gz.sha1
-#else
-#    echo "Download failed. Re-run the script again."
-#    echo "Abort."
-#    exit 1
-#fi
+if [ -e $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz ]; then
+    echo "Freesurfer file exists! Continue installation"
+
+else
+    echo "Download Freesurfer to $HOME/Downloads"
+    cd $HOME/Downloads
+    wget -c ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+fi
+
+    ## check the archive
+    #echo "Check if the downloaded archive is not corrupt."
+    #echo "7c03e796e9b81ee69aaa60079c4094f20b945c08  freesurfer-Linux-centos6_x86_64-stable-pub-v5.3.0.tar.gz" > freesurfer-Linux-centos6_x86_64-stable-pub-v5.3.0.tar.gz.sha1
+    #
+    #sha1sum -c freesurfer-Linux-centos6_x86_64-stable-pub-v5.3.0.tar.gz.sha1
+    #
+    #if [ "$?" -eq 0 ]; then
+    #    echo "Filesize is correct!"
+    #    rm freesurfer-Linux-centos6_x86_64-stable-pub-v5.3.0.tar.gz.sha1
+    #else
+    #    echo "Download failed. Re-run the script again."
+    #    echo "Abort."
+    #    exit 1
+    #fi
 
 # install freesurfer
 echo "Install freesurfer"
-sudo cp $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz /usr/local
+#sudo cp $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz /usr/local
 cd /usr/local
-sudo tar xvzf freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+sudo tar xvzf $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
 
 if [ -d "/usr/local/freesurfer" ]; then
     sudo cp $HOME/Downloads/license.txt /usr/local/freesurfer
-    sudo rm freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+#    sudo rm freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
 else
-    echo "freesurfer is note extracted correctly."
+    echo "freesurfer is not extracted correctly."
     exit 1
 fi
 
