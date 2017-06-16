@@ -93,9 +93,7 @@ cp ${base_path}/config/xfce-perchannel-xml/xfwm4.xml \
 sudo apt -y autoremove
 
 #GRUB setting for plymouth
-sudo cat <<  EOD  >>/etc/default/grub
-GRUB_GFXPAYLOAD_LINUX="auto"
-EOD
+echo 'GRUB_GFXPAYLOAD_LINUX="auto"' | sudo tee -a /etc/default/grub 
 sudo sh -c 'echo 'FRAMEBUFFER=y' > /etc/initramfs-tools/conf.d/splash'
 sudo update-grub
 
