@@ -1,7 +1,7 @@
 #!/bin/bash
 #Remastering with Remastersys for XFCE on Ubuntu-mini 16.04
 #Ver. 1.2
-#23-Nov-2016 K. Nemoto
+#18-Jun-2017 K. Nemoto
 
 #Execute as a normal user!
 
@@ -50,6 +50,15 @@ if [ ! -e /etc/skel/Documents ]; then
         sudo mkdir Desktop Documents Downloads Music Pictures Public \
 		   Templates Videos bin
 fi
+
+#ubiquity
+sudo apt -y install ubiquity-frontend-gtk
+
+#remove 40cdrom from ubiquity
+sudo rm /usr/lib/ubiquity/apt-setup/generators/40cdrom
+
+#modify ubiquity.desktop
+sudo sed -i 's/Exec=sh/Exec=sudo sh/' /usr/share/applications/ubiquity.desktop
 
 #Remastering with Remastersys
 while true; do
