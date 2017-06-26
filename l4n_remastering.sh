@@ -55,7 +55,9 @@ fi
 sudo apt -y install ubiquity-frontend-gtk
 
 #remove 40cdrom from ubiquity
-sudo rm /usr/lib/ubiquity/apt-setup/generators/40cdrom
+if [ -e /usr/lib/ubiquity/apt-setup/generators/40cdrom ]; then
+	sudo rm /usr/lib/ubiquity/apt-setup/generators/40cdrom
+fi
 
 #modify ubiquity.desktop
 sudo sed -i 's/Exec=sh/Exec=sudo sh/' /usr/share/applications/ubiquity.desktop
