@@ -134,7 +134,7 @@ sudo apt install -y tcsh xfonts-base python-qt4                    \
                     gsl-bin netpbm gnome-tweak-tool 		   \
 		    libjpeg62 xvfb
 sudo apt update
-udo apt install -y libglu1-mesa-dev libglw1-mesa     \
+sudo apt install -y libglu1-mesa-dev libglw1-mesa     \
                    libxm4 build-essential
 
 #Install prerequisite packages for DSI Studio
