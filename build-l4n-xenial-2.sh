@@ -4,6 +4,7 @@
 #Prerequisite: You need to finish the build-l4n-part1.sh first.
 
 #ChangeLog
+#26-Jun-2017: Add symbolic link (libgsl.so.0) for AFNI
 #17-Jun-2017: Change prerequisite for AFNI based on official site
 #17-Jun-2017: Add virtualbox-guest-dkms
 #16-Jun-2017: Bug fix for GRUB
@@ -128,6 +129,13 @@ FIN
 #Install MRIConvert
 sudo apt install -y mriconvert
 
+#Install R
+sudo apt install -y software-properties-common
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+sudo add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu xenial/'
+sudo apt -y update
+sudo apt install -y r-base
+
 #Install prerequisite packages for AFNI
 #(https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/background_install/install_instructs/steps_linux_ubuntu16.html) 17 Jun 2017
 sudo apt install -y tcsh xfonts-base python-qt4                    \
@@ -136,6 +144,9 @@ sudo apt install -y tcsh xfonts-base python-qt4                    \
 sudo apt update
 sudo apt install -y libglu1-mesa-dev libglw1-mesa     \
                    libxm4 build-essential
+#We have to make a symbolic link for libgsl
+sudo ln -s /usr/lib/x86_64-linux-gnu/libgsl.so.19.0.0 /usr/lib/x86_64-linux-gnu/libgsl.so.0
+
 
 #Install prerequisite packages for DSI Studio
 sudo apt install -y libboost-thread1.58.0 libboost-program-options1.58.0 qt5-default
