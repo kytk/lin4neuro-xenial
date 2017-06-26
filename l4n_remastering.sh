@@ -43,12 +43,13 @@ sudo rsync -rp --delete --progress ~/.local/share/icons /etc/skel/.local/share/
 #sudo rsync -rp --delete --progress ~/Desktop /etc/skel/
 sudo rsync -rp --delete --progress ~/.afnirc /etc/skel/
 sudo rsync -rp --delete --progress ~/.sumarc /etc/skel/
+sudo rsync -rp --delete --progress ~/bin /etc/skel/
 
 #Check if Document direcotry exists in /etc/skel
 cd /etc/skel
 if [ ! -e /etc/skel/Documents ]; then
         sudo mkdir Desktop Documents Downloads Music Pictures Public \
-		   Templates Videos bin
+		   Templates Videos
 fi
 
 #ubiquity
