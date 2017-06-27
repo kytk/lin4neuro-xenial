@@ -1,7 +1,6 @@
 #!/bin/bash
 #Remastering with Remastersys for XFCE on Ubuntu-mini 16.04
-#Ver. 1.2
-#18-Jun-2017 K. Nemoto
+#27-Jun-2017 K. Nemoto
 
 #Execute as a normal user!
 
@@ -27,7 +26,6 @@ sudo apt-get -y clean
 sudo purge-old-kernels --keep 1
 
 
-
 #Copy config files based on Ubuntu
 echo "Copy config files based on Ubuntu to /etc/skel ..."
 cd $HOME
@@ -44,6 +42,7 @@ sudo rsync -rp --delete --progress ~/.local/share/icons /etc/skel/.local/share/
 sudo rsync -rp --delete --progress ~/.afnirc /etc/skel/
 sudo rsync -rp --delete --progress ~/.sumarc /etc/skel/
 sudo rsync -rp --delete --progress ~/bin /etc/skel/
+sudo rsync -rp --delete --progress ~/tutorial /etc/skel/
 
 #Check if Document direcotry exists in /etc/skel
 cd /etc/skel
