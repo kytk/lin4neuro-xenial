@@ -338,7 +338,8 @@ log_msg "$WORKDIR is on a $DIRTYPE filesystem"
     rm MAKEDEV
     cd -
 
-    find $WORKDIR/dummysys/var/log/ $WORKDIR/dummysys/var/lock/ $WORKDIR/dummysys/var/backups/ $WORKDIR/dummysys/var/tmp/ $WORKDIR/dummysys/var/lib/ubiquity/ -type f -exec rm -f {} \;
+    #find $WORKDIR/dummysys/var/log/ $WORKDIR/dummysys/var/lock/ $WORKDIR/dummysys/var/backups/ $WORKDIR/dummysys/var/tmp/ $WORKDIR/dummysys/var/lib/ubiquity/ -type f -exec rm -f {} \;
+    find $WORKDIR/dummysys/var/log/ $WORKDIR/dummysys/var/lock/ $WORKDIR/dummysys/var/backups/ $WORKDIR/dummysys/var/tmp/ -type f -exec rm -f {} \;
 
     if [ "$1" = "dist" ]; then
 
@@ -426,8 +427,9 @@ log_msg "$WORKDIR is on a $DIRTYPE filesystem"
     cp $ETCDIR/remastersys/preseed/* $WORKDIR/ISOTMP/preseed/
 
     #BOOT Type is isolinux
-    log_msg "Copying memtest86+ for the live system"
-    cp /boot/memtest86+.bin $WORKDIR/ISOTMP/install/memtest
+    #skip copying memtest+ because it doesn't match UEFI (18-Jun-2017)
+    #log_msg "Copying memtest86+ for the live system"
+    #cp /boot/memtest86+.bin $WORKDIR/ISOTMP/install/memtest
 
     # check and see if they have a custom isolinux already setup. eg. they copied over 
     # the isolinux folder from their original livecd or made a custom one for their distro

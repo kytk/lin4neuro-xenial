@@ -3,10 +3,10 @@ Version=1.0
 Type=Application
 Name=Chris Rorden's MRI tutorial
 Comment=
-Exec=x-www-browser ~/tutorial/index.html
-Icon=tutorials.png
+Exec=x-www-browser ~/tutorial/sampledata/index.html
+Icon=mricron
 Categories=Neuroimaging;
 StartupNotify=true
 Terminal=false
-NoDisplay=true
+NoDisplay=false
 

@@ -4,9 +4,13 @@
 #Prerequisite: You need to finish the build-l4n-part1.sh first.
 
 #ChangeLog
+#26-Jun-2017: Add symbolic link (libgsl.so.0) for AFNI
+#17-Jun-2017: Change prerequisite for AFNI based on official site
+#17-Jun-2017: Add virtualbox-guest-dkms
+#16-Jun-2017: Bug fix for GRUB
 #22-May-2016: Update for DSI_Studio
 #20-May-2016: Modify for Xenial (16.04)
-#14-Jan-2016: Merge Engilsh version with Japanese version.
+#14-Jan-2016: Merge Engilsh version with Japanese version
 #30-Nov-2015: Modify for English version
 #25-Nov-2015: Add log function
 #26-Nov-2015: Modify panel customization
@@ -93,9 +97,7 @@ cp ${base_path}/config/xfce-perchannel-xml/xfwm4.xml \
 sudo apt -y autoremove
 
 #GRUB setting for plymouth
-sudo cat <<  EOD  >>/etc/default/grub
-GRUB_GFXPAYLOAD_LINUX="auto"
-EOD
+echo 'GRUB_GFXPAYLOAD_LINUX="auto"' | sudo tee -a /etc/default/grub 
 sudo sh -c 'echo 'FRAMEBUFFER=y' > /etc/initramfs-tools/conf.d/splash'
 sudo update-grub
 
@@ -127,30 +129,35 @@ FIN
 #Install MRIConvert
 sudo apt install -y mriconvert
 
+#Install R
+sudo apt install -y software-properties-common
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+sudo add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu xenial/'
+sudo apt -y update
+sudo apt install -y r-base
+
 #Install prerequisite packages for AFNI
+#(https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/background_install/install_instructs/steps_linux_ubuntu16.html) 17 Jun 2017
 sudo apt install -y tcsh xfonts-base python-qt4                    \
-                    libmotif-dev motif-clients           \
-                    gsl-bin netpbm gnome-tweak-tool libjpeg62
+                    gsl-bin netpbm gnome-tweak-tool 		   \
+		    libjpeg62 xvfb
 sudo apt update
-sudo ln -s /usr/lib/x86_64-linux-gnu/libgsl.so /usr/lib/libgsl.so.0
+sudo apt install -y libglu1-mesa-dev libglw1-mesa     \
+                   libxm4 build-essential
+#We have to make a symbolic link for libgsl
+sudo ln -s /usr/lib/x86_64-linux-gnu/libgsl.so.19.0.0 /usr/lib/x86_64-linux-gnu/libgsl.so.0
 
-#libxp6
-wget http://mirrors.kernel.org/ubuntu/pool/main/libx/libxp/libxp6_1.0.2-2_amd64.deb
-sudo dpkg -i libxp6_1.0.2-2_amd64.deb
-
-#libmotif4
-wget http://mirrors.kernel.org/ubuntu/pool/universe/m/motif/libmotif4_2.3.4-8ubuntu1_amd64.deb
-sudo dpkg -i libmotif4_2.3.4-8ubuntu1_amd64.deb
-
-sudo apt install -f
-
-rm libxp6_1.0.2-2_amd64.deb libmotif4_2.3.4-8ubuntu1_amd64.deb
 
 #Install prerequisite packages for DSI Studio
 sudo apt install -y libboost-thread1.58.0 libboost-program-options1.58.0 qt5-default
 
 #Copy bashcom.sh for c3d to ~/bin
 cp -r ${base_path}/bin $HOME
+
+#Install virtualbox-guest-dkms
+sudo apt install -y virtualbox-guest-dkms
+sudo usermod -aG vboxsf $(whoami)
+
 
 echo "Part 2 finished! The system will reboot to reflect the customization."
 echo "Please install several packages later."

@@ -1,7 +1,6 @@
 #!/bin/bash
 #Remastering with Remastersys for XFCE on Ubuntu-mini 16.04
-#Ver. 1.2
-#23-Nov-2016 K. Nemoto
+#27-Jun-2017 K. Nemoto
 
 #Execute as a normal user!
 
@@ -27,7 +26,6 @@ sudo apt-get -y clean
 sudo purge-old-kernels --keep 1
 
 
-
 #Copy config files based on Ubuntu
 echo "Copy config files based on Ubuntu to /etc/skel ..."
 cd $HOME
@@ -43,13 +41,26 @@ sudo rsync -rp --delete --progress ~/.local/share/icons /etc/skel/.local/share/
 #sudo rsync -rp --delete --progress ~/Desktop /etc/skel/
 sudo rsync -rp --delete --progress ~/.afnirc /etc/skel/
 sudo rsync -rp --delete --progress ~/.sumarc /etc/skel/
+sudo rsync -rp --delete --progress ~/bin /etc/skel/
+sudo rsync -rp --delete --progress ~/tutorial /etc/skel/
 
 #Check if Document direcotry exists in /etc/skel
 cd /etc/skel
 if [ ! -e /etc/skel/Documents ]; then
         sudo mkdir Desktop Documents Downloads Music Pictures Public \
-		   Templates Videos bin
+		   Templates Videos
 fi
+
+#ubiquity
+sudo apt -y install ubiquity-frontend-gtk
+
+#remove 40cdrom from ubiquity
+if [ -e /usr/lib/ubiquity/apt-setup/generators/40cdrom ]; then
+	sudo rm /usr/lib/ubiquity/apt-setup/generators/40cdrom
+fi
+
+#modify ubiquity.desktop
+sudo sed -i 's/Exec=sh/Exec=sudo sh/' /usr/share/applications/ubiquity.desktop
 
 #Remastering with Remastersys
 while true; do
