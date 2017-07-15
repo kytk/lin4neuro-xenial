@@ -4,11 +4,11 @@
 #This script downloads required files, install them, and configure that
 #subject directory is under $HOME
 
-#06 Apr 2017 K. Nemoto
+#15 Jul 2017 K. Nemoto
 
 echo "Begin installation of FreeSurfer"
 echo
-echo "This script will download and install Freesurfer in Ubuntu 16.04"
+echo "This script will download and install Freesurfer in Ubuntu 14.04"
 echo "You need to prepare license.txt beforehand."
 echo "license.txt should be placed in $HOME/Downloads"
 
@@ -45,41 +45,36 @@ echo "install libjpeg62"
 sudo apt-get install -y libjpeg62
 
 # download freesurfer
-echo "Check if Freesurfer file exists in $HOME/Downloads"
-
-if [ -e $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz ]; then
-    echo "Freesurfer file exists! Continue installation"
-
+if [ ! -e $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz ]; then
+	echo "Download Freesurfer to $HOME/Downloads"
+	cd $HOME/Downloads
+	wget -c ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
 else
-    echo "Download Freesurfer to $HOME/Downloads"
-    cd $HOME/Downloads
-    wget -c ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+	echo "Freesurfer archive is found in $HOME/Downloads"
 fi
 
-    ## check the archive
-    #echo "Check if the downloaded archive is not corrupt."
-    #echo "7c03e796e9b81ee69aaa60079c4094f20b945c08  freesurfer-Linux-centos6_x86_64-stable-pub-v5.3.0.tar.gz" > freesurfer-Linux-centos6_x86_64-stable-pub-v5.3.0.tar.gz.sha1
-    #
-    #sha1sum -c freesurfer-Linux-centos6_x86_64-stable-pub-v5.3.0.tar.gz.sha1
-    #
-    #if [ "$?" -eq 0 ]; then
-    #    echo "Filesize is correct!"
-    #    rm freesurfer-Linux-centos6_x86_64-stable-pub-v5.3.0.tar.gz.sha1
-    #else
-    #    echo "Download failed. Re-run the script again."
-    #    echo "Abort."
-    #    exit 1
-    #fi
+# check the archive
+echo "Check if the downloaded archive is not corrupt."
+echo "d49e9dd61d6467f65b9582bddec653a4  freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz" > freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
+
+md5sum -c freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
+
+if [ "$?" -eq 0 ]; then
+    echo "Filesize is correct!"
+    rm freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
+else
+    echo "Download failed. Re-run the script again."
+    echo "Abort."
+    exit 1
+fi
 
 # install freesurfer
 echo "Install freesurfer"
-#sudo cp $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz /usr/local
 cd /usr/local
 sudo tar xvzf $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
 
 if [ -d "/usr/local/freesurfer" ]; then
     sudo cp $HOME/Downloads/license.txt /usr/local/freesurfer
-#    sudo rm freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
 else
     echo "freesurfer is not extracted correctly."
     exit 1
@@ -110,7 +105,7 @@ else
 fi
 
 echo "Installation finished!"
-echo "Now close this terminal, open another terminal, and run check_freesurfer.sh"
+echo "Now close this terminal, open another terminal, and run check_freesurfer6.0.0.sh"
 
 exit
 
