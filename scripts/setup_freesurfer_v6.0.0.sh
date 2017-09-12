@@ -8,7 +8,7 @@
 
 echo "Begin installation of FreeSurfer"
 echo
-echo "This script will download and install Freesurfer in Ubuntu 14.04"
+echo "This script will download and install Freesurfer in Ubuntu 16.04"
 echo "You need to prepare license.txt beforehand."
 echo "license.txt should be placed in $HOME/Downloads"
 
@@ -54,6 +54,7 @@ else
 fi
 
 # check the archive
+cd $HOME/Downloads
 echo "Check if the downloaded archive is not corrupt."
 echo "d49e9dd61d6467f65b9582bddec653a4  freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz" > freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
 
