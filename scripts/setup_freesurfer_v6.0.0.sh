@@ -42,7 +42,7 @@ fi
 
 # install libjpeg62
 echo "install libjpeg62"
-sudo apt-get install -y libjpeg62
+sudo apt install -y libjpeg62
 
 # download freesurfer
 if [ ! -e $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz ]; then
@@ -91,8 +91,8 @@ fi
 cp -r /usr/local/freesurfer/subjects $HOME/freesurfer
 
 # modify SetUpFreeSurfer.sh
-sudo sed -i -e 's@$FREESURFER_HOME/subjects@$HOME/freesurfer/subjects@' \
-     /usr/local/freesurfer/SetUpFreeSurfer.sh
+#sudo sed -i -e 's@$FREESURFER_HOME/subjects@$HOME/freesurfer/subjects@' \
+#     /usr/local/freesurfer/SetUpFreeSurfer.sh
 
 # append to .bashrc
 cat $HOME/.bashrc | grep 'SetUpFreeSurfer.sh'
@@ -101,6 +101,7 @@ if [ "$?" -eq 0 ]; then
 else
     echo >> $HOME/.bashrc
     echo "#FreeSurfer" >> $HOME/.bashrc
+    echo "export SUBJECT_DIR=~/freesurfer/subjects" >> $HOME/.bashrc
     echo "export FREESURFER_HOME=/usr/local/freesurfer" >> $HOME/.bashrc
     echo 'source $FREESURFER_HOME/SetUpFreeSurfer.sh' >> $HOME/.bashrc
 fi
