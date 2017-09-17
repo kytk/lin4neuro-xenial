@@ -18,12 +18,3 @@ freeview -v \
  bert/surf/rh.white:edgecolor=blue \
  bert/surf/rh.pial:edgecolor=red
 
-#echo "tkmedit. Close the window to proceed the script." 
-#tkmedit bert orig.mgz 
-#
-#echo "tksurfer. Close the window to proceec the script."
-#tksurfer bert rh pial
-#
-
-
-
