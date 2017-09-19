@@ -101,7 +101,7 @@ if [ "$?" -eq 0 ]; then
 else
     echo >> $HOME/.bashrc
     echo "#FreeSurfer" >> $HOME/.bashrc
-    echo "export SUBJECT_DIR=~/freesurfer/subjects" >> $HOME/.bashrc
+    echo "export SUBJECTS_DIR=~/freesurfer/subjects" >> $HOME/.bashrc
     echo "export FREESURFER_HOME=/usr/local/freesurfer" >> $HOME/.bashrc
     echo 'source $FREESURFER_HOME/SetUpFreeSurfer.sh' >> $HOME/.bashrc
 fi
