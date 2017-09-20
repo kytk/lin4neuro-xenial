@@ -4,7 +4,7 @@
 #This script downloads required files, install them, and configure that
 #subject directory is under $HOME
 
-#15 Jul 2017 K. Nemoto
+#20 Sep 2017 K. Nemoto
 
 echo "Begin installation of FreeSurfer"
 echo
@@ -60,14 +60,14 @@ echo "d49e9dd61d6467f65b9582bddec653a4  freesurfer-Linux-centos6_x86_64-stable-p
 
 md5sum -c freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
 
-if [ "$?" -eq 0 ]; then
-    echo "Filesize is correct!"
-    rm freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
-else
-    echo "Download failed. Re-run the script again."
-    echo "Abort."
-    exit 1
-fi
+while [ "$?" -ne 0 ]; do
+    echo "Filesize is not correct. Re-try downloading."
+    wget -c ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+    md5sum -c freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
+done
+
+echo "Filesize is correct!"
+rm freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
 
 # install freesurfer
 echo "Install freesurfer"
@@ -90,10 +90,6 @@ fi
 
 cp -r /usr/local/freesurfer/subjects $HOME/freesurfer
 
-# modify SetUpFreeSurfer.sh
-#sudo sed -i -e 's@$FREESURFER_HOME/subjects@$HOME/freesurfer/subjects@' \
-#     /usr/local/freesurfer/SetUpFreeSurfer.sh
-
 # append to .bashrc
 cat $HOME/.bashrc | grep 'SetUpFreeSurfer.sh'
 if [ "$?" -eq 0 ]; then
@@ -101,7 +97,7 @@ if [ "$?" -eq 0 ]; then
 else
     echo >> $HOME/.bashrc
     echo "#FreeSurfer" >> $HOME/.bashrc
-    echo "export SUBJECT_DIR=~/freesurfer/subjects" >> $HOME/.bashrc
+    echo "export SUBJECTS_DIR=~/freesurfer/subjects" >> $HOME/.bashrc
     echo "export FREESURFER_HOME=/usr/local/freesurfer" >> $HOME/.bashrc
     echo 'source $FREESURFER_HOME/SetUpFreeSurfer.sh' >> $HOME/.bashrc
 fi
