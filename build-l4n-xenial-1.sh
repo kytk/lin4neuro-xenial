@@ -4,7 +4,7 @@
 #Prerequisite: You need to install Ubuntu mini.iso and git.
 
 #ChangeLog
-#20-May-2016: Modify for Xenial (16.04)
+#26-Sep-2017: add tree
 
 #(optional) Force IPv4
 #Comment out the following two lines if you need IPv6
@@ -64,7 +64,7 @@ sudo apt -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 echo "Installation of misc packages"
 sudo apt -y install wajig imagemagick evince vim gedit \
 	unzip zip gparted byobu default-jre gnome-system-monitor \
-	xfce4-screenshooter update-manager
+	xfce4-screenshooter update-manager tree
 
 #vim settings
 cp /usr/share/vim/vimrc ~/.vimrc
