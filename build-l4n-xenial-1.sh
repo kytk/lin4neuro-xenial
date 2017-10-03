@@ -4,6 +4,7 @@
 #Prerequisite: You need to install Ubuntu mini.iso and git.
 
 #ChangeLog
+#03-Oct-2017: add at-spi2-core for supressing gedit warning
 #26-Sep-2017: add tree
 
 #(optional) Force IPv4
@@ -62,7 +63,7 @@ sudo apt -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 
 #Installation of misc packages
 echo "Installation of misc packages"
-sudo apt -y install wajig imagemagick evince vim gedit \
+sudo apt -y install wajig imagemagick evince vim gedit at-spi2-core\
 	unzip zip gparted byobu default-jre gnome-system-monitor \
 	xfce4-screenshooter update-manager tree
 
