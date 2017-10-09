@@ -65,7 +65,8 @@ sudo apt -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 echo "Installation of misc packages"
 sudo apt -y install wajig imagemagick evince vim gedit at-spi2-core\
 	unzip zip gparted byobu default-jre gnome-system-monitor \
-	xfce4-screenshooter update-manager tree
+	system-config-printer-gnome xfce4-screenshooter update-manager\
+	tree
 
 #vim settings
 cp /usr/share/vim/vimrc ~/.vimrc
