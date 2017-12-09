@@ -10,8 +10,8 @@
 
 #(optional) Force IPv4
 #Comment out the following two lines if you need IPv6
-echo 'Acquire::ForceIPv4 "true";' | sudo tee /etc/apt/apt.conf.d/99force-ipv4
-echo '--inet4-only=1' >> ~/.wgetrc
+#echo 'Acquire::ForceIPv4 "true";' | sudo tee /etc/apt/apt.conf.d/99force-ipv4
+#echo '--inet4-only=1' >> ~/.wgetrc
 
 LANG=C
 sudo apt update; sudo apt -y upgrade
