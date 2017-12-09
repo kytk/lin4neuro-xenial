@@ -4,6 +4,7 @@
 #Prerequisite: You need to finish the build-l4n-part1.sh first.
 
 #ChangeLog
+#09-Dec-2017: Comment out FSL
 #26-Jun-2017: Add symbolic link (libgsl.so.0) for AFNI
 #17-Jun-2017: Change prerequisite for AFNI based on official site
 #17-Jun-2017: Add virtualbox-guest-dkms
@@ -106,11 +107,11 @@ sudo sed -i -e 's/GRUB_HIDDEN_TIMEOUT/#GRUB_HIDDEN_TIMEOUT/' /etc/default/grub
 sudo update-grub
 
 #Installation of FSL
-echo "Installation of FSL"
-sudo apt -y update
-sudo apt -y upgrade
-sudo apt -y install fsl fsl-5.0-doc-wiki fsl-5.0-doc-wikiattachments
-sudo apt-get -f install
+#echo "Installation of FSL"
+#sudo apt -y update
+#sudo apt -y upgrade
+#sudo apt -y install fsl fsl-5.0-doc-wiki fsl-5.0-doc-wikiattachments
+#sudo apt-get -f install
 
 #PATH settings
 if ! grep -q -i 'fsl.sh' ~/bashrc; then
@@ -161,6 +162,7 @@ sudo usermod -aG vboxsf $(whoami)
 
 echo "Part 2 finished! The system will reboot to reflect the customization."
 echo "Please install several packages later."
-sleep 3
+sleep 5
+echo "System reboot"
 sudo reboot
 

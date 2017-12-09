@@ -4,6 +4,7 @@
 #Prerequisite: You need to install Ubuntu mini.iso and git.
 
 #ChangeLog
+#09-Dec-2017: add exfat-fuse and exfat-utils; remove vim
 #03-Oct-2017: add at-spi2-core for supressing gedit warning
 #26-Sep-2017: add tree
 
@@ -63,10 +64,10 @@ sudo apt -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 
 #Installation of misc packages
 echo "Installation of misc packages"
-sudo apt -y install wajig imagemagick evince vim gedit at-spi2-core\
+sudo apt -y install wajig imagemagick evince gedit at-spi2-core\
 	unzip zip gparted byobu default-jre gnome-system-monitor \
 	system-config-printer-gnome xfce4-screenshooter update-manager\
-	tree
+	tree exfat-fuse exfat-utils
 
 #vim settings
 cp /usr/share/vim/vimrc ~/.vimrc
@@ -91,6 +92,7 @@ sudo apt -y purge xscreensaver
 
 echo "Part1 Finished! The system will reboot. Please run build-l4n-xenial-2.sh."
 
-sleep 3
+sleep 5
+echo "System reboot"
 sudo reboot
 
