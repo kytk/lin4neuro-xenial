@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+GenericName=Software Collection for (f)MRI Data Analysis
+GenericName[de]=Software-Kollektion zur (f)MRT-Daten Analyse
+Name=FSL 5.0
+Exec=fsl
+TryExec=fsl
+Icon=fsl-5.0.xpm
+Type=Application
+Terminal=false
+Categories=Neuroimaging;

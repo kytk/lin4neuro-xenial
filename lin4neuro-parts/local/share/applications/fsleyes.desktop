@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=FSLeyes
+Exec=fsleyes
+TryExec=fsleyes
+Icon=fsleyes.png
+Type=Application
+Terminal=false
+Categories=Neuroimaging;
