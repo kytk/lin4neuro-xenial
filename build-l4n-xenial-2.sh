@@ -4,6 +4,7 @@
 #Prerequisite: You need to finish the build-l4n-part1.sh first.
 
 #ChangeLog
+#12-Dec-2017: Update install of AFNI
 #09-Dec-2017: Comment out FSL
 #26-Jun-2017: Add symbolic link (libgsl.so.0) for AFNI
 #17-Jun-2017: Change prerequisite for AFNI based on official site
@@ -114,21 +115,21 @@ sudo update-grub
 #sudo apt-get -f install
 
 #PATH settings
-if ! grep -q -i 'fsl.sh' ~/bashrc; then
-cat << FIN >> ~/.bashrc
-#FSL
-. /etc/fsl/fsl.sh
-FIN
-fi
-
-#modification for FSL-doc
-sudo mkdir /usr/share/fsl/5.0/doc/redirects
-sudo tee /usr/share/fsl/5.0/doc/redirects/index.html <<FIN >/dev/null
-<meta http-equiv="refresh" content="0; url=file:///usr/share/fsl/5.0/doc/wiki/FSL.html" />
-FIN
+#if ! grep -q -i 'fsl.sh' ~/bashrc; then
+#cat << FIN >> ~/.bashrc
+##FSL
+#. /etc/fsl/fsl.sh
+#FIN
+#fi
+#
+##modification for FSL-doc
+#sudo mkdir /usr/share/fsl/5.0/doc/redirects
+#sudo tee /usr/share/fsl/5.0/doc/redirects/index.html <<FIN >/dev/null
+#<meta http-equiv="refresh" content="0; url=file:///usr/share/fsl/5.0/doc/wiki/FSL.html" />
+#FIN
 
 #Install MRIConvert
-sudo apt install -y mriconvert
+#sudo apt install -y mriconvert
 
 #Install R
 sudo apt install -y software-properties-common
@@ -138,15 +139,19 @@ sudo apt -y update
 sudo apt install -y r-base
 
 #Install prerequisite packages for AFNI
-#(https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/background_install/install_instructs/steps_linux_ubuntu16.html) 17 Jun 2017
-sudo apt install -y tcsh xfonts-base python-qt4                    \
-                    gsl-bin netpbm gnome-tweak-tool 		   \
-		    libjpeg62 xvfb
-sudo apt update
+#(https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/background_install/install_instructs/steps_linux_ubuntu16.html) 12 Dec 2017
+sudo apt install -y tcsh xfonts-base python-qt4       \
+                    gsl-bin netpbm gnome-tweak-tool   \
+		    libjpeg62 xvfb vim curl
 sudo apt install -y libglu1-mesa-dev libglw1-mesa     \
                    libxm4 build-essential
 #We have to make a symbolic link for libgsl
 sudo ln -s /usr/lib/x86_64-linux-gnu/libgsl.so.19.0.0 /usr/lib/x86_64-linux-gnu/libgsl.so.0
+
+#Download AFNI installer to $HOME
+cd $HOME
+curl -O https://afni.nimh.nih.gov/pub/dist/bin/linux_ubuntu_16_64/@update.afni.binaries
+#sudo tcsh @update.afni.binaries -package linux_ubuntu_16_64 -bindir /usr/local/AFNIbin/ -do_extras
 
 
 #Install prerequisite packages for DSI Studio
@@ -158,7 +163,6 @@ cp -r ${base_path}/bin $HOME
 #Install virtualbox-guest-dkms
 sudo apt install -y virtualbox-guest-dkms
 sudo usermod -aG vboxsf $(whoami)
-
 
 echo "Part 2 finished! The system will reboot to reflect the customization."
 echo "Please install several packages later."
