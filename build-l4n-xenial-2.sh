@@ -164,6 +164,13 @@ cp -r ${base_path}/bin $HOME
 sudo apt install -y virtualbox-guest-dkms
 sudo usermod -aG vboxsf $(whoami)
 
+#Virtualbox-related settings
+sudo sh -c 'echo 'vboxsf' >> /etc/modules'
+sudo sh -c 'echo '#share   /media/sf_share vboxsf  uid=1000,gid=1000       0       0' >> /etc/fstab'
+
+ 
+
+
 echo "Part 2 finished! The system will reboot to reflect the customization."
 echo "Please install several packages later."
 sleep 5
