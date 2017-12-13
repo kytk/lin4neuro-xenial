@@ -4,7 +4,8 @@
 #Prerequisite: You need to install Ubuntu mini.iso and git.
 
 #ChangeLog
-#09-Dec-2017: add exfat-fuse and exfat-utils; remove vim
+#13-Dec-2017: add dc
+#09-Dec-2017: add exfat-fuse and exfat-utils
 #03-Oct-2017: add at-spi2-core for supressing gedit warning
 #26-Sep-2017: add tree
 
@@ -67,7 +68,7 @@ echo "Installation of misc packages"
 sudo apt -y install wajig imagemagick evince gedit at-spi2-core\
 	unzip zip gparted byobu default-jre gnome-system-monitor \
 	system-config-printer-gnome xfce4-screenshooter update-manager\
-	tree exfat-fuse exfat-utils
+	tree exfat-fuse exfat-utils vim dc
 
 #vim settings
 cp /usr/share/vim/vimrc ~/.vimrc
