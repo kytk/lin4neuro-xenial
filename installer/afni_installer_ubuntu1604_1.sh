@@ -9,8 +9,8 @@
 
 #Install prerequisite packages
 sudo apt update
-sudo aptinstall -y tcsh xfonts-base python-qt4       \
-                   gsl-bin netpbm gnome-tweak-tool   \
+sudo apt install -y tcsh xfonts-base python-qt4       \
+                   gsl-bin netpbm gnome-tweak-tool    \
                    libjpeg62 xvfb xterm vim curl
 
 sudo apt install -y libglu1-mesa-dev libglw1-mesa     \
