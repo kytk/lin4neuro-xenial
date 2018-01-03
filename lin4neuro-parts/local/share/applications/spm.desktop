@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=SPM12
+Exec=/usr/local/spm12_standalone/run_spm12.sh /usr/local/MATLAB/MCR/v92
+Icon=spm12.png
+Type=Application
+Terminal=false
+Categories=Neuroimaging;
