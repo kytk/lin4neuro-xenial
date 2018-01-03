@@ -21,8 +21,25 @@ rPkgsInstall -pkgs ALL
 cp /usr/local/AFNIbin/AFNI.afnirc $HOME/.afnirc
 suma -update_env
 
+#Install help
+apsearch -update_all_afni_help
+
+cat << EOS >> ~/.bashrc
+
+ahdir=`apsearch -afni_help_dir`
+if [ -f "$ahdir/all_progs.COMP.bash" ]
+then
+   . $ahdir/all_progs.COMP.bash
+fi
+EOS
+
+
 #Evaluate setup
 cd $HOME
+echo "Check installation"
 afni_system_check.py -check_all
 
+echo "Finished"
+
+exit
 
