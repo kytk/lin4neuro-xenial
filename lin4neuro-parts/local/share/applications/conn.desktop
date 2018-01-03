@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=CONN17f
-Exec=/usr/local/conn_standalone/run_conn.sh /usr/local/MATLAB/MCR
+Exec=bash -c '/usr/local/conn_standalone/run_conn.sh /usr/local/MATLAB/MCR/v92'
 Icon=conn.png
 Type=Application
 Terminal=false

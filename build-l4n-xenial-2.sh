@@ -40,7 +40,7 @@ sudo update-initramfs -u -k all
 #Installation of icons
 echo "Installation of icons"
 #mkdir -p ~/.local/share/icons
-cp -r ${base_path}/icons ~/.local/share/
+cp -r ${base_path}/local/share/icons ~/.local/share/
 
 #Installation of customized menu
 echo "Installation of customized menu"
