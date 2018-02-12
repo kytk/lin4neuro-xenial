@@ -4,6 +4,8 @@
 #Prerequisite: You need to finish the build-l4n-part1.sh first.
 
 #ChangeLog
+#12-Feb-2018: Remove FSL and AFNI parts: Now they are moved to installer directory
+#12-Feb-2018: Move installation of neuroimaging software packages to Part 3
 #12-Dec-2017: Update install of AFNI
 #09-Dec-2017: Comment out FSL
 #26-Jun-2017: Add symbolic link (libgsl.so.0) for AFNI
@@ -107,30 +109,6 @@ sudo update-grub
 sudo sed -i -e 's/GRUB_HIDDEN_TIMEOUT/#GRUB_HIDDEN_TIMEOUT/' /etc/default/grub
 sudo update-grub
 
-#Installation of FSL
-#echo "Installation of FSL"
-#sudo apt -y update
-#sudo apt -y upgrade
-#sudo apt -y install fsl fsl-5.0-doc-wiki fsl-5.0-doc-wikiattachments
-#sudo apt-get -f install
-
-#PATH settings
-#if ! grep -q -i 'fsl.sh' ~/bashrc; then
-#cat << FIN >> ~/.bashrc
-##FSL
-#. /etc/fsl/fsl.sh
-#FIN
-#fi
-#
-##modification for FSL-doc
-#sudo mkdir /usr/share/fsl/5.0/doc/redirects
-#sudo tee /usr/share/fsl/5.0/doc/redirects/index.html <<FIN >/dev/null
-#<meta http-equiv="refresh" content="0; url=file:///usr/share/fsl/5.0/doc/wiki/FSL.html" />
-#FIN
-
-#Install MRIConvert
-#sudo apt install -y mriconvert
-
 #Install R
 sudo apt install -y software-properties-common
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
@@ -138,38 +116,33 @@ sudo add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linu
 sudo apt -y update
 sudo apt install -y r-base
 
-#Install prerequisite packages for AFNI
-#(https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/background_install/install_instructs/steps_linux_ubuntu16.html) 12 Dec 2017
-sudo apt install -y tcsh xfonts-base python-qt4       \
-                    gsl-bin netpbm gnome-tweak-tool   \
-		    libjpeg62 xvfb vim curl
-sudo apt install -y libglu1-mesa-dev libglw1-mesa     \
-                   libxm4 build-essential
-#We have to make a symbolic link for libgsl
-sudo ln -s /usr/lib/x86_64-linux-gnu/libgsl.so.19.0.0 /usr/lib/x86_64-linux-gnu/libgsl.so.0
+#Virtualbox-related-packages
+while true; do
+    echo "If you want to make virtualbox images, it is recommended to install virtualbox-related packages."
+    echo "Do you want to install virtualbox-related packages? (yes/no)"
 
-#Download AFNI installer to $HOME
-cd $HOME
-curl -O https://afni.nimh.nih.gov/pub/dist/bin/linux_ubuntu_16_64/@update.afni.binaries
-#sudo tcsh @update.afni.binaries -package linux_ubuntu_16_64 -bindir /usr/local/AFNIbin/ -do_extras
+    read answer
 
-
-#Install prerequisite packages for DSI Studio
-sudo apt install -y libboost-thread1.58.0 libboost-program-options1.58.0 qt5-default
-
-#Copy bashcom.sh for c3d to ~/bin
-cp -r ${base_path}/bin $HOME
-
-#Install virtualbox-guest-dkms
-sudo apt install -y virtualbox-guest-dkms
-sudo usermod -aG vboxsf $(whoami)
-
-#Virtualbox-related settings
-sudo sh -c 'echo 'vboxsf' >> /etc/modules'
-sudo sh -c 'echo '#share   /media/sf_share vboxsf  uid=1000,gid=1000       0       0' >> /etc/fstab'
-
- 
-
+    case $answer in 
+	[Yy]*)
+		#Install virtualbox-guest-dkms
+		sudo apt install -y virtualbox-guest-dkms
+		sudo usermod -aG vboxsf $(whoami)
+		
+		#Virtualbox-related settings
+		sudo sh -c 'echo 'vboxsf' >> /etc/modules'
+		sudo sh -c 'echo '#share   /media/sf_share vboxsf  uid=1000,gid=1000       0       0' >> /etc/fstab'
+		break
+		;;
+	[Nn]*)
+		echo -e "Virtualbox-related packages are not installed.\n"
+		break
+		;;
+	*)
+		echo -e "Type yes or no. \n"
+		;;
+    esac
+done
 
 echo "Part 2 finished! The system will reboot to reflect the customization."
 echo "Please install several packages later."
