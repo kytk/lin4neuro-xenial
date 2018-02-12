@@ -1,33 +1,69 @@
 #!/bin/bash
-#Lin4Neuro making script part 4
-#Remastersys
 
-#ChangeLog
-#07-Jan-2017: Modify for L4N-16.04
-#26-Jan-2016: Comment downloading remastersys
-#17-Jan-2016: Merge Japanese and English version.
-#28-Nov-2015: Update version of remastersys
+#Part4: Check if software is installed.
 
 #Setting of path of the setting scripts
 currentdir=`echo $(cd $(dirname $0) && pwd)`
 base_path=$currentdir/lin4neuro-parts
 
-#Installation of required packages for Remastersys
-sudo apt -y install isolinux casper genisoimage squashfs-tools \
-     syslinux-utils
-
-#Installation of Remastersys
-sudo cp -r ${base_path}/remastersys/etc/* /etc
-sudo cp ${base_path}/remastersys/remastersys /usr/bin
-sudo chmod 755 /usr/bin/remastersys
-
-if [ `echo $LANG` = ja_JP.UTF-8 ]; then
-    sudo mv /etc/remastersys.conf.ja /etc/remastersys.conf
+#Add PATH settings to .bashrc
+existrobex=`grep '#ROBEX' ~/.bashrc`
+if [ "$existrobex" != "#ROBEX" ]; then
+    cat ${base_path}/bashrc/bashrc-addition.txt >> $HOME/.bashrc
 else
-    sudo mv /etc/remastersys.conf.en /etc/remastersys.conf
+    echo ".bashrc setting is already done."
 fi
 
-#usb-creator
-sudo apt -y install usb-creator-common usb-creator-gtk
+#Source .bashrc
+. ~/.bashrc
 
-echo "Part 4 finished! Now ready for remastering. Execute l4n_remastering.sh"
+echo "Check if neuroimaging software is properly installed."
+
+#AFNI
+if [ ! -e ~/.afnirc ]; then
+    cp /usr/local/afni/bin/AFNI.afnirc ~/.afnirc
+else
+    echo ".afnirc exists"
+fi
+
+if [ ! -e ~/.sumarc ]; then
+    suma -update_env
+else
+    echo ".sumarc exists"
+fi
+
+afni_system_check.py -check_all
+wait
+
+#Slicer
+Slicer &
+
+#c3d
+c3d
+
+#ANTs
+ANTS
+
+#ITK-SNAP
+itksnap &
+wait
+
+#MRIcroGL
+MRIcroGL &
+wait
+
+
+#MRIcron
+mricron &
+wait
+
+#ROBEX
+ROBEX
+
+#FSL
+fsl &
+wait
+
+#FSLeyes
+fsleyes &
+
