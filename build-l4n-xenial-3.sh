@@ -1,69 +1,36 @@
 #!/bin/bash
+#Lin4Neuro making script part 3
+#Installation of Neuroimaging software packages
+#Prerequisite: You need to finish the build-l4n-part{1,2}.sh.
 
-#Part3: Check if software is installed.
+log=`date +%Y-%m-%d`-part2.log
+exec &> >(tee -a "$log")
 
 #Setting of path of the setting scripts
 currentdir=`echo $(cd $(dirname $0) && pwd)`
 base_path=$currentdir/lin4neuro-parts
 
-#Add PATH settings to .bashrc
-existrobex=`grep '#ROBEX' ~/.bashrc`
-if [ "$existrobex" != "#ROBEX" ]; then
-    cat ${base_path}/bashrc/bashrc-addition.txt >> $HOME/.bashrc
-else
-    echo ".bashrc setting is already done."
-fi
+#MRIConvert
+sudo apt install -y mriconvert
 
-#Source .bashrc
-. ~/.bashrc
+#VirtualMRI
+sudo apt install -y virtual-mri-nonfree
 
-echo "Check if neuroimaging software is properly installed."
+#Install prerequisite packages for DSI Studio
+sudo apt install -y libboost-thread1.58.0 libboost-program-options1.58.0 qt5-default
 
-#AFNI
-if [ ! -e ~/.afnirc ]; then
-    cp /usr/local/afni/bin/AFNI.afnirc ~/.afnirc
-else
-    echo ".afnirc exists"
-fi
+#Copy bashcom.sh for c3d to ~/bin
+cp -r ${base_path}/bin $HOME
 
-if [ ! -e ~/.sumarc ]; then
-    suma -update_env
-else
-    echo ".sumarc exists"
-fi
+#Download and extract neuroimaging software packages and tutorial
 
-afni_system_check.py -check_all
-wait
-
-#Slicer
-Slicer &
-
+#3D Slicer
 #c3d
-c3d
-
 #ANTs
-ANTS
-
-#ITK-SNAP
-itksnap &
-wait
-
+#itksnap
 #MRIcroGL
-MRIcroGL &
-wait
-
-
 #MRIcron
-mricron &
-wait
-
 #ROBEX
-ROBEX
+#tutorial
 
-#FSL
-fsl &
-wait
-
-#FSLView
-fslview
-
+exit
