@@ -10,6 +10,10 @@ if [ "$(whoami)" = "root" ]; then
 	exit 1
 fi
 
+#Setting of path of the setting scripts
+currentdir=`echo $(cd $(dirname $0) && pwd)`
+installer_path=$currentdir/installer
+
 #Check if /etc/skel/.local directory exists
 if [ ! -e /etc/skel/.local ]; then
         sudo mkdir -p /etc/skel/.local/share/applications
@@ -38,11 +42,14 @@ sudo rsync -rp --delete --progress ~/.local/share/applications /etc/skel/.local/
 sudo rsync -rp --delete --progress ~/.local/share/desktop-directories /etc/skel/.local/share/
 sudo rsync -rp --delete --progress ~/.bashrc /etc/skel/
 sudo rsync -rp --delete --progress ~/.local/share/icons /etc/skel/.local/share/
+
+#Copy neuroimaging-related files to /etc/skel
 #sudo rsync -rp --delete --progress ~/Desktop /etc/skel/
-sudo rsync -rp --delete --progress ~/.afnirc /etc/skel/
-sudo rsync -rp --delete --progress ~/.sumarc /etc/skel/
+#sudo rsync -rp --delete --progress ~/.afnirc /etc/skel/
+#sudo rsync -rp --delete --progress ~/.sumarc /etc/skel/
 sudo rsync -rp --delete --progress ~/bin /etc/skel/
 sudo rsync -rp --delete --progress ~/tutorial /etc/skel/
+sudo rsync -rp --delete --progress $installer_path /etc/skel/
 
 #Check if Document direcotry exists in /etc/skel
 cd /etc/skel
