@@ -68,7 +68,10 @@ echo "Installation of misc packages"
 sudo apt -y install wajig imagemagick evince gedit at-spi2-core\
 	unzip zip gparted byobu default-jre gnome-system-monitor \
 	system-config-printer-gnome xfce4-screenshooter update-manager\
-	tree exfat-fuse exfat-utils vim dc bc
+	tree exfat-fuse exfat-utils vim dc bc nemo system-config-samba
+
+#Workaround for system-config-samba
+sudo touch /etc/libuser.conf
 
 #vim settings
 cp /usr/share/vim/vimrc ~/.vimrc
