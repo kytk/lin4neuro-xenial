@@ -1,10 +1,14 @@
 #!/bin/bash
-#Script to setup mrtrix3 for Ubuntu 14.04
+#Script to setup mrtrix3 for Ubuntu 16.04
 
 #Install prerequisite packages
-sudo apt-get install git g++ python libgsl0-dev zlib1g-dev libqt4-opengl-dev libgl1-mesa-dev libqt5svg5*
+sudo apt-get install git g++ python libgsl0-dev zlib1g-dev libqt4-opengl-dev libgl1-mesa-dev libqt5svg5* libeigen3-dev
 
 #Download MRtrix3 source
+if [ ! -e $HOME/git ]; then
+ mkdir $HOME/git
+fi
+
 cd $HOME/git
 git clone https://github.com/MRtrix3/mrtrix3.git
 
