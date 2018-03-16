@@ -4,6 +4,7 @@
 #Prerequisite: You need to install Ubuntu mini.iso and git.
 
 #ChangeLog
+#17-Mar-2018: add gnome-system-tools
 #13-Dec-2017: add dc
 #09-Dec-2017: add exfat-fuse and exfat-utils
 #03-Oct-2017: add at-spi2-core for supressing gedit warning
@@ -65,10 +66,12 @@ sudo apt -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 
 #Installation of misc packages
 echo "Installation of misc packages"
-sudo apt -y install wajig imagemagick evince gedit at-spi2-core\
-	unzip zip gparted byobu default-jre gnome-system-monitor \
-	system-config-printer-gnome xfce4-screenshooter update-manager\
-	tree exfat-fuse exfat-utils vim dc bc nemo system-config-samba
+
+sudo apt -y install at-spi2-core bc byobu dc default-jre evince \
+	exfat-fuse exfat-utils gedit gnome-system-monitor 	\
+	gnome-system-tools gparted imagemagick nemo 		\
+	system-config-printer-gnome system-config-samba tree 	\
+	unzip update-manager vim wajig xfce4-screenshooter zip 
 
 #Workaround for system-config-samba
 sudo touch /etc/libuser.conf
@@ -84,7 +87,7 @@ if [ $lang == "English" ] ; then
 else
 #Japanese-dependent environment
   echo "Installation of firefox and Japanese-related packages"
-  sudo apt -y install fcitx fcitx-mozc fcitx-config-gtk \
+  sudo apt -y install fcitx fcitx-mozc fcitx-config-gtk 	\
               unar nkf firefox firefox-locale-ja im-config
   #Change directories to English
   LANG=C xdg-user-dirs-update --force
