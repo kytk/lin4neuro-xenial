@@ -4,7 +4,7 @@
 #Prerequisite: You need to install Ubuntu mini.iso and git.
 
 #ChangeLog
-#17-Mar-2018: add gnome-system-tools
+#17-Mar-2018: add gnome-system-tools and ntp
 #13-Dec-2017: add dc
 #09-Dec-2017: add exfat-fuse and exfat-utils
 #03-Oct-2017: add at-spi2-core for supressing gedit warning
@@ -69,7 +69,7 @@ echo "Installation of misc packages"
 
 sudo apt -y install at-spi2-core bc byobu dc default-jre evince \
 	exfat-fuse exfat-utils gedit gnome-system-monitor 	\
-	gnome-system-tools gparted imagemagick nemo 		\
+	gnome-system-tools gparted imagemagick nemo ntp		\
 	system-config-printer-gnome system-config-samba tree 	\
 	unzip update-manager vim wajig xfce4-screenshooter zip 
 
