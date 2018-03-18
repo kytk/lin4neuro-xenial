@@ -59,7 +59,7 @@ if [ ! -e 'dsistudio.zip' ]; then
 fi
 
 cd /usr/local
-sudo unzip ~/dsistudio.zip
+sudo unzip ~/Downloads/dsistudio.zip
 
 #ROBEX
 cd $HOME/Downloads
