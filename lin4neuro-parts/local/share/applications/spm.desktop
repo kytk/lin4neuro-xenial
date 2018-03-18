@@ -6,3 +6,5 @@ Icon=spm12.png
 Type=Application
 Terminal=false
 Categories=Neuroimaging;
+NoDisplay=true
+

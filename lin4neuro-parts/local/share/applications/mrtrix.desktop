@@ -2,9 +2,10 @@
 Encoding=UTF-8
 GenericName=MRI Tractography View
 Name=MRview
-Exec=mrview %F
-TryExec=mrview
+Exec=mrview
 Type=Application
 Terminal=false
 Categories=Neuroimaging;
-Icon=/usr/share/pixmaps/mrtrix.xpm
+Icon=mrtrix.png
+NoDisplay=true
+

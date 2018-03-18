@@ -6,3 +6,5 @@ Icon=conn.png
 Type=Application
 Terminal=false
 Categories=Neuroimaging;
+NoDisplay=true
+
