@@ -1,5 +1,5 @@
 #!/bin/bash
-#Lin4Neuro making script part 5
+#Lin4Neuro making script part 4
 #Remastersys
 
 #ChangeLog
@@ -13,7 +13,7 @@ currentdir=`echo $(cd $(dirname $0) && pwd)`
 base_path=$currentdir/lin4neuro-parts
 
 #Installation of required packages for Remastersys
-sudo apt -y install isolinux casper genisoimage squashfs-tools \
+sudo apt-get -y install isolinux casper genisoimage squashfs-tools \
      syslinux-utils
 
 #Installation of Remastersys
@@ -28,6 +28,6 @@ else
 fi
 
 #usb-creator
-sudo apt -y install usb-creator-common usb-creator-gtk
+sudo apt-get -y install usb-creator-common usb-creator-gtk
 
 echo "Part 4 finished! Now ready for remastering. Execute l4n_remastering.sh"
