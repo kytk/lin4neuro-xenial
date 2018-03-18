@@ -1,7 +1,7 @@
 #!/bin/bash
-#Lin4Neuro making script part 3
+#Lin4Neuro making script part 2
 #Installation of Neuroimaging software packages
-#Prerequisite: You need to finish the build-l4n-part{1,2}.sh.
+#Prerequisite: You need to finish the build-l4n-xenial-1.sh.
 
 log=`date +%Y-%m-%d`-part2.log
 exec &> >(tee -a "$log")
@@ -153,5 +153,7 @@ sudo unzip ~/Downloads/tutorial.zip
 #CONN17f
 #FSL
 #SPM12 standalone
+
+echo "Finished!"
 
 exit
