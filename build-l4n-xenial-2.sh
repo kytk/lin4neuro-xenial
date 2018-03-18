@@ -11,22 +11,22 @@ currentdir=`echo $(cd $(dirname $0) && pwd)`
 base_path=$currentdir/lin4neuro-parts
 
 #Install R
-sudo apt install -y software-properties-common
+sudo apt-get install -y software-properties-common
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD
 57CBB651716619E084DAB9
 sudo add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linu
 x/ubuntu xenial/'
-sudo apt -y update
-sudo apt install -y r-base
+sudo apt-get -y update
+sudo apt-get install -y r-base
 
 #MRIConvert
-sudo apt install -y mriconvert
+sudo apt-get install -y mriconvert
 
 #VirtualMRI
-sudo apt install -y virtual-mri-nonfree
+sudo apt-get install -y virtual-mri-nonfree
 
 #Install prerequisite packages for DSI Studio
-sudo apt install -y libboost-thread1.58.0 libboost-program-options1.58.0 qt5-default
+sudo apt-get install -y libboost-thread1.58.0 libboost-program-options1.58.0 qt5-default
 
 #Copy bashcom.sh for c3d to ~/bin
 cp -r ${base_path}/bin $HOME

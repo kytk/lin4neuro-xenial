@@ -14,7 +14,7 @@
 #echo '--inet4-only=1' >> ~/.wgetrc
 
 LANG=C
-sudo apt update; sudo apt -y upgrade
+sudo apt-get update; sudo apt-get -y upgrade
 
 log=`date +%Y-%m-%d`-part1.log
 exec &> >(tee -a "$log")
@@ -52,12 +52,12 @@ done
 #sudo apt-key adv --recv-keys --keyserver \
 #     hkp://pgp.mit.edu:80 0xA5D32F012649A5A9
 sudo apt-key add neuro.debian.net.asc
-sudo apt update
+sudo apt-get update
 
 #Installation of XFCE 4.12
 LANG=C
 echo "Installation of XFCE 4.12"
-sudo apt -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
+sudo apt-get -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 	xfce4-power-manager-plugins lightdm lightdm-gtk-greeter 	\
 	shimmer-themes network-manager-gnome xinit build-essential 	\
 	dkms thunar-archive-plugin file-roller gawk fonts-noto xdg-utils
@@ -65,7 +65,7 @@ sudo apt -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 #Installation of misc packages
 echo "Installation of misc packages"
 
-sudo apt -y install at-spi2-core bc byobu dc default-jre evince \
+sudo apt-get -y install at-spi2-core bc byobu dc default-jre evince \
 	exfat-fuse exfat-utils gedit gnome-system-monitor 	\
 	gnome-system-tools gparted imagemagick nemo ntp		\
 	system-config-printer-gnome system-config-samba tree 	\
@@ -82,11 +82,11 @@ sed -i -e 's/"set background=dark/set background=dark/' ~/.vimrc
 if [ $lang == "English" ] ; then
   #English-dependent packages
   echo "Installation of firefox"
-  sudo apt -y install firefox firefox-locale-en
+  sudo apt-get -y install firefox firefox-locale-en
 else
   #Japanese-dependent environment
   echo "Installation of firefox and Japanese-related packages"
-  sudo apt -y install fcitx fcitx-mozc fcitx-config-gtk 	\
+  sudo apt-get -y install fcitx fcitx-mozc fcitx-config-gtk 	\
               unar nkf firefox firefox-locale-ja im-config
   #Change directories to English
   LANG=C xdg-user-dirs-update --force
@@ -94,7 +94,7 @@ else
 fi
 
 #Remove xscreensaver
-sudo apt -y purge xscreensaver
+sudo apt-get -y purge xscreensaver
 
 #Installation of Lin4Neuro related settings
 
@@ -103,7 +103,7 @@ currentdir=`echo $(cd $(dirname $0) && pwd)`
 base_path=$currentdir/lin4neuro-parts
 
 #Install plymouth-related files
-sudo apt -y install plymouth-themes plymouth-label
+sudo apt-get -y install plymouth-themes plymouth-label
 
 #Installation of lin4neuro-logo
 echo "Installation of lin4neuro-logo"
@@ -172,7 +172,7 @@ cp ${base_path}/config/xfce-perchannel-xml/xfwm4.xml \
 	~/.config/xfce4/xfconf/xfce-perchannel-xml/
 
 #Clean packages
-sudo apt -y autoremove
+sudo apt-get -y autoremove
 
 #GRUB setting for plymouth
 echo 'GRUB_GFXPAYLOAD_LINUX="auto"' | sudo tee -a /etc/default/grub 
@@ -195,7 +195,7 @@ while true; do
     case $answer in 
 	[Yy]*)
 		#Install virtualbox-guest-dkms
-		sudo apt install -y virtualbox-guest-dkms
+		sudo apt-get install -y virtualbox-guest-dkms
 		sudo usermod -aG vboxsf $(whoami)
 		
 		#Virtualbox-related settings
