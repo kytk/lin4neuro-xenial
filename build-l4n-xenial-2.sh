@@ -14,8 +14,7 @@ base_path=$currentdir/lin4neuro-parts
 sudo apt-get install -y software-properties-common
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD
 57CBB651716619E084DAB9
-sudo add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linu
-x/ubuntu xenial/'
+sudo add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu xenial/'
 sudo apt-get -y update
 sudo apt-get install -y r-base
 
