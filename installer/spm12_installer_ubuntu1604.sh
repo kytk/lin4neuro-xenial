@@ -18,6 +18,8 @@ fi
 cd /usr/local
 sudo unzip ~/Downloads/spm12_standalone.zip
 
+sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/spm.desktop
+
 echo "Initialize SPM12 standalone"
 echo "Press Quit when SPM12 is up"
 sleep 5
