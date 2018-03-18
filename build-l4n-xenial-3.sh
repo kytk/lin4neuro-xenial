@@ -10,6 +10,15 @@ exec &> >(tee -a "$log")
 currentdir=`echo $(cd $(dirname $0) && pwd)`
 base_path=$currentdir/lin4neuro-parts
 
+#Install R
+sudo apt install -y software-properties-common
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD
+57CBB651716619E084DAB9
+sudo add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linu
+x/ubuntu xenial/'
+sudo apt -y update
+sudo apt install -y r-base
+
 #MRIConvert
 sudo apt install -y mriconvert
 
@@ -38,6 +47,11 @@ if [ $? -eq 1 ]; then
     echo "export PATH=$PATH:/usr/local/Slicer" >> ~/.bashrc
 fi
 
+#DSIStudio
+cd $HOME/Downloads
+wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/dsistudio.zip
+cd /usr/local
+sudo unzip ~/dsistudio.zip
 
 #ROBEX
 cd $HOME/Downloads
