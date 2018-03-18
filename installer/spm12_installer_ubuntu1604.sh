@@ -23,7 +23,8 @@ sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/spm.deskt
 echo "Initialize SPM12 standalone"
 echo "Press Quit when SPM12 is up"
 sleep 5
-sudo /usr/local/spm12_standalone/run_spm12.sh /usr/local/MATLAB/MCR/v92
+sudo /usr/local/spm12_standalone/run_spm12.sh /usr/local/MATLAB/MCR/v92 ; \
+sudo chown -R $(whoami):$(whoami) ~/.matlab
 
 exit
 
