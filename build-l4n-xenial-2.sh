@@ -3,7 +3,7 @@
 #Installation of Neuroimaging software packages
 #Prerequisite: You need to finish the build-l4n-xenial-1.sh.
 
-log=`date +%Y-%m-%d`-part2.log
+log=`date +%Y%m%d%H%M%S`-part2.log
 exec &> >(tee -a "$log")
 
 #Setting of path of the setting scripts

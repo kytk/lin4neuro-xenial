@@ -16,7 +16,7 @@
 LANG=C
 sudo apt-get update; sudo apt-get -y upgrade
 
-log=`date +%Y-%m-%d`-part1.log
+log=`date +%Y%m%d%H%M%S`-part1.log
 exec &> >(tee -a "$log")
 
 echo "Which language do you want to build? (English/Japanese)"
