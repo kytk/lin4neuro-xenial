@@ -42,7 +42,7 @@ Slicer &
 c3d
 
 #ANTs
-ANTS
+#ANTS
 
 #ITK-SNAP
 itksnap &
@@ -61,9 +61,9 @@ wait
 ROBEX
 
 #FSL
-fsl &
-wait
+#fsl &
+#wait
 
 #FSLeyes
-fsleyes &
+#fsleyes &
 

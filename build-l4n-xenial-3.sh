@@ -25,6 +25,19 @@ cp -r ${base_path}/bin $HOME
 #packages to be installed as a default
 
 #3D Slicer
+cd $HOME/Downloads
+wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/Slicer-4.8.1-linux-amd64.tar.gz
+cd /usr/local
+sudo tar xvzf ~/Downloads/Slicer-4.8.1-linux-amd64.tar.gz
+sudo mv Slicer-4.8.1-linux-amd64 Slicer
+
+grep Slicer ~/.bashrc > /dev/null
+if [ $? -eq 1 ]; then
+    echo "" >> ~/.bashrc
+    echo "#Slicer" >> ~/.bashrc
+    echo "export PATH=$PATH:/usr/local/Slicer" >> ~/.bashrc
+fi
+
 
 #ROBEX
 cd $HOME/Downloads
@@ -116,10 +129,15 @@ if [ $? -eq 1 ]; then
 fi
 
 #tutorial
+cd $HOME/Downloads
+wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/tutorial.zip
+cd /etc/skel
+sudo unzip ~/Downloads/tutorial.zip
 
 #packages to be installed by users (with installer)
 #ANTs
 #CONN17f
+#FSL
 #SPM12 standalone
 
 exit
