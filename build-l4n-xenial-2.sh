@@ -41,9 +41,9 @@ sudo mv Slicer-4.8.1-linux-amd64 Slicer
 
 grep Slicer ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
-    echo "" >> ~/.bashrc
-    echo "#Slicer" >> ~/.bashrc
-    echo "export PATH=$PATH:/usr/local/Slicer" >> ~/.bashrc
+    echo '' >> ~/.bashrc
+    echo '#Slicer' >> ~/.bashrc
+    echo 'export PATH=$PATH:/usr/local/Slicer' >> ~/.bashrc
 fi
 
 #DSIStudio
@@ -63,9 +63,9 @@ sudo chmod 755 ROBEX runROBEX.sh dat ref_vols
 
 grep ROBEX ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
-    echo "" >> ~/.bashrc
-    echo "#ROBEX" >> ~/.bashrc
-    echo "export PATH=$PATH:/usr/local/ROBEX" >> ~/.bashrc
+    echo '' >> ~/.bashrc
+    echo '#ROBEX' >> ~/.bashrc
+    echo 'export PATH=$PATH:/usr/local/ROBEX' >> ~/.bashrc
 fi
 
 #c3d
@@ -77,10 +77,10 @@ sudo mv c3d-1.0.0-Linux-x86_64 c3d
 
 grep c3d ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
-    echo "" >> ~/.bashrc
-    echo "#c3d" >> ~/.bashrc
-    echo "export PATH=$PATH:/usr/local/c3d" >> ~/.bashrc
-    echo "source $HOME/bin/bashcomp.sh" >> ~/.bashrc
+    echo '' >> ~/.bashrc
+    echo '#c3d' >> ~/.bashrc
+    echo 'export PATH=$PATH:/usr/local/c3d' >> ~/.bashrc
+    echo 'source $HOME/bin/bashcomp.sh' >> ~/.bashrc
 fi
 
 #itksnap
@@ -92,9 +92,9 @@ sudo mv itksnap-3.6.0-20170401-Linux-x86_64 itksnap
 
 grep itksnap ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
-    echo "" >> ~/.bashrc
-    echo "#ITK-SNAP" >> ~/.bashrc
-    echo "export PATH=$PATH:/usr/local/itksnap/bin" >> ~/.bashrc
+    echo '' >> ~/.bashrc
+    echo '#ITK-SNAP' >> ~/.bashrc
+    echo 'export PATH=$PATH:/usr/local/itksnap/bin' >> ~/.bashrc
 fi
 
 
@@ -116,9 +116,9 @@ sudo find templates -type f -exec chmod 644 {} \;
 
 grep mricron ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
-    echo "" >> ~/.bashrc
-    echo "#MRIcron" >> ~/.bashrc
-    echo "export PATH=$PATH:/usr/local/mricron" >> ~/.bashrc
+    echo '' >> ~/.bashrc
+    echo '#MRIcron' >> ~/.bashrc
+    echo 'export PATH=$PATH:/usr/local/mricron' >> ~/.bashrc
 fi
 
 
@@ -136,9 +136,9 @@ sudo chmod 755 MRIcroGL dcm2niix pigz_mricron
 
 grep mricrogl ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
-    echo "" >> ~/.bashrc
-    echo "#MRIcroGL" >> ~/.bashrc
-    echo "export PATH=$PATH:/usr/local/mricrogl" >> ~/.bashrc
+    echo '' >> ~/.bashrc
+    echo '#MRIcroGL' >> ~/.bashrc
+    echo 'export PATH=$PATH:/usr/local/mricrogl' >> ~/.bashrc
 fi
 
 #tutorial
@@ -146,6 +146,10 @@ cd $HOME/Downloads
 wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/tutorial.zip
 cd /etc/skel
 sudo unzip ~/Downloads/tutorial.zip
+sudo rm -rf __MACOSX
+cd $HOME
+unzip ~/Downloads/tutorial.zip
+rm -rf __MACOSX
 
 #packages to be installed by users (with installer)
 #ANTs
@@ -155,8 +159,8 @@ sudo unzip ~/Downloads/tutorial.zip
 
 #PATH for installer
 cp -r ~/git/lin4neuro-xenial/installer ~/
-echo "" >> ~/.bashrc
-echo "export PATH=$PATH:~/installer" >> ~/.bashrc
+echo '' >> ~/.bashrc
+echo 'export PATH=$PATH:~/installer' >> ~/.bashrc
 
 echo "Finished!"
 
