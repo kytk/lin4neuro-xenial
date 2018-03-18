@@ -131,7 +131,7 @@ if [ ! -e 'mango_unix.zip' ]; then
 fi
 
 cd /usr/local
-sudo tar xvzf ~/Downloads/mango_unix.zip
+sudo unzip ~/Downloads/mango_unix.zip
 
 #MRIcron
 cd $HOME/Downloads
