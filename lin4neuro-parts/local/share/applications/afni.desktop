@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=AFNI
-Exec=/usr/local/AFNIbin/afni
+Exec=afni
 Icon=afnilogo.png
 Terminal=false
 Categories=Neuroimaging;
