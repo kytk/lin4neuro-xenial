@@ -154,6 +154,11 @@ sudo unzip ~/Downloads/tutorial.zip
 #FSL
 #SPM12 standalone
 
+#PATH for installer
+cp -r ~/git/lin4neuro-xenial/installer ~/
+echo "" >> ~/.bashrc
+echo "export PATH=$PATH:~/installer" >> ~/.bashrc
+
 echo "Finished!"
 
 exit
