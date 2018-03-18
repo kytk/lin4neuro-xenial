@@ -185,33 +185,43 @@ sudo sed -i -e 's/GRUB_HIDDEN_TIMEOUT/#GRUB_HIDDEN_TIMEOUT/' /etc/default/grub
 sudo update-grub
 
 #Virtualbox-related-packages
+#Install virtualbox-guest-dkms
+sudo apt-get install -y virtualbox-guest-dkms
+sudo usermod -aG vboxsf $(whoami)
+
+#Virtualbox-related settings
+sudo sh -c 'echo 'vboxsf' >> /etc/modules'
+sudo sh -c 'echo '#share   /media/sf_share vboxsf  uid=1000,gid=1000       0       0' >> /etc/fstab'
+
+
+#Virtualbox-related-packages
 #If you want to make virtualbox images, install the virtualbox-related-packages
-while true; do
-    echo "If you want to make virtualbox images, it is recommended to install virtualbox-related packages."
-    echo "Do you want to install virtualbox-related packages? (yes/no)"
-
-    read answer
-
-    case $answer in 
-	[Yy]*)
-		#Install virtualbox-guest-dkms
-		sudo apt-get install -y virtualbox-guest-dkms
-		sudo usermod -aG vboxsf $(whoami)
-		
-		#Virtualbox-related settings
-		sudo sh -c 'echo 'vboxsf' >> /etc/modules'
-		sudo sh -c 'echo '#share   /media/sf_share vboxsf  uid=1000,gid=1000       0       0' >> /etc/fstab'
-		break
-		;;
-	[Nn]*)
-		echo -e "Virtualbox-related packages are not installed.\n"
-		break
-		;;
-	*)
-		echo -e "Type yes or no. \n"
-		;;
-    esac
-done
+#while true; do
+#    echo "If you want to make virtualbox images, it is recommended to install virtualbox-related packages."
+#    echo "Do you want to install virtualbox-related packages? (yes/no)"
+#
+#    read answer
+#
+#    case $answer in 
+#	[Yy]*)
+#		#Install virtualbox-guest-dkms
+#		sudo apt-get install -y virtualbox-guest-dkms
+#		sudo usermod -aG vboxsf $(whoami)
+#		
+#		#Virtualbox-related settings
+#		sudo sh -c 'echo 'vboxsf' >> /etc/modules'
+#		sudo sh -c 'echo '#share   /media/sf_share vboxsf  uid=1000,gid=1000       0       0' >> /etc/fstab'
+#		break
+#		;;
+#	[Nn]*)
+#		echo -e "Virtualbox-related packages are not installed.\n"
+#		break
+#		;;
+#	*)
+#		echo -e "Type yes or no. \n"
+#		;;
+#    esac
+#done
 
 echo "Finished! The system will reboot in 10 seconds."
 echo "Please run build-l4n-xenial-2.sh to install neuroimaging packages."

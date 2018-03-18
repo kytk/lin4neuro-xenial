@@ -29,6 +29,9 @@ sudo apt-get -y clean
 #Remove unnecessary kernels
 sudo purge-old-kernels --keep 1
 
+#Remove virtualbox guest
+sudo apt-get -y remove virtualbox-guest-dkms
+
 
 #Copy config files based on Ubuntu
 echo "Copy config files based on Ubuntu to /etc/skel ..."
@@ -93,6 +96,9 @@ while true; do
 			;;
 	esac
 done
+
+#Reinstall virtualbox-guest-dkms
+sudo apt-get -y install virtualbox-guest-dkms
 
 exit
 
