@@ -9,33 +9,35 @@ echo "Check if neuroimaging software is properly installed."
 
 
 #Slicer
-"Run Slicer"
+echo "Run Slicer"
 Slicer &
 wait
 
 #c3d
-"Run c3d"
+echo "Run c3d"
 c3d
 
 #ITK-SNAP
-"Run itksnap"
+echo "Run itksnap"
 itksnap &
 wait
 
 #MRIcroGL
-"Run MRIcroGL"
+echo "Run MRIcroGL"
 MRIcroGL &
 wait
 
 
 #MRIcron
-"Run MRIcroN"
+echo "Run MRIcroN"
 mricron &
 wait
 
 #ROBEX
-"Run ROBEX"
+echo "Run ROBEX"
 ROBEX
 
-"Finish checking!"
+echo "Finish checking!"
+
+exit
 

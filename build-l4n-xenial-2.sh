@@ -203,10 +203,11 @@ cp -r ~/git/lin4neuro-xenial/installer ~/
 grep installer ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
     echo '' >> ~/.bashrc
-    echo '#PATH for installer'
+    echo '#PATH for installer' >> ~/.bashrc
     echo 'export PATH=$PATH:~/installer' >> ~/.bashrc
 fi
 
 echo "Finished!"
 
 exit
+
