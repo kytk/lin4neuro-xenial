@@ -35,7 +35,11 @@ cp -r ${base_path}/bin $HOME
 
 #3D Slicer
 cd $HOME/Downloads
-wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/Slicer-4.8.1-linux-amd64.tar.gz
+
+if [ ! -e 'Slicer-4.8.1-linux-amd64.tar.gz' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/Slicer-4.8.1-linux-amd64.tar.gz
+fi
+
 cd /usr/local
 sudo tar xvzf ~/Downloads/Slicer-4.8.1-linux-amd64.tar.gz
 sudo mv Slicer-4.8.1-linux-amd64 Slicer
@@ -49,15 +53,24 @@ fi
 
 #DSIStudio
 cd $HOME/Downloads
-wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/dsistudio.zip
+
+if [ ! -e 'dsistudio.zip' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/dsistudio.zip
+fi
+
 cd /usr/local
 sudo unzip ~/dsistudio.zip
 
 #ROBEX
 cd $HOME/Downloads
-wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/ROBEXv12.linux64.tar.gz
+
+if [ ! -e 'ROBEXv12.linux64.tar.gz' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/ROBEXv12.linux64.tar.gz
+fi
+
 cd /usr/local
 sudo tar xvzf ~/Downloads/ROBEXv12.linux64.tar.gz
+sudo chmod 755 ROBEX
 cd ROBEX
 sudo find -type f -exec chmod 644 {} \;
 sudo chmod 755 ROBEX runROBEX.sh dat ref_vols
@@ -71,7 +84,11 @@ fi
 
 #c3d
 cd $HOME/Downloads
-wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/c3d-1.0.0-Linux-x86_64.tar.gz
+
+if [ ! -e 'c3d-1.0.0-Linux-x86_64.tar.gz' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/c3d-1.0.0-Linux-x86_64.tar.gz
+fi
+
 cd /usr/local
 sudo tar xvzf ~/Downloads/c3d-1.0.0-Linux-x86_64.tar.gz
 sudo mv c3d-1.0.0-Linux-x86_64 c3d
@@ -80,13 +97,17 @@ grep c3d ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
     echo '' >> ~/.bashrc
     echo '#c3d' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/c3d' >> ~/.bashrc
+    echo 'export PATH=$PATH:/usr/local/c3d/bin' >> ~/.bashrc
     echo 'source $HOME/bin/bashcomp.sh' >> ~/.bashrc
 fi
 
 #itksnap
 cd $HOME/Downloads
-wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/itksnap-3.6.0-20170401-Linux-x86_64.tar.gz
+
+if [ ! -e 'itksnap-3.6.0-20170401-Linux-x86_64.tar.gz' ]; then
+  curl -O  http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/itksnap-3.6.0-20170401-Linux-x86_64.tar.gz
+fi
+
 cd /usr/local
 sudo tar xvzf ~/Downloads/itksnap-3.6.0-20170401-Linux-x86_64.tar.gz
 sudo mv itksnap-3.6.0-20170401-Linux-x86_64 itksnap
@@ -101,13 +122,21 @@ fi
 
 #Mango
 cd $HOME/Downloads
-wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/mango_unix.zip
+
+if [ ! -e 'mango_unix.zip' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/mango_unix.zip
+fi
+
 cd /usr/local
 sudo tar xvzf ~/Downloads/mango_unix.zip
 
 #MRIcron
 cd $HOME/Downloads
-wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/lx.zip
+
+if [ ! -e 'lx.zip' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/lx.zip
+fi
+
 cd /usr/local
 sudo unzip ~/Downloads/lx.zip
 sudo mv mricron_lx mricron
@@ -125,7 +154,11 @@ fi
 
 #MRIcroGL
 cd $HOME/Downloads
-wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/mricrogl_linux.zip
+
+if [ ! -e 'mricrogl_linux.zip' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/mricrogl_linux.zip
+fi
+
 cd /usr/local
 sudo unzip ~/Downloads/mricrogl_linux.zip
 sudo mv mricrogl_lx mricrogl
@@ -144,7 +177,11 @@ fi
 
 #tutorial
 cd $HOME/Downloads
-wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/tutorial.zip
+
+if [ ! -e 'tutorial.zip' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/tutorial.zip
+fi
+
 cd /etc/skel
 sudo unzip ~/Downloads/tutorial.zip
 sudo rm -rf __MACOSX
