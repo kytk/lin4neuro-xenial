@@ -10,7 +10,8 @@ exec &> >(tee -a "$log")
 currentdir=`echo $(cd $(dirname $0) && pwd)`
 base_path=$currentdir/lin4neuro-parts
 
-#Install R
+#R
+echo "Install R using cran.rstudio.com repository"
 sudo apt-get install -y software-properties-common
 sudo apt-key adv --keyserver keyserver.ubuntu.com \
      --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
@@ -24,15 +25,15 @@ sudo apt-get -y update
 sudo apt-get install -y r-base
 
 #MRIConvert
+echo "Install MRI convert"
 sudo apt-get install -y mriconvert
 
 #VirtualMRI
+echo "Install Virtual MRI"
 sudo apt-get install -y virtual-mri-nonfree
 
-
-#packages to be installed as a default
-
 #3D Slicer
+echo "Install 3D Slicer"
 cd $HOME/Downloads
 
 if [ ! -e 'Slicer-4.8.1-linux-amd64.tar.gz' ]; then
@@ -50,7 +51,19 @@ if [ $? -eq 1 ]; then
     echo 'export PATH=$PATH:/usr/local/Slicer' >> ~/.bashrc
 fi
 
+#Aliza
+echo "Install Aliza"
+cd $HOME/Downloads
+
+if [ ! -e 'aliza_1.38.2.6.deb' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/aliza_1.38.2.6.deb
+fi
+
+sudo dpkg -i aliza_1.38.2.6.deb
+
+
 #DSIStudio
+echo "Install DSI Studio"
 sudo apt-get install -y \
   libboost-thread1.58.0 libboost-program-options1.58.0 qt5-default
 
@@ -64,6 +77,7 @@ cd /usr/local
 sudo unzip ~/Downloads/dsistudio.zip
 
 #ROBEX
+echo "Install ROBEX"
 cd $HOME/Downloads
 
 if [ ! -e 'ROBEXv12.linux64.tar.gz' ]; then
@@ -85,6 +99,7 @@ if [ $? -eq 1 ]; then
 fi
 
 #c3d
+echo "Install c3d"
 cp -r ${base_path}/bin $HOME
 
 cd $HOME/Downloads
@@ -106,6 +121,7 @@ if [ $? -eq 1 ]; then
 fi
 
 #itksnap
+echo "Install ITK-SNAP"
 cd $HOME/Downloads
 
 if [ ! -e 'itksnap-3.6.0-20170401-Linux-x86_64.tar.gz' ]; then
@@ -124,6 +140,7 @@ if [ $? -eq 1 ]; then
 fi
 
 #Mango
+echo "Install Mango"
 cd $HOME/Downloads
 
 if [ ! -e 'mango_unix.zip' ]; then
@@ -134,6 +151,7 @@ cd /usr/local
 sudo unzip ~/Downloads/mango_unix.zip
 
 #MRIcron
+echo "Install MRIcron"
 cd $HOME/Downloads
 
 if [ ! -e 'lx.zip' ]; then
@@ -155,6 +173,7 @@ if [ $? -eq 1 ]; then
 fi
 
 #MRIcroGL
+echo "Install MRIcroGL"
 cd $HOME/Downloads
 
 if [ ! -e 'mricrogl_linux.zip' ]; then
@@ -178,6 +197,7 @@ if [ $? -eq 1 ]; then
 fi
 
 #tutorial
+echo "Install tutorial by Chris Rorden"
 cd $HOME/Downloads
 
 if [ ! -e 'tutorial.zip' ]; then
@@ -198,6 +218,7 @@ rm -rf __MACOSX
 #SPM12 standalone
 
 #PATH for installer
+echo "Install installer for several packages such as AFNI or FSL"
 cp -r ~/git/lin4neuro-xenial/installer ~/
 
 grep installer ~/.bashrc > /dev/null

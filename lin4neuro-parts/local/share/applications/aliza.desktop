@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Aliza
+GenericName=Aliza
+Encoding=UTF-8
+Type=Application
+Comment=Medical Imaging
+Icon=aliza
+Exec=/usr/bin/aliza %F
+Terminal=false
+Categories=Graphics;Neuroimaging;
+StartupNotify=false
+MimeType=application/dicom;image/tiff;
+
