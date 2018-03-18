@@ -59,7 +59,7 @@ if [ ! -e /etc/skel/Documents ]; then
 fi
 
 #ubiquity
-sudo apt -y install ubiquity-frontend-gtk
+sudo apt-get -y install ubiquity-frontend-gtk
 
 #remove 40cdrom from ubiquity
 if [ -e /usr/lib/ubiquity/apt-setup/generators/40cdrom ]; then
