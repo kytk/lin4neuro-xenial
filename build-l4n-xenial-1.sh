@@ -1,24 +1,22 @@
 #!/bin/bash
-#Lin4Neuro making script part 1 for Ubuntu 16.04 (Xenial)
+#Lin4Neuro making script for Ubuntu 16.04 (Xenial)
 #This script installs minimal Ubuntu with XFCE 4.12
-#Prerequisite: You need to install Ubuntu mini.iso and git.
+#and Lin4Neuro theme.
+#Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
+#Kiyotaka Nemoto 18-Mar-2018
 
 #ChangeLog
-#17-Mar-2018: add gnome-system-tools and ntp
-#13-Dec-2017: add dc
-#09-Dec-2017: add exfat-fuse and exfat-utils
-#03-Oct-2017: add at-spi2-core for supressing gedit warning
-#26-Sep-2017: add tree
+#18-Mar-2018 Renew scripts
 
 #(optional) Force IPv4
-#Comment out the following two lines if you need IPv6
+#Uncomment the following two lines if you want the system to use only IPv4
 #echo 'Acquire::ForceIPv4 "true";' | sudo tee /etc/apt/apt.conf.d/99force-ipv4
 #echo '--inet4-only=1' >> ~/.wgetrc
 
 LANG=C
 sudo apt update; sudo apt -y upgrade
 
-log=`date +%Y-%m-%d`-part1.log
+log=`date +%Y-%m-%d`.log
 exec &> >(tee -a "$log")
 
 echo "Which language do you want to build? (English/Japanese)"
@@ -32,14 +30,14 @@ do
      continue
   elif [ $lang == "Japanese" ] ; then
 
-     #Setup Neurodebian repository
+     #Setup Neurodebian repository using repo in Japan
      wget -O- http://neuro.debian.net/lists/xenial.jp.full | \
      sudo tee /etc/apt/sources.list.d/neurodebian.sources.list
 
      break
   elif [ $lang == "English" ] ; then
 
-     #Setup Neurodebian repository
+     #Setup Neurodebian repository using in repo in us-nh
      wget -O- http://neuro.debian.net/lists/xenial.us-nh.full | \
      sudo tee /etc/apt/sources.list.d/neurodebian.sources.list
 
@@ -80,12 +78,13 @@ sudo touch /etc/libuser.conf
 cp /usr/share/vim/vimrc ~/.vimrc
 sed -i -e 's/"set background=dark/set background=dark/' ~/.vimrc
 
-#English-dependent packages
+#Install firefox with language locale
 if [ $lang == "English" ] ; then
+  #English-dependent packages
   echo "Installation of firefox"
   sudo apt -y install firefox firefox-locale-en
 else
-#Japanese-dependent environment
+  #Japanese-dependent environment
   echo "Installation of firefox and Japanese-related packages"
   sudo apt -y install fcitx fcitx-mozc fcitx-config-gtk 	\
               unar nkf firefox firefox-locale-ja im-config
@@ -97,9 +96,126 @@ fi
 #Remove xscreensaver
 sudo apt -y purge xscreensaver
 
-echo "Part1 Finished! The system will reboot. Please run build-l4n-xenial-2.sh."
+#Installation of Lin4Neuro related settings
 
-sleep 5
+#Setting of path of the setting scripts
+currentdir=`echo $(cd $(dirname $0) && pwd)`
+base_path=$currentdir/lin4neuro-parts
+
+#Install plymouth-related files
+sudo apt -y install plymouth-themes plymouth-label
+
+#Installation of lin4neuro-logo
+echo "Installation of lin4neuro-logo"
+sudo cp -r ${base_path}/lin4neuro-logo /usr/share/plymouth/themes
+sudo update-alternatives --install 					\
+	/usr/share/plymouth/themes/default.plymouth 			\
+	default.plymouth 						\
+	/usr/share/plymouth/themes/lin4neuro-logo/lin4neuro-logo.plymouth \
+	100
+sudo update-initramfs -u -k all
+
+#Installation of icons
+echo "Installation of icons"
+mkdir -p ~/.local/share
+cp -r ${base_path}/local/share/icons ~/.local/share/
+
+#Installation of customized menu
+echo "Installation of customized menu"
+mkdir -p ~/.config/menus
+cp ${base_path}/config/menus/xfce-applications.menu \
+	~/.config/menus
+
+#Installation of .desktop files
+echo "Installation of .desktop files"
+cp -r ${base_path}/local/share/applications ~/.local/share/
+
+#Installation of Neuroimaging.directory
+echo "Installation of Neuroimaging.directory"
+mkdir -p ~/.local/share/desktop-directories
+cp ${base_path}/local/share/desktop-directories/Neuroimaging.directory ~/.local/share/desktop-directories
+
+#Copy background image
+echo "Copy background image"
+sudo cp ${base_path}/backgrounds/deep_ocean.png /usr/share/backgrounds
+
+#Remove an unnecessary image file
+sudo rm /usr/share/backgrounds/xfce/xfce-teal.jpg
+
+#Copy modified lightdm-gtk-greeter.conf
+echo "Copy modified 01_ubuntu.conf"
+sudo mkdir -p /usr/share/lightdm/lightdm-gtk-greeter.conf.d
+sudo cp ${base_path}/lightdm/lightdm-gtk-greeter.conf.d/01_ubuntu.conf /usr/share/lightdm/lightdm-gtk-greeter.conf.d
+
+#Settings for auto-login
+echo "Settings for auto-login"
+sudo mkdir -p /usr/share/lightdm/lightdm.conf.d
+sudo cp ${base_path}/lightdm/lightdm.conf.d/10-ubuntu.conf \
+	/usr/share/lightdm/lightdm.conf.d
+
+#Customize panel 
+echo "Customize panel"
+mkdir -p ~/.config/xfce4/xfconf/xfce-perchannel-xml/
+cp ${base_path}/config/xfce-perchannel-xml/xfce4-panel.xml \
+	~/.config/xfce4/xfconf/xfce-perchannel-xml/
+
+cp -r ${base_path}/config/panel ~/.config/xfce4/
+
+#Customize desktop
+echo "Customize desktop"
+cp ${base_path}/config/xfce-perchannel-xml/xfce4-desktop.xml \
+	~/.config/xfce4/xfconf/xfce-perchannel-xml/
+
+#Customize theme (Greybird)
+echo "Customize theme (Greybird)"
+cp ${base_path}/config/xfce-perchannel-xml/xfwm4.xml \
+	~/.config/xfce4/xfconf/xfce-perchannel-xml/
+
+#Clean packages
+sudo apt -y autoremove
+
+#GRUB setting for plymouth
+echo 'GRUB_GFXPAYLOAD_LINUX="auto"' | sudo tee -a /etc/default/grub 
+sudo sh -c 'echo 'FRAMEBUFFER=y' > /etc/initramfs-tools/conf.d/splash'
+sudo update-grub
+
+#(Optional)Display GRUB menu
+#comment out following two lines if you don't want to show GRUB menu
+sudo sed -i -e 's/GRUB_HIDDEN_TIMEOUT/#GRUB_HIDDEN_TIMEOUT/' /etc/default/grub
+sudo update-grub
+
+#Virtualbox-related-packages
+#If you want to make virtualbox images, install the virtualbox-related-packages
+while true; do
+    echo "If you want to make virtualbox images, it is recommended to install virtualbox-related packages."
+    echo "Do you want to install virtualbox-related packages? (yes/no)"
+
+    read answer
+
+    case $answer in 
+	[Yy]*)
+		#Install virtualbox-guest-dkms
+		sudo apt install -y virtualbox-guest-dkms
+		sudo usermod -aG vboxsf $(whoami)
+		
+		#Virtualbox-related settings
+		sudo sh -c 'echo 'vboxsf' >> /etc/modules'
+		sudo sh -c 'echo '#share   /media/sf_share vboxsf  uid=1000,gid=1000       0       0' >> /etc/fstab'
+		break
+		;;
+	[Nn]*)
+		echo -e "Virtualbox-related packages are not installed.\n"
+		break
+		;;
+	*)
+		echo -e "Type yes or no. \n"
+		;;
+    esac
+done
+
+echo "Finished! The system will reboot in 10 seconds."
+echo "Please run build-l4n-xenial-2.sh to install neuroimaging packages."
+sleep 10
 echo "System reboot"
 sudo reboot
 
