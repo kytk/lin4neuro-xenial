@@ -14,8 +14,12 @@ base_path=$currentdir/lin4neuro-parts
 sudo apt-get install -y software-properties-common
 sudo apt-key adv --keyserver keyserver.ubuntu.com \
      --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-sudo add-apt-repository \
- 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu xenial/'
+
+grep rstudio /etc/apt/sources.list > /dev/null
+if [ $? -eq 1 ]; then
+  sudo add-apt-repository \
+  'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu xenial/'
+fi
 sudo apt-get -y update
 sudo apt-get install -y r-base
 
@@ -25,11 +29,6 @@ sudo apt-get install -y mriconvert
 #VirtualMRI
 sudo apt-get install -y virtual-mri-nonfree
 
-#Install prerequisite packages for DSI Studio
-sudo apt-get install -y libboost-thread1.58.0 libboost-program-options1.58.0 qt5-default
-
-#Copy bashcom.sh for c3d to ~/bin
-cp -r ${base_path}/bin $HOME
 
 #packages to be installed as a default
 
@@ -52,6 +51,9 @@ if [ $? -eq 1 ]; then
 fi
 
 #DSIStudio
+sudo apt-get install -y \
+  libboost-thread1.58.0 libboost-program-options1.58.0 qt5-default
+
 cd $HOME/Downloads
 
 if [ ! -e 'dsistudio.zip' ]; then
@@ -83,6 +85,8 @@ if [ $? -eq 1 ]; then
 fi
 
 #c3d
+cp -r ${base_path}/bin $HOME
+
 cd $HOME/Downloads
 
 if [ ! -e 'c3d-1.0.0-Linux-x86_64.tar.gz' ]; then
@@ -119,7 +123,6 @@ if [ $? -eq 1 ]; then
     echo 'export PATH=$PATH:/usr/local/itksnap/bin' >> ~/.bashrc
 fi
 
-
 #Mango
 cd $HOME/Downloads
 
@@ -150,7 +153,6 @@ if [ $? -eq 1 ]; then
     echo '#MRIcron' >> ~/.bashrc
     echo 'export PATH=$PATH:/usr/local/mricron' >> ~/.bashrc
 fi
-
 
 #MRIcroGL
 cd $HOME/Downloads
@@ -197,8 +199,13 @@ rm -rf __MACOSX
 
 #PATH for installer
 cp -r ~/git/lin4neuro-xenial/installer ~/
-echo '' >> ~/.bashrc
-echo 'export PATH=$PATH:~/installer' >> ~/.bashrc
+
+grep installer ~/.bashrc > /dev/null
+if [ $? -eq 1 ]; then
+    echo '' >> ~/.bashrc
+    echo '#PATH for installer'
+    echo 'export PATH=$PATH:~/installer' >> ~/.bashrc
+fi
 
 echo "Finished!"
 
