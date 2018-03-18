@@ -15,7 +15,7 @@ wait
 
 #c3d
 echo "Run c3d"
-c3d
+c3d -h
 
 #ITK-SNAP
 echo "Run itksnap"
