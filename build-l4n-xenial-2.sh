@@ -218,14 +218,12 @@ rm -rf __MACOSX
 #SPM12 standalone
 
 #PATH for installer
-echo "Install installer for several packages such as AFNI or FSL"
-cp -r ~/git/lin4neuro-xenial/installer ~/
 
 grep installer ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
     echo '' >> ~/.bashrc
     echo '#PATH for installer' >> ~/.bashrc
-    echo 'export PATH=$PATH:~/installer' >> ~/.bashrc
+    echo 'export PATH=$PATH:~/git/lin4neuro-xenial/installer' >> ~/.bashrc
 fi
 
 echo "Finished!"
