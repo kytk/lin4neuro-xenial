@@ -1,6 +1,6 @@
 #!/bin/bash
 #Remastering with Remastersys for XFCE on Ubuntu-mini 16.04
-#27-Jun-2017 K. Nemoto
+#19-Mar-2018 K. Nemoto
 
 #Execute as a normal user!
 
@@ -32,7 +32,6 @@ sudo purge-old-kernels --keep 1
 #Remove virtualbox guest
 sudo apt-get -y remove virtualbox-guest-dkms
 
-
 #Copy config files based on Ubuntu
 echo "Copy config files based on Ubuntu to /etc/skel ..."
 cd $HOME
@@ -53,6 +52,8 @@ sudo rsync -rp --delete --progress ~/.local/share/icons /etc/skel/.local/share/
 sudo rsync -rp --delete --progress ~/bin /etc/skel/
 sudo rsync -rp --delete --progress ~/tutorial /etc/skel/
 sudo rsync -rp --delete --progress $installer_path /etc/skel/
+sudo mkdir /etc/skel/git
+sudo rsync -rp --delete --progress ~/git/lin4neuro-xenial /etc/skel/git/
 
 #Check if Document direcotry exists in /etc/skel
 cd /etc/skel
