@@ -3,9 +3,10 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 18-Mar-2018
+#Kiyotaka Nemoto 20-Mar-2018
 
 #ChangeLog
+#20-Mar-2018 add curl
 #18-Mar-2018 Renew scripts
 
 #(optional) Force IPv4
@@ -65,11 +66,12 @@ sudo apt-get -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 #Installation of misc packages
 echo "Installation of misc packages"
 
-sudo apt-get -y install at-spi2-core bc byobu dc default-jre evince \
-	exfat-fuse exfat-utils gedit gnome-system-monitor 	\
-	gnome-system-tools gparted imagemagick nemo ntp		\
-	system-config-printer-gnome system-config-samba tree 	\
-	unzip update-manager vim wajig xfce4-screenshooter zip 
+sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
+	default-jre evince exfat-fuse exfat-utils gedit 	\
+	gnome-system-monitor gnome-system-tools gparted		\
+	imagemagick nemo ntp system-config-printer-gnome 	\
+	system-config-samba tree unzip update-manager vim 	\
+	wajig xfce4-screenshooter zip 
 
 #Workaround for system-config-samba
 sudo touch /etc/libuser.conf
