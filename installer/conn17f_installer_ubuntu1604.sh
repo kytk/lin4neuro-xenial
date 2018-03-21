@@ -20,6 +20,12 @@ sudo unzip ~/Downloads/conn17f_glnxa64.zip
 
 sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/conn.desktop
 
+#alias
+echo '' >> ~/.bashrc
+echo '#conn17f standalone' >> ~/.bashrc
+echo "alias conn='/usr/local/conn_standalone/R2017a/run_conn.sh /usr/local/MATLAB/MCR/v92'" >> ~/.bashrc
+
+
 echo "Finished! Run CONN from menu -> Neuroimaging -> CONN"
 exit
 
