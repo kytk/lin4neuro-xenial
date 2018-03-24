@@ -87,7 +87,7 @@ if [ $lang == "English" ] ; then
   echo "Installation of firefox"
   sudo apt-get -y install firefox firefox-locale-en
   echo "Installation of libreoffice"
-  sudo apt-get -y install libreoffice
+  sudo apt-get -y install libreoffice libreoffice-help-en
 
 else
   #Japanese-dependent environment
@@ -95,12 +95,18 @@ else
   sudo apt-get -y install fcitx fcitx-mozc fcitx-config-gtk 	\
               unar nkf firefox firefox-locale-ja im-config
   echo "Installation of libreoffice"
-  sudo apt-get -y install libreoffice libreoffice-l10n-ja
+  sudo apt-get -y install libreoffice libreoffice-l10n-ja \
+	libreoffice-help-ja
 
   #Change directories to English
   LANG=C xdg-user-dirs-update --force
   im-config -n fcitx
 fi
+
+#Upgrade of Libreoffice
+sudo add-apt-repository -y ppa:libreoffice/ppa
+sudo apt-get -y update
+sudo apt-get -y dist-upgrade
 
 #Remove xscreensaver
 sudo apt-get -y purge xscreensaver
