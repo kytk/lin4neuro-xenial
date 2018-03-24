@@ -73,6 +73,7 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	system-config-samba tree unzip update-manager vim 	\
 	wajig xfce4-screenshooter zip 
 
+
 #Workaround for system-config-samba
 sudo touch /etc/libuser.conf
 
@@ -80,16 +81,22 @@ sudo touch /etc/libuser.conf
 cp /usr/share/vim/vimrc ~/.vimrc
 sed -i -e 's/"set background=dark/set background=dark/' ~/.vimrc
 
-#Install firefox with language locale
+#Install firefox and libreoffice with language locale
 if [ $lang == "English" ] ; then
   #English-dependent packages
   echo "Installation of firefox"
   sudo apt-get -y install firefox firefox-locale-en
+  echo "Installation of libreoffice"
+  sudo apt-get -y install libreoffice
+
 else
   #Japanese-dependent environment
   echo "Installation of firefox and Japanese-related packages"
   sudo apt-get -y install fcitx fcitx-mozc fcitx-config-gtk 	\
               unar nkf firefox firefox-locale-ja im-config
+  echo "Installation of libreoffice"
+  sudo apt-get -y install libreoffice libreoffice-l10n-ja
+
   #Change directories to English
   LANG=C xdg-user-dirs-update --force
   im-config -n fcitx
