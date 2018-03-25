@@ -73,6 +73,9 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	system-config-samba tree unzip update-manager vim 	\
 	wajig xfce4-screenshooter zip 
 
+#Install the latest kernel
+sudo apt-get -y install linux-image-generic-hwe-16.04-edge
+
 
 #Workaround for system-config-samba
 sudo touch /etc/libuser.conf
