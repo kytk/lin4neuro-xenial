@@ -6,6 +6,7 @@
 #Kiyotaka Nemoto 20-Mar-2018
 
 #ChangeLog
+#28-Mar-2018 add libreoffice
 #20-Mar-2018 add curl
 #18-Mar-2018 Renew scripts
 
@@ -53,6 +54,11 @@ done
 #sudo apt-key adv --recv-keys --keyserver \
 #     hkp://pgp.mit.edu:80 0xA5D32F012649A5A9
 sudo apt-key add neuro.debian.net.asc
+
+#Libreoffice
+sudo add-apt-repository -y ppa:libreoffice/ppa
+
+#Update repository
 sudo apt-get update
 
 #Installation of XFCE 4.12
@@ -75,7 +81,6 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 
 #Install the latest kernel
 sudo apt-get -y install linux-image-generic-hwe-16.04-edge
-
 
 #Workaround for system-config-samba
 sudo touch /etc/libuser.conf
