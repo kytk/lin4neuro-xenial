@@ -59,5 +59,6 @@
         <value type="string" value="14484612943.desktop"/>
       </property>
     </property>
+    <property name="plugin-8" type="string" value="power-manager-plugin">
   </property>
 </channel>
