@@ -18,4 +18,6 @@ if [ $? -eq 1 ]; then
     echo 'export PATH=$PATH:$ANTSPATH' >> ~/.bashrc
 fi
 
-
+echo "Finished!"
+sleep 10
+exit
