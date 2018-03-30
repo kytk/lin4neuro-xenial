@@ -7,4 +7,5 @@ Icon=afnilogo.png
 Terminal=false
 Categories=Neuroimaging;
 StartupNotify=true
+NoDisplay=true
 

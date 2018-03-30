@@ -59,7 +59,7 @@ if [ ! -e 'aliza_1.38.2.6.deb' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/aliza_1.38.2.6.deb
 fi
 
-sudo dpkg -i aliza_1.38.2.6.deb
+sudo apt install ./aliza_1.38.2.6.deb
 
 
 #DSIStudio

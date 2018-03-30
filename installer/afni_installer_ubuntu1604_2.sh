@@ -39,7 +39,11 @@ cd $HOME
 echo "Check installation"
 afni_system_check.py -check_all
 
-echo "Finished"
+#make icon show in the neuroimaging directory
+sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/afni.desktop
 
+
+echo "Finished"
+sleep 5
 exit
 
