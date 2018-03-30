@@ -6,6 +6,7 @@
 #Kiyotaka Nemoto 20-Mar-2018
 
 #ChangeLog
+#30-Mar-2018 simplify customization of xfce
 #28-Mar-2018 add libreoffice
 #20-Mar-2018 add curl
 #18-Mar-2018 Renew scripts
@@ -176,23 +177,10 @@ sudo mkdir -p /usr/share/lightdm/lightdm.conf.d
 sudo cp ${base_path}/lightdm/lightdm.conf.d/10-ubuntu.conf \
 	/usr/share/lightdm/lightdm.conf.d
 
-#Customize panel 
-echo "Customize panel"
-mkdir -p ~/.config/xfce4/xfconf/xfce-perchannel-xml/
-cp ${base_path}/config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml \
-	~/.config/xfce4/xfconf/xfce-perchannel-xml/
+#Cusotmize of panel, dsktop, and theme
+echo "Cusotmize of panel, dsktop, and theme"
 
-cp -r ${base_path}/config/xfce4/panel ~/.config/xfce4/
-
-#Customize desktop
-echo "Customize desktop"
-cp ${base_path}/config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml \
-	~/.config/xfce4/xfconf/xfce-perchannel-xml/
-
-#Customize theme (Greybird)
-echo "Customize theme (Greybird)"
-cp ${base_path}/config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml \
-	~/.config/xfce4/xfconf/xfce-perchannel-xml/
+cp -r ${base_path}/config/xfce4 ~/.config
 
 #Clean packages
 sudo apt-get -y autoremove
