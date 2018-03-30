@@ -9,3 +9,7 @@ else
   echo "FSL is already installed."
 fi
 
+sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/fsl-wiki.desktop
+
+exit
+
