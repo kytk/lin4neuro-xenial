@@ -94,6 +94,7 @@ while true; do
 		[Nn]*)
 			echo -e "Run Remastersys manually later.\n"
 			break
+			exit
 			;;
 		*)
 			echo -e "Type yes or no.\n"	
