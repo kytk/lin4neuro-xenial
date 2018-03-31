@@ -76,6 +76,9 @@ fi
 #modify ubiquity.desktop
 sudo sed -i 's/Exec=sh/Exec=sudo sh/' /usr/share/applications/ubiquity.desktop
 
+#Remove unnecessary files
+sudo apt-get -y autoremove
+
 #Remastering with Remastersys
 while true; do
 
@@ -93,7 +96,6 @@ while true; do
 			;;
 		[Nn]*)
 			echo -e "Run Remastersys manually later.\n"
-			break
 			exit
 			;;
 		*)
