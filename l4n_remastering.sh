@@ -1,6 +1,6 @@
 #!/bin/bash
-#Remastering with Remastersys for XFCE on Ubuntu-mini 16.04
-#19-Mar-2018 K. Nemoto
+#Remastering with Remastersys for Lin4Neuro 16.04
+#31-Mar-2018 K. Nemoto
 
 #Execute as a normal user!
 
@@ -29,8 +29,11 @@ sudo apt-get -y clean
 #Remove unnecessary kernels
 sudo purge-old-kernels --keep 1
 
+#Remove linux-headers
+sudo apt-get -y remove linux-headers-$(uname -a | awk '{ print $3 }')
+
 #Remove virtualbox guest
-sudo apt-get -y remove virtualbox-guest-dkms
+sudo apt-get -y remove virtualbox-guest-*
 
 #Copy config files based on Ubuntu
 echo "Copy config files based on Ubuntu to /etc/skel ..."
@@ -98,8 +101,14 @@ while true; do
 	esac
 done
 
+#Reinstall linux-headers
+sudo apt-get -y install linux-headers-$(uname -a | awk '{ print $3 }')
+
 #Reinstall virtualbox-guest-dkms
 sudo apt-get -y install virtualbox-guest-dkms
+
+echo "Finished!"
+sleep 5
 
 exit
 

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+GenericName=Educational MRI Simulator
+Name=Virtual MRI
+Exec=virtual-mri
+TryExec=virtual-mri
+Type=Application
+Terminal=false
+Categories=Neuroimaging;
+Icon=virtual-mri.png

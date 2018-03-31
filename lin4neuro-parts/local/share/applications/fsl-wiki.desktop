@@ -1,9 +1,9 @@
 [Desktop Entry]
 Encoding=UTF-8
-GenericName=Help for Software Collection for (f)MRI Data Analysis
 Name=FSL 5.0 Wiki
 Exec=xdg-open /usr/local/fsl/doc/wiki/FSL.html
 Icon=fsl-5.0.xpm
 Type=Application
 Terminal=false
 Categories=Neuroimaging;
+NoDisplay=true
