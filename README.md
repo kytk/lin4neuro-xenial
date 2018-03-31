@@ -52,6 +52,7 @@ Then XFCE4.12 is installed. Upon installation, the system automatically reboots.
 Then, run **build-l4n-xenial-2.sh**.
 
 ```
+cd ~/git/lin4neuro-xenial
 ./build-l4n-xenial-2.sh
 ```
 
