@@ -71,9 +71,11 @@ This will install several neuroimaging software packages listed below.
 
 ## Check the software packages are installed correctly.
 
-After installation of the software above, run **build-l4n-xenial-3.sh**.
+After installation of the software above, close and re-open the terminai.
+Then, run **build-l4n-xenial-3.sh**.
 
 ```
+cd ~/git/lin4neuro-xenial
 ./build-l4n-xenial-3.sh
 ```
 
