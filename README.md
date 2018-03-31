@@ -14,12 +14,13 @@ Install with this iso and select **no packages** during installation.
 
 ## Install git and clone this repository
 
-After installation, login and clone this repository.
+After installation, install git, make ~/git directory, and clone this repository under ~/git. (You can save this repository wherever you like.)
 
 ```
+cd
 sudo apt install git
-mkdir ~/git
-cd ~/git
+mkdir git
+cd git
 git clone https://github.com/kytk/lin4neuro-xenial.git
 ```
 
@@ -28,7 +29,7 @@ git clone https://github.com/kytk/lin4neuro-xenial.git
 First, run **build-l4n-xenial-1.sh**.
 
 ```
-cd ~/git/lin4neuro-xenial
+cd lin4neuro-xenial
 ./build-l4n-xenial-1.sh
 ```
 
@@ -51,8 +52,7 @@ Then XFCE4.12 is installed. Upon installation, the system automatically reboots.
 Then, run **build-l4n-xenial-2.sh**.
 
 ```
-cd ~/git/lin4neuro-xenial
-./build-l4n-xenial-1.sh
+./build-l4n-xenial-2.sh
 ```
 
 This will install several neuroimaging software packages listed below.
@@ -84,7 +84,6 @@ If it is not installed correctly, you will see error messages in the terminal. C
 If everything is set, run **build-l4n-xenial-4.sh**.
 
 ```
-cd ~/git/lin4neuro-xenial
 ./build-l4n-xenial-4.sh
 ```
 
@@ -115,7 +114,6 @@ You change 999 to 990.
 Now you are ready to remaster the system. Run **l4n_remastering.sh**
 
 ```
-cd ~/git/lin4neuro-xenial
 ./l4n_remastering.sh
 ```
 
@@ -135,6 +133,6 @@ I also prepared the installer for popular software packages.
 * MRtrix3
 * SPM12 standalone 
 
-these installer can be found in lin4neuro-xenial/installer
+these installer can be found in lin4neuro-xenial/installer.
 
 
