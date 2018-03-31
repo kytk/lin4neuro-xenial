@@ -12,7 +12,6 @@ fi
 
 #Setting of path of the setting scripts
 currentdir=`echo $(cd $(dirname $0) && pwd)`
-installer_path=$currentdir/installer
 
 #Check if /etc/skel/.local directory exists
 if [ ! -e /etc/skel/.local ]; then
@@ -50,11 +49,8 @@ sudo rsync -rp --delete --progress ~/.local/share/icons /etc/skel/.local/share/
 
 #Copy neuroimaging-related files to /etc/skel
 #sudo rsync -rp --delete --progress ~/Desktop /etc/skel/
-#sudo rsync -rp --delete --progress ~/.afnirc /etc/skel/
-#sudo rsync -rp --delete --progress ~/.sumarc /etc/skel/
 sudo rsync -rp --delete --progress ~/bin /etc/skel/
 sudo rsync -rp --delete --progress ~/tutorial /etc/skel/
-sudo rsync -rp --delete --progress $installer_path /etc/skel/
 sudo mkdir /etc/skel/git
 sudo rsync -rp --delete --progress ~/git/lin4neuro-xenial /etc/skel/git/
 
