@@ -1,10 +1,24 @@
 #!/bin/bash
 
 fslinstalled=$(which fsl)
-if [ $fslinstalled != /usr/local/fsl/bin/fsl ]; then
+if [ -z "$fslinstalled" ]; then
   echo "FSL is not installed yet."
   echo "FSL is to be installed with fslinstaller.py"
-  python fslinstaller.py
+  echo "checking if fslinstaller.py is downloaded."
+  fslpyexist=$(find ~/ -name fslinstaller.py)
+
+  if [ -z "$fslpyexist" ]; then
+    echo "Please download fslinstaller.py first"
+    echo "Please run the script after you installed fslinstaller.py"
+    sleep 5
+    xdg-open "https://fsl.fmrib.ox.ac.uk/fsldownloads_registration" &
+    exit
+
+  else
+    cp $fslpyexist .
+    python fslinstaller.py
+  fi
+
 else
   echo "FSL is already installed."
 fi
