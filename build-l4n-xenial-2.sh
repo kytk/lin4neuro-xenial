@@ -218,7 +218,7 @@ rm -rf __MACOSX
 #FSL
 #SPM12 standalone
 
-cp -r ${base_path}/installer ~/Desktop 
+cp -r ${currentdir}/installer ~/Desktop 
 
 #PATH for installer
 
