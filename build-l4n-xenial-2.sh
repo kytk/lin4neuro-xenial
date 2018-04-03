@@ -218,14 +218,16 @@ rm -rf __MACOSX
 #FSL
 #SPM12 standalone
 
+cp -r ${base_path}/installer ~/Desktop 
+
 #PATH for installer
 
-grep installer ~/.bashrc > /dev/null
-if [ $? -eq 1 ]; then
-    echo '' >> ~/.bashrc
-    echo '#PATH for installer' >> ~/.bashrc
-    echo 'export PATH=$PATH:~/git/lin4neuro-xenial/installer' >> ~/.bashrc
-fi
+#grep installer-scripts ~/.bashrc > /dev/null
+#if [ $? -eq 1 ]; then
+#    echo '' >> ~/.bashrc
+#    echo '#PATH for installer' >> ~/.bashrc
+#    echo 'export PATH=$PATH:~/git/lin4neuro-xenial/installer-scripts' >> ~/.bashrc
+#fi
 
 echo "Finished!"
 

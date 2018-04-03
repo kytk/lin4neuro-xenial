@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Install FSL
+Name[ja]=FSLのインストール
+Exec=sh -c "~/git/lin4neuro-xenial/installer-scripts/fsl_installer_ubuntu1604.sh"
+Icon=fsl
+#Categories=Neuroimaging;
+StartupNotify=true
+Terminal=true
+

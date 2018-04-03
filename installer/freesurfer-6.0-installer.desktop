@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Install FreeSurfer 6.0
+Name[ja]=FreeSurfer 6.0のインストール
+Exec=sh -c "~/git/lin4neuro-xenial/installer-scripts/freesurfer_6.0_installer_ubuntu1604.sh"
+Icon=fscortex
+#Categories=Neuroimaging;
+StartupNotify=true
+Terminal=true
+

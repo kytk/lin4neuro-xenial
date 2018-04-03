@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Install AFNI Part1
+Name[ja]=AFNIのインストール(1)
+Exec=sh -c "~/git/lin4neuro-xenial/installer-scripts/afni_installer_ubuntu1604_1.sh"
+Icon=afni
+#Categories=Neuroimaging;
+StartupNotify=true
+Terminal=true
+
