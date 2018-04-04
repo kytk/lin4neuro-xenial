@@ -11,7 +11,7 @@ if [ -z "$fslinstalled" ]; then
     echo "Please download fslinstaller.py first"
     echo "Please run the script after you installed fslinstaller.py"
     sleep 5
-    xdg-open "https://fsl.fmrib.ox.ac.uk/fsldownloads_registration" &
+    xdg-open "https://fsl.fmrib.ox.ac.uk/fsldownloads_registration" 
     exit
 
   else
