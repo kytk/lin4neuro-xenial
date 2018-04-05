@@ -56,11 +56,9 @@ done
 #     hkp://pgp.mit.edu:80 0xA5D32F012649A5A9
 sudo apt-key add neuro.debian.net.asc
 
-#Libreoffice
-sudo add-apt-repository -y ppa:libreoffice/ppa
-
-#Update repository
-sudo apt-get update
+#Libreoffice (still)
+sudo add-apt-repository -y ppa:libreoffice/libreoffice-5-4
+sudo apt-get -y update
 
 #Installation of XFCE 4.12
 LANG=C
@@ -111,11 +109,6 @@ else
   LANG=C xdg-user-dirs-update --force
   im-config -n fcitx
 fi
-
-#Upgrade of Libreoffice
-sudo add-apt-repository -y ppa:libreoffice/ppa
-sudo apt-get -y update
-sudo apt-get -y dist-upgrade
 
 #Remove xscreensaver
 sudo apt-get -y purge xscreensaver

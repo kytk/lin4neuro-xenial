@@ -11,7 +11,6 @@ currentdir=`echo $(cd $(dirname $0) && pwd)`
 base_path=$currentdir/lin4neuro-parts
 
 #R
-sudo apt-get install -y software-properties-common
 sudo apt-key adv --keyserver keyserver.ubuntu.com \
      --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 
