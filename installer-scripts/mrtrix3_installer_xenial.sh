@@ -28,7 +28,7 @@ echo "#MRtrix3" >> $HOME/.bashrc
 echo 'export PATH=$PATH:$HOME/git/mrtrix3/bin:$HOME/git/mrtrix3/scripts' >> $HOME/.bashrc
 
 echo "Finished!"
-sleep 10
+sleep 5
 
 exit
 

@@ -30,6 +30,6 @@ echo 'export PATH=$PATH:/usr/local/AFNIbin' >> ~/.bashrc
 
 #Reboot
 echo "Please reboot the system"
-sleep 10
+sleep 5
 exit
 

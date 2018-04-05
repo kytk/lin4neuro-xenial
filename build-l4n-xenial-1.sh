@@ -201,7 +201,7 @@ sudo sh -c 'echo '#share   /media/sf_share vboxsf  uid=1000,gid=1000       0    
 
 echo "Finished! The system will reboot in 10 seconds."
 echo "Please run build-l4n-xenial-2.sh to install neuroimaging packages."
-sleep 10
-echo "System reboot"
+echo "Reboot system in 5 seconds"
+sleep 5
 sudo reboot
 

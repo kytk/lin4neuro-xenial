@@ -19,5 +19,5 @@ if [ $? -eq 1 ]; then
 fi
 
 echo "Finished!"
-sleep 10
+sleep 5
 exit

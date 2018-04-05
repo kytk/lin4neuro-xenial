@@ -29,7 +29,7 @@ sudo apt-get -y clean
 sudo purge-old-kernels --keep 1
 
 #Remove linux-headers
-sudo apt-get -y remove linux-headers-$(uname -a | awk '{ print $3 }')
+#sudo apt-get -y remove linux-headers-$(uname -a | awk '{ print $3 }')
 
 #Remove virtualbox guest
 sudo apt-get -y remove virtualbox-guest-*
@@ -48,7 +48,7 @@ sudo rsync -rp --delete --progress ~/.bashrc /etc/skel/
 sudo rsync -rp --delete --progress ~/.local/share/icons /etc/skel/.local/share/
 
 #Copy neuroimaging-related files to /etc/skel
-#sudo rsync -rp --delete --progress ~/Desktop /etc/skel/
+sudo rsync -rp --delete --progress ~/Desktop /etc/skel/
 sudo rsync -rp --delete --progress ~/bin /etc/skel/
 sudo rsync -rp --delete --progress ~/tutorial /etc/skel/
 sudo mkdir /etc/skel/git
@@ -99,9 +99,6 @@ while true; do
 			;;
 	esac
 done
-
-#Reinstall linux-headers
-sudo apt-get -y install linux-headers-$(uname -a | awk '{ print $3 }')
 
 #Reinstall virtualbox-guest-dkms
 sudo apt-get -y install virtualbox-guest-dkms

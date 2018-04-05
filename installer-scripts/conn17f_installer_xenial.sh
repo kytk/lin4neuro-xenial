@@ -27,6 +27,6 @@ echo "alias conn='/usr/local/conn_standalone/R2017a/run_conn.sh /usr/local/MATLA
 
 
 echo "Finished! Run CONN from menu -> Neuroimaging -> CONN"
-sleep 10
+sleep 5 
 exit
 
