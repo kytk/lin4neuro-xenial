@@ -20,7 +20,9 @@ linux-image-generic-hwe-16.04-edge is the latest kernel for xenial.
 Install this with the followings;
 
 ```
-sudo apt-get -y install linux-image-generic-hwe-16.04-edge
+sudo apt update
+sudo apt -y full-upgrade
+sudo apt -y install linux-image-generic-hwe-16.04-edge
 ```
 
 ## Install git and clone this repository
