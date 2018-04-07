@@ -3,9 +3,11 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 20-Mar-2018
+#Kiyotaka Nemoto 07-Apr-2018
 
 #ChangeLog
+#07-Apr-2018 add linux-headers
+#07-Apr-2018 add lines to /etc/fstab related to virtualbox shared folder
 #30-Mar-2018 simplify customization of xfce
 #28-Mar-2018 add libreoffice
 #20-Mar-2018 add curl
@@ -78,8 +80,8 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	system-config-samba tree unzip update-manager vim 	\
 	wajig xfce4-screenshooter zip 
 
-#Install the latest kernel
-sudo apt-get -y install linux-image-generic-hwe-16.04-edge
+#Install the kernel header
+sudo apt-get -y install linux-headers-$(uname -a | awk '{ print $3 }')
 
 #Workaround for system-config-samba
 sudo touch /etc/libuser.conf
@@ -197,7 +199,10 @@ sudo usermod -aG vboxsf $(whoami)
 
 #Virtualbox-related settings
 sudo sh -c 'echo 'vboxsf' >> /etc/modules'
-sudo sh -c 'echo '#share   /media/sf_share vboxsf  uid=1000,gid=1000       0       0' >> /etc/fstab'
+
+echo '' | sudo tee -a /etc/fstab
+echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
+echo '#share   /media/sf_share vboxsf    uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
 
 echo "Finished! The system will reboot in 10 seconds."
 echo "Please run build-l4n-xenial-2.sh to install neuroimaging packages."
