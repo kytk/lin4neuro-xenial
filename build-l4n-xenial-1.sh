@@ -58,8 +58,8 @@ done
 #     hkp://pgp.mit.edu:80 0xA5D32F012649A5A9
 sudo apt-key add neuro.debian.net.asc
 
-#Libreoffice (still)
-sudo add-apt-repository -y ppa:libreoffice/libreoffice-5-4
+#Libreoffice
+sudo add-apt-repository -y ppa:libreoffice/ppa
 sudo apt-get -y update
 
 #Installation of XFCE 4.12

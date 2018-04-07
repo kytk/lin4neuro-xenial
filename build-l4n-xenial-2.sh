@@ -2,7 +2,12 @@
 #Lin4Neuro making script part 2
 #Installation of Neuroimaging software packages
 #Prerequisite: You need to finish the build-l4n-xenial-1.sh.
+#Kiyotaka Nemoto 07-Apr-2018
 
+#Changelog
+#07-Apr-2018 add symbolic link to installer
+
+#Log
 log=`date +%Y%m%d%H%M%S`-part2.log
 exec &> >(tee -a "$log")
 
@@ -217,7 +222,7 @@ rm -rf __MACOSX
 #FSL
 #SPM12 standalone
 
-cp -r ${currentdir}/installer ~/Desktop 
+ln -s ${currentdir}/installer ~/Desktop 
 
 #PATH for installer
 
