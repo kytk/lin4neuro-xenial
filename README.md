@@ -12,12 +12,24 @@ You can get iso of ubuntu 16.04 from http://archive.ubuntu.com/ubuntu/dists/xeni
 
 Install with this iso and select **no packages** during installation.
 
+reboot the system and login.
+
+## Install the latest kernel for the version
+
+linux-image-generic-hwe-16.04-edge is the latest kernel for xenial.
+Install this with the followings;
+
+```
+sudo apt-get -y install linux-image-generic-hwe-16.04-edge
+```
+
 ## Install git and clone this repository
 
 After installation, install git, make ~/git directory, and clone this repository under ~/git. (You can save this repository wherever you like.)
 
 ```
 cd
+LANG=C #if your LANG is other than English
 sudo apt install git
 mkdir git
 cd git
