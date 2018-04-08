@@ -72,15 +72,17 @@ cd ~/git/lin4neuro-xenial
 
 This will install several neuroimaging software packages listed below.
 
-* 3D Slicer
-* Aliza
-* C3D
-* DSI Studio
-* ITK-SNAP
-* Mango
-* MRIcroGL
-* MRIcron
-* ROBEX
+Version number is as of 9 Apr 2018.
+
+* 3D Slicer 4.8.1
+* Aliza 1.38.2.6
+* C3D 1.0.0
+* DSI Studio compiled on 17 Mar 2018
+* ITK-SNAP 3.6.0
+* Mango 4.0.1
+* MRIcroGL 14-July-2017
+* MRIcron 12-Oct-2016
+* ROBEX v12
 * Virtual MRI
 
 ## Check the software packages are installed correctly.
