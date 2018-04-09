@@ -102,6 +102,9 @@ else
     echo 'source $FREESURFER_HOME/SetUpFreeSurfer.sh' >> $HOME/.bashrc
 fi
 
+# replace 'ln -s' with 'cp' for virtualbox environment
+sudo sed -i 's/ln -s \$hemi/cp \$hemi/' /usr/local/freesurfer/bin/recon-all
+
 echo "Installation finished!"
 echo "Now close this terminal, open another terminal, and run fs_check_6.0.sh"
 
