@@ -3,7 +3,7 @@
 #Part3: Check if software is installed.
 
 #Source .bashrc
-source ~/.bashrc
+exec $SHELL --login
 
 echo "Check if neuroimaging software is properly installed."
 
