@@ -3,7 +3,7 @@
 #Part3: Check if software is installed.
 
 #Source .bashrc
-. ~/.bashrc
+source ~/.bashrc
 
 echo "Check if neuroimaging software is properly installed."
 
