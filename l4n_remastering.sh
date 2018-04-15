@@ -10,6 +10,10 @@ if [ "$(whoami)" = "root" ]; then
 	exit 1
 fi
 
+#Log
+log=`date +%Y%m%d%H%M%S`-remastersys.log
+exec &> >(tee -a "$log")
+
 #Setting of path of the setting scripts
 currentdir=`echo $(cd $(dirname $0) && pwd)`
 
