@@ -1,15 +1,32 @@
 #!/bin/bash
 #Lin4Neuro making script part 2
-#Installation of Neuroimaging software packages
+#Installation of Virtualbox-related packages and Neuroimaging software packages
 #Prerequisite: You need to finish the build-l4n-xenial-1.sh.
-#Kiyotaka Nemoto 07-Apr-2018
+#Kiyotaka Nemoto 15-Apr-2018
 
 #Changelog
+#15-Apr-2018 move VirtualBox settings to the part 2
 #07-Apr-2018 add symbolic link to installer
 
 #Log
 log=`date +%Y%m%d%H%M%S`-part2.log
 exec &> >(tee -a "$log")
+
+#Virtualbox-related settings
+##Install the kernel header
+sudo apt-get -y install linux-headers-$(uname -a | awk '{ print $3 }')
+
+##Install virtualbox-guest-dkms
+sudo apt-get install -y virtualbox-guest-dkms
+sudo usermod -aG vboxsf $(whoami)
+
+##Virtualbox-related settings
+sudo sh -c 'echo 'vboxsf' >> /etc/modules'
+
+echo '' | sudo tee -a /etc/fstab
+echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
+echo '#share   /media/sf_share vboxsf    uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
+
 
 #Setting of path of the setting scripts
 currentdir=`echo $(cd $(dirname $0) && pwd)`
