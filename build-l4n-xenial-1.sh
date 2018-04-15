@@ -6,7 +6,7 @@
 #Kiyotaka Nemoto 15-Apr-2018
 
 #ChangeLog
-#15-Apr-2018 move VirtualBox related settings to part2
+#15-Apr-2018 move update LibreOffice and VirtualBox related settings to part2
 #15-Apr-2018 change to use the latest kernel (hwe-16.04-edge)
 #07-Apr-2018 add linux-headers
 #07-Apr-2018 add lines to /etc/fstab related to virtualbox shared folder
@@ -59,10 +59,6 @@ done
 #sudo apt-key adv --recv-keys --keyserver \
 #     hkp://pgp.mit.edu:80 0xA5D32F012649A5A9
 sudo apt-key add neuro.debian.net.asc
-
-#Libreoffice
-sudo add-apt-repository -y ppa:libreoffice/ppa
-sudo apt-get -y update
 
 #Installation of XFCE 4.12
 LANG=C

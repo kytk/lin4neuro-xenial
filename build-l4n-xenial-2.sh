@@ -5,7 +5,7 @@
 #Kiyotaka Nemoto 15-Apr-2018
 
 #Changelog
-#15-Apr-2018 move VirtualBox settings to the part 2
+#15-Apr-2018 move VirtualBox settings and update the Libreoffice to the part 2
 #07-Apr-2018 add symbolic link to installer
 
 #Log
@@ -27,6 +27,10 @@ echo '' | sudo tee -a /etc/fstab
 echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
 echo '#share   /media/sf_share vboxsf    uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
 
+#Libreoffice
+sudo add-apt-repository -y ppa:libreoffice/ppa
+sudo apt-get update
+sudo apt-get -y dist-upgrade
 
 #Setting of path of the setting scripts
 currentdir=`echo $(cd $(dirname $0) && pwd)`
