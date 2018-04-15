@@ -224,6 +224,16 @@ rm -rf __MACOSX
 
 ln -s ${currentdir}/installer ~/Desktop 
 
+#Add the line above to .bashrc
+cat << EOS >> ~/.bashrc
+
+#symbolic links
+if [ ! -L ~/Desktop/installer ]; then
+   ln -fs ~/git/lin4neuro-xenial/installer ~/Desktop
+fi
+
+EOS
+
 #PATH for installer
 
 #grep installer-scripts ~/.bashrc > /dev/null
