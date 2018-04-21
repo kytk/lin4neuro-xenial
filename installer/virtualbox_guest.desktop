@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Install ANTs
+Name[ja]=ANTsのインストール
+Exec=sh -c "~/git/lin4neuro-xenial/installer-scripts/ants_installer_xenial.sh"
+Icon=ants
+#Categories=Neuroimaging;
+StartupNotify=true
+Terminal=true
+
