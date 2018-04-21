@@ -1,10 +1,10 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Install ANTs
-Name[ja]=ANTsのインストール
-Exec=sh -c "~/git/lin4neuro-xenial/installer-scripts/ants_installer_xenial.sh"
-Icon=ants
+Name=Install VirtualBox Guest Additions and configure shared folder
+Name[ja]=VirtualBox Guest Additionsのインストール及び共有フォルダ設定
+Exec=sh -c "~/git/lin4neuro-xenial/installer-scripts/virtualbox_guest_xenial.sh"
+Icon=virtualbox
 #Categories=Neuroimaging;
 StartupNotify=true
 Terminal=true
