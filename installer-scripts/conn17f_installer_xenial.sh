@@ -4,7 +4,7 @@
 #Check MCR is installed
 if [ ! -d /usr/local/MATLAB/MCR/v92 ]; then
   echo "Matlab Compiler Runtime needs to be installed first!"
-  ~/git/lin4neuro-xenial/installer-scripts/mcr_v92_installer_ubuntu1604.sh
+  ~/git/lin4neuro-xenial/installer-scripts/mcr_v92_installer_xenial.sh
 fi
 
 #Download SPM12 standalone
