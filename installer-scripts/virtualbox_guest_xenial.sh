@@ -11,9 +11,12 @@ if [ ! -e /media/sf_share ]; then
 fi
 
 #/etc/fstab
-echo '' | sudo tee -a /etc/fstab
-echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
-echo 'share   /media/sf_share vboxsf    uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
+grep sf_share /etc/fstab > /dev/null
+if [ $? -eq 1 ]; then
+  echo '' | sudo tee -a /etc/fstab
+  echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
+  echo 'share   /media/sf_share vboxsf    uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
+fi
 
 echo "Reboot system in 5 seconds"
 sleep 5
