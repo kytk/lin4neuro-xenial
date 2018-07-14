@@ -5,6 +5,7 @@
 #Kiyotaka Nemoto 15-Apr-2018
 
 #Changelog
+#14-Jul-2018 Add DCMTK
 #15-Apr-2018 move VirtualBox settings and update the Libreoffice to the part 2
 #07-Apr-2018 add symbolic link to installer
 
@@ -51,6 +52,10 @@ if [ $? -eq 1 ]; then
 fi
 sudo apt-get -y update
 sudo apt-get install -y r-base
+
+#DCMTK
+echo "Install DCMTK"
+sudo apt-get install -y dcmtk
 
 #MRIConvert
 echo "Install MRI convert"
