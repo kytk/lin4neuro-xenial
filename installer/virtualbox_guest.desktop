@@ -1,8 +1,8 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Install VirtualBox Guest Additions and configure shared folder
-Name[ja]=VirtualBox Guest Additionsのインストール及び共有フォルダ設定
+Name=Install VirtualBox Guest Additions
+Name[ja]=VirtualBox Guest Additionsのインストール
 Exec=bash -i -c "~/git/lin4neuro-xenial/installer-scripts/virtualbox_guest_xenial.sh"
 Icon=virtualbox
 #Categories=Neuroimaging;
