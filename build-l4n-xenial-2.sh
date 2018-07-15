@@ -24,11 +24,11 @@ sudo usermod -aG vboxsf $(whoami)
 ##Virtualbox-related settings
 sudo sh -c 'echo 'vboxsf' >> /etc/modules'
 
-echo '' | sudo tee -a /etc/fstab
-echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
-echo '#share   /media/sf_share vboxsf    uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
-
-sudo mkdir /media/sf_share
+#echo '' | sudo tee -a /etc/fstab
+#echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
+#echo '#share   /media/sf_share vboxsf    uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
+#
+#sudo mkdir /media/sf_share
 
 #Libreoffice
 sudo add-apt-repository -y ppa:libreoffice/ppa
