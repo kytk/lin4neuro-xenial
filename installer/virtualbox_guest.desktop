@@ -8,4 +8,5 @@ Icon=virtualbox
 #Categories=Neuroimaging;
 StartupNotify=true
 Terminal=true
+NoDisplay=true
 
