@@ -22,13 +22,12 @@ sudo apt-get install -y virtualbox-guest-dkms
 sudo usermod -aG vboxsf $(whoami)
 
 ##Virtualbox-related settings
-sudo sh -c 'echo 'vboxsf' >> /etc/modules'
+#sudo sh -c 'echo 'vboxsf' >> /etc/modules'
 
-#echo '' | sudo tee -a /etc/fstab
-#echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
-#echo '#share   /media/sf_share vboxsf    uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
-#
-#sudo mkdir /media/sf_share
+echo '' | sudo tee -a /etc/fstab
+echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
+echo '#share   /media/sf_share vboxsf    _netdev,uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
+sudo mkdir /media/sf_share
 
 #Libreoffice
 sudo add-apt-repository -y ppa:libreoffice/ppa
@@ -252,8 +251,8 @@ rm -rf __MACOSX
 
 ln -s ${currentdir}/installer ~/Desktop 
 
-#Add the line above to .bashrc
-cat << EOS >> ~/.bashrc
+#Add the line above to .profile
+cat << EOS >> ~/.profile
 
 #symbolic links
 if [ ! -L ~/Desktop/installer ]; then
