@@ -5,6 +5,7 @@
 #Kiyotaka Nemoto 15-Apr-2018
 
 #Changelog
+#14-Jul-2018 Add DCMTK
 #15-Apr-2018 move VirtualBox settings and update the Libreoffice to the part 2
 #07-Apr-2018 add symbolic link to installer
 
@@ -21,12 +22,11 @@ sudo apt-get install -y virtualbox-guest-dkms
 sudo usermod -aG vboxsf $(whoami)
 
 ##Virtualbox-related settings
-sudo sh -c 'echo 'vboxsf' >> /etc/modules'
+#sudo sh -c 'echo 'vboxsf' >> /etc/modules'
 
 echo '' | sudo tee -a /etc/fstab
 echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
-echo '#share   /media/sf_share vboxsf    uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
-
+echo '#share   /media/sf_share vboxsf    _netdev,uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
 sudo mkdir /media/sf_share
 
 #Libreoffice
@@ -51,6 +51,10 @@ if [ $? -eq 1 ]; then
 fi
 sudo apt-get -y update
 sudo apt-get install -y r-base
+
+#DCMTK
+echo "Install DCMTK"
+sudo apt-get install -y dcmtk
 
 #MRIConvert
 echo "Install MRI convert"
@@ -247,8 +251,8 @@ rm -rf __MACOSX
 
 ln -s ${currentdir}/installer ~/Desktop 
 
-#Add the line above to .bashrc
-cat << EOS >> ~/.bashrc
+#Add the line above to .profile
+cat << EOS >> ~/.profile
 
 #symbolic links
 if [ ! -L ~/Desktop/installer ]; then

@@ -36,7 +36,7 @@ sudo purge-old-kernels --keep 1
 #sudo apt-get -y remove linux-headers-$(uname -a | awk '{ print $3 }')
 
 #Remove virtualbox guest
-sudo apt-get -y remove virtualbox-guest-*
+#sudo apt-get -y remove virtualbox-guest-*
 
 #Copy config files based on Ubuntu
 echo "Copy config files based on Ubuntu to /etc/skel ..."
@@ -105,7 +105,7 @@ while true; do
 done
 
 #Reinstall virtualbox-guest-dkms
-sudo apt-get -y install virtualbox-guest-dkms
+#sudo apt-get -y install virtualbox-guest-dkms
 
 echo "Finished!"
 sleep 5

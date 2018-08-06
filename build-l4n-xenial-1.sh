@@ -6,6 +6,7 @@
 #Kiyotaka Nemoto 15-Apr-2018
 
 #ChangeLog
+#28-Jul-2018 add ntp
 #15-Apr-2018 move update LibreOffice and VirtualBox related settings to part2
 #15-Apr-2018 change to use the latest kernel (hwe-16.04-edge)
 #07-Apr-2018 add linux-headers
@@ -76,7 +77,7 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	gnome-system-monitor gnome-system-tools gparted		\
 	imagemagick nemo ntp system-config-printer-gnome 	\
 	system-config-samba tree unzip update-manager vim 	\
-	wajig xfce4-screenshooter zip 
+	wajig xfce4-screenshooter zip ntp
 
 #Install the latest kernel
 sudo apt-get -y install linux-image-generic-hwe-16.04-edge
