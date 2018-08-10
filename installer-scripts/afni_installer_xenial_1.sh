@@ -16,12 +16,14 @@ sudo apt install -y tcsh xfonts-base python-qt4       \
 sudo apt install -y libglu1-mesa-dev libglw1-mesa     \
                     libxm4 build-essential
 
-#Download installer
+#Download AFNI binary and installer
 cd $HOME
+
+curl -O https://afni.nimh.nih.gov/pub/dist/tgz/linux_ubuntu_16_64.tgz
 curl -O https://afni.nimh.nih.gov/pub/dist/bin/linux_ubuntu_16_64/@update.afni.binaries
 
 #Install to /usr/local/AFNIbin
-sudo tcsh @update.afni.binaries -package linux_ubuntu_16_64 -bindir /usr/local/AFNIbin -do_extras
+sudo tcsh @update.afni.binaries -local_package linux_ubuntu_16_64.tgz -bindir /usr/local/AFNIbin -do_extras
 
 #.bashrc
 echo ' ' >> ~/.bashrc
