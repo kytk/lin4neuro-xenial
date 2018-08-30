@@ -15,10 +15,10 @@ echo "remove unnecessary kernels"
 sudo purge-old-kernels
 
 echo "remove logs"
-cd ~/git/lin4neuro-bionic
+cd ~/git/lin4neuro-xenial
 ls | grep .log > /dev/null
 if [ $? -eq 0 ]; then
-    rm ~/git/lin4neuro-bionic/*.log
+    rm ~/git/lin4neuro-xenial/*.log
 fi
 
 echo "remove downloaded files"
