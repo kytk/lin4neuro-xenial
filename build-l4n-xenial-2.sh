@@ -5,6 +5,8 @@
 #Kiyotaka Nemoto 15-Apr-2018
 
 #Changelog
+#16-Aug-2018 Update DSI studio
+#10-Aug-2018 Update Aliza
 #14-Jul-2018 Add DCMTK
 #15-Apr-2018 move VirtualBox settings and update the Libreoffice to the part 2
 #07-Apr-2018 add symbolic link to installer
@@ -27,6 +29,7 @@ sudo usermod -aG vboxsf $(whoami)
 echo '' | sudo tee -a /etc/fstab
 echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
 echo '#share   /media/sf_share vboxsf    _netdev,uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
+
 sudo mkdir /media/sf_share
 
 #Libreoffice
@@ -87,11 +90,11 @@ fi
 echo "Install Aliza"
 cd $HOME/Downloads
 
-if [ ! -e 'aliza_1.38.2.6.deb' ]; then
-  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/aliza_1.38.2.6.deb
+if [ ! -e 'aliza_1.43.4.6.deb' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/aliza_1.43.4.6.deb
 fi
 
-sudo apt -y install ./aliza_1.38.2.6.deb
+sudo apt install -y ./aliza_1.43.4.6.deb
 
 
 #DSIStudio
@@ -101,12 +104,12 @@ sudo apt-get install -y \
 
 cd $HOME/Downloads
 
-if [ ! -e 'dsistudio.zip' ]; then
-  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/dsistudio.zip
+if [ ! -e 'dsistudio1604.zip' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/dsistudio1604.zip
 fi
 
 cd /usr/local
-sudo unzip ~/Downloads/dsistudio.zip
+sudo unzip ~/Downloads/dsistudio1604.zip
 
 #ROBEX
 echo "Install ROBEX"
