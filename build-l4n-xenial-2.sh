@@ -30,7 +30,10 @@ echo '' | sudo tee -a /etc/fstab
 echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
 echo '#share   /media/sf_share vboxsf    _netdev,uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
 
-sudo mkdir /media/sf_share
+#sudo mkdir /media/sf_share
+
+#Signature for neurodebian
+sudo apt-key add neuro.debian.net.asc
 
 #Libreoffice
 sudo add-apt-repository -y ppa:libreoffice/ppa
