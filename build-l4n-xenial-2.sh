@@ -71,23 +71,23 @@ echo "Install Virtual MRI"
 sudo apt-get install -y virtual-mri-nonfree
 
 #3D Slicer
-echo "Install 3D Slicer"
-cd $HOME/Downloads
-
-if [ ! -e 'Slicer-4.8.1-linux-amd64.tar.gz' ]; then
-  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/Slicer-4.8.1-linux-amd64.tar.gz
-fi
-
-cd /usr/local
-sudo tar xvzf ~/Downloads/Slicer-4.8.1-linux-amd64.tar.gz
-sudo mv Slicer-4.8.1-linux-amd64 Slicer
-
-grep Slicer ~/.bashrc > /dev/null
-if [ $? -eq 1 ]; then
-    echo '' >> ~/.bashrc
-    echo '#Slicer' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/Slicer' >> ~/.bashrc
-fi
+#echo "Install 3D Slicer"
+#cd $HOME/Downloads
+#
+#if [ ! -e 'Slicer-4.8.1-linux-amd64.tar.gz' ]; then
+#  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/Slicer-4.8.1-linux-amd64.tar.gz
+#fi
+#
+#cd /usr/local
+#sudo tar xvzf ~/Downloads/Slicer-4.8.1-linux-amd64.tar.gz
+#sudo mv Slicer-4.8.1-linux-amd64 Slicer
+#
+#grep Slicer ~/.bashrc > /dev/null
+#if [ $? -eq 1 ]; then
+#    echo '' >> ~/.bashrc
+#    echo '#Slicer' >> ~/.bashrc
+#    echo 'export PATH=$PATH:/usr/local/Slicer' >> ~/.bashrc
+#fi
 
 #Aliza
 echo "Install Aliza"
