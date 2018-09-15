@@ -181,11 +181,11 @@ cp -r ${base_path}/config/xfce4 ~/.config
 sudo apt-get -y autoremove
 
 #GRUB setting for plymouth
-echo '' | sudo tee -a /etc/default/grub
-echo '#GRUB setting for plymouth' | sudo tee -a /etc/default/grub
-echo 'GRUB_GFXPAYLOAD_LINUX="auto"' | sudo tee -a /etc/default/grub 
-sudo sh -c 'echo 'FRAMEBUFFER=y' > /etc/initramfs-tools/conf.d/splash'
-sudo update-grub
+#echo '' | sudo tee -a /etc/default/grub
+#echo '#GRUB setting for plymouth' | sudo tee -a /etc/default/grub
+#echo 'GRUB_GFXPAYLOAD_LINUX="auto"' | sudo tee -a /etc/default/grub 
+#sudo sh -c 'echo 'FRAMEBUFFER=y' > /etc/initramfs-tools/conf.d/splash'
+#sudo update-grub
 
 #(Optional)Display GRUB menu
 #comment out following two lines if you don't want to show GRUB menu
