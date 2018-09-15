@@ -3,9 +3,10 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 15-Apr-2018
+#Kiyotaka Nemoto 15-Sep-2018
 
 #ChangeLog
+#15-Sep-2018 add xterm and bleachbit
 #28-Jul-2018 add ntp
 #15-Apr-2018 move update LibreOffice and VirtualBox related settings to part2
 #15-Apr-2018 change to use the latest kernel (hwe-16.04-edge)
@@ -77,7 +78,7 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	gnome-system-monitor gnome-system-tools gparted		\
 	imagemagick nemo ntp system-config-printer-gnome 	\
 	system-config-samba tree unzip update-manager vim 	\
-	wajig xfce4-screenshooter zip ntp
+	wajig xfce4-screenshooter zip ntp xterm bleachbit
 
 #Install the latest kernel
 sudo apt-get -y install linux-image-generic-hwe-16.04-edge
