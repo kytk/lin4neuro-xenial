@@ -8,3 +8,5 @@ Icon=slicer.png
 Categories=Neuroimaging;
 StartupNotify=true
 Terminal=false
+NoDisplay=true
+

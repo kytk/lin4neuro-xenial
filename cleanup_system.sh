@@ -16,7 +16,11 @@ echo "clear /var/logs"
 sudo find /var/log/ -type f -exec cp -f /dev/null {} \;
 
 echo "remove lin4neuro logs"
+<<<<<<< HEAD
 cd ~/git/lin4neuro-bionic
+=======
+cd ~/git/lin4neuro-xenial
+>>>>>>> 51d14308607d4c7eab4585e1de8c20d095fe3e12
 ls | grep .log > /dev/null
 if [ $? -eq 0 ]; then
     rm ~/git/lin4neuro-xenial/*.log
@@ -29,8 +33,13 @@ if [ $fcount != 0 ]; then
     rm -rf *
 fi
 
+<<<<<<< HEAD
 #echo "bleachbit"
 #sudo bleachbit -c --preset
+=======
+echo "bleachbit"
+sudo bleachbit -c --preset
+>>>>>>> 51d14308607d4c7eab4585e1de8c20d095fe3e12
 
 echo "zeropad the unused space"
 sudo dd if=/dev/zero of=zero bs=4k; sudo \rm zero

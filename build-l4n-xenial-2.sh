@@ -16,7 +16,28 @@
 log=$(date +%Y%m%d%H%M%S)-part2.log
 exec &> >(tee -a "$log")
 
+<<<<<<< HEAD
 #Signature for Neurodebian
+=======
+#Virtualbox-related settings
+##Install the kernel header
+sudo apt-get -y install linux-headers-$(uname -a | awk '{ print $3 }')
+
+##Install virtualbox-guest-dkms
+sudo apt-get install -y virtualbox-guest-dkms
+sudo usermod -aG vboxsf $(whoami)
+
+##Virtualbox-related settings
+#sudo sh -c 'echo 'vboxsf' >> /etc/modules'
+
+echo '' | sudo tee -a /etc/fstab
+echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
+echo '#share   /media/sf_share vboxsf    _netdev,uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
+
+#sudo mkdir /media/sf_share
+
+#Signature for neurodebian
+>>>>>>> 51d14308607d4c7eab4585e1de8c20d095fe3e12
 sudo apt-key add neuro.debian.net.asc
 
 #Libreoffice
@@ -52,6 +73,7 @@ sudo apt-get install -y mriconvert
 
 #VirtualMRI
 echo "Install Virtual MRI"
+<<<<<<< HEAD
 cd "$HOME"/Downloads
 
 if [ ! -e 'vmri.zip' ]; then
@@ -60,6 +82,28 @@ fi
 
 cd /usr/local
 sudo unzip ~/Downloads/vmri.zip
+=======
+sudo apt-get install -y virtual-mri-nonfree
+
+#3D Slicer
+#echo "Install 3D Slicer"
+#cd $HOME/Downloads
+#
+#if [ ! -e 'Slicer-4.8.1-linux-amd64.tar.gz' ]; then
+#  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/Slicer-4.8.1-linux-amd64.tar.gz
+#fi
+#
+#cd /usr/local
+#sudo tar xvzf ~/Downloads/Slicer-4.8.1-linux-amd64.tar.gz
+#sudo mv Slicer-4.8.1-linux-amd64 Slicer
+#
+#grep Slicer ~/.bashrc > /dev/null
+#if [ $? -eq 1 ]; then
+#    echo '' >> ~/.bashrc
+#    echo '#Slicer' >> ~/.bashrc
+#    echo 'export PATH=$PATH:/usr/local/Slicer' >> ~/.bashrc
+#fi
+>>>>>>> 51d14308607d4c7eab4585e1de8c20d095fe3e12
 
 #Aliza
 echo "Install Aliza"

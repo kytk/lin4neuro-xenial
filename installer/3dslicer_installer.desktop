@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Install 3D Slicer 
+Name[ja]=3D Slicerのインストール
+Exec=sh -c "~/git/lin4neuro-xenial/installer-scripts/3dslicer_installer_xenial.sh"
+Icon=slicer.png
+#Categories=Neuroimaging;
+StartupNotify=true
+Terminal=true
+
