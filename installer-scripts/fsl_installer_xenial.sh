@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cp ~/git/lin4neuro-bionic/lin4neuro-parts/local/share/applications/fsl*.desktop ~/.local/share/applications
+sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/fsl-wiki.desktop
+
 fslinstalled=$(which fsl)
 if [ -z "$fslinstalled" ]; then
   echo "FSL is not installed yet."
@@ -17,14 +20,31 @@ if [ -z "$fslinstalled" ]; then
   else
     echo "found fslinstaller.py"
     cp $fslpyexist .
-    python fslinstaller.py
+    python2 fslinstaller.py
   fi
 
 else
   echo "FSL is already installed."
-fi
+  echo "Do you want to check the update?(yes/no)"
+  read answer
+  case $answer in 
+	[Yy]*)
+		cp $FSLDIR/etc/fslinstaller.py .
+		python2 fslinstaller.py -c
+		sleep 5
+		break
+		;;
+	[Nn]*)
+		echo -e "FSL will not be updated.\n"
+		sleep 5
+		exit
+  		;;
+	*)
+		echo -e "Type yes or no.\n"
+		;;
+  esac
 
-sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/fsl-wiki.desktop
+fi
 
 exit
 
