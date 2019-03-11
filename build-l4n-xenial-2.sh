@@ -1,10 +1,11 @@
 #!/bin/bash
 #Lin4Neuro making script part 2
-#Installation of Virtualbox-related packages and Neuroimaging software packages
+#Installation of Neuroimaging software packages
 #Prerequisite: You need to finish the build-l4n-xenial-1.sh.
-#Kiyotaka Nemoto 15-Apr-2018
+#Kiyotaka Nemoto 12-Mar-2019
 
 #Changelog
+#12-Mar-2019 Harmonize with build-l4n-bionic-2.sh
 #16-Aug-2018 Update DSI studio
 #10-Aug-2018 Update Aliza
 #14-Jul-2018 Add DCMTK
@@ -12,25 +13,11 @@
 #07-Apr-2018 add symbolic link to installer
 
 #Log
-log=`date +%Y%m%d%H%M%S`-part2.log
+log=$(date +%Y%m%d%H%M%S)-part2.log
 exec &> >(tee -a "$log")
 
-#Virtualbox-related settings
-##Install the kernel header
-sudo apt-get -y install linux-headers-$(uname -a | awk '{ print $3 }')
-
-##Install virtualbox-guest-dkms
-sudo apt-get install -y virtualbox-guest-dkms
-sudo usermod -aG vboxsf $(whoami)
-
-##Virtualbox-related settings
-#sudo sh -c 'echo 'vboxsf' >> /etc/modules'
-
-echo '' | sudo tee -a /etc/fstab
-echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
-echo '#share   /media/sf_share vboxsf    _netdev,uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
-
-sudo mkdir /media/sf_share
+#Signature for Neurodebian
+sudo apt-key add neuro.debian.net.asc
 
 #Libreoffice
 sudo add-apt-repository -y ppa:libreoffice/ppa
@@ -38,7 +25,7 @@ sudo apt-get update
 sudo apt-get -y dist-upgrade
 
 #Setting of path of the setting scripts
-currentdir=`echo $(cd $(dirname $0) && pwd)`
+currentdir=$(cd $(dirname $0) && pwd)
 base_path=$currentdir/lin4neuro-parts
 
 #R
@@ -65,37 +52,24 @@ sudo apt-get install -y mriconvert
 
 #VirtualMRI
 echo "Install Virtual MRI"
-sudo apt-get install -y virtual-mri-nonfree
+cd "$HOME"/Downloads
 
-#3D Slicer
-echo "Install 3D Slicer"
-cd $HOME/Downloads
-
-if [ ! -e 'Slicer-4.8.1-linux-amd64.tar.gz' ]; then
-  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/Slicer-4.8.1-linux-amd64.tar.gz
+if [ ! -e 'vmri.zip' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/vmri.zip
 fi
 
 cd /usr/local
-sudo tar xvzf ~/Downloads/Slicer-4.8.1-linux-amd64.tar.gz
-sudo mv Slicer-4.8.1-linux-amd64 Slicer
-
-grep Slicer ~/.bashrc > /dev/null
-if [ $? -eq 1 ]; then
-    echo '' >> ~/.bashrc
-    echo '#Slicer' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/Slicer' >> ~/.bashrc
-fi
+sudo unzip ~/Downloads/vmri.zip
 
 #Aliza
 echo "Install Aliza"
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
-if [ ! -e 'aliza_1.43.4.6.deb' ]; then
-  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/aliza_1.43.4.6.deb
+if [ ! -e 'aliza_1.48.8.8.deb' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/aliza_1.48.8.8.deb
 fi
 
-sudo apt install -y ./aliza_1.43.4.6.deb
-
+sudo apt install -y ./aliza_1.48.8.8.deb
 
 #DSIStudio
 echo "Install DSI Studio"
@@ -113,7 +87,7 @@ sudo unzip ~/Downloads/dsistudio1604.zip
 
 #ROBEX
 echo "Install ROBEX"
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'ROBEXv12.linux64.tar.gz' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/ROBEXv12.linux64.tar.gz
@@ -135,9 +109,9 @@ fi
 
 #c3d
 echo "Install c3d"
-cp -r ${base_path}/bin $HOME
+cp -r "${base_path}"/bin "$HOME"
 
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'c3d-1.0.0-Linux-x86_64.tar.gz' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/c3d-1.0.0-Linux-x86_64.tar.gz
@@ -157,7 +131,7 @@ fi
 
 #itksnap
 echo "Install ITK-SNAP"
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'itksnap-3.6.0-20170401-Linux-x86_64.tar.gz' ]; then
   curl -O  http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/itksnap-3.6.0-20170401-Linux-x86_64.tar.gz
@@ -176,7 +150,7 @@ fi
 
 #Mango
 echo "Install Mango"
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'mango_unix.zip' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/mango_unix.zip
@@ -187,7 +161,7 @@ sudo unzip ~/Downloads/mango_unix.zip
 
 #MRIcron
 echo "Install MRIcron"
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'lx.zip' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/lx.zip
@@ -209,52 +183,47 @@ fi
 
 #MRIcroGL
 echo "Install MRIcroGL"
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
-if [ ! -e 'mricrogl_linux.zip' ]; then
-  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/mricrogl_linux.zip
+if [ ! -e 'MRIcroGL12_linux.zip' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/MRIcroGL12_linux.zip
 fi
 
 cd /usr/local
-sudo unzip ~/Downloads/mricrogl_linux.zip
-sudo mv mricrogl_lx mricrogl
-cd mricrogl
-sudo rm .DS_Store
-sudo find -type f -exec chmod 644 {} \;
-sudo find -type d -exec chmod 755 {} \;
-sudo chmod 755 MRIcroGL dcm2niix pigz_mricron
+sudo unzip ~/Downloads/MRIcroGL12_linux.zip
 
 grep mricrogl ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
     echo '' >> ~/.bashrc
     echo '#MRIcroGL' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/mricrogl' >> ~/.bashrc
+    echo 'export PATH=$PATH:/usr/local/MRIcroGL12' >> ~/.bashrc
 fi
 
 #tutorial
 echo "Install tutorial by Chris Rorden"
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'tutorial.zip' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/tutorial.zip
 fi
 
-cd /etc/skel
-sudo unzip ~/Downloads/tutorial.zip
-sudo rm -rf __MACOSX
-cd $HOME
+cd "$HOME"
 unzip ~/Downloads/tutorial.zip
-rm -rf __MACOSX
+
+#Remove MacOS hidden files
+find "$HOME" -name '__MACOSX' -exec rm -rf {} \;
+find "$HOME" -name '.DS_Store' -exec rm -rf {} \;
+#sudo find /usr/local -name '__MACOSX' -exec sudo rm -rf {} \;
+#sudo find /usr/local -name '.DS_Store' -exec sudo rm -rf {} \;
 
 #packages to be installed by users (with installer)
 #ANTs
-#CONN17f
+#CONN
 #FSL
-#SPM12 standalone
+#Slicer
+#SPM12
 
-ln -s ${currentdir}/installer ~/Desktop 
-
-#Add the line above to .profile
+#Add the symbolic link to the installer to ~/.profile
 cat << EOS >> ~/.profile
 
 #symbolic links
@@ -264,14 +233,6 @@ fi
 
 EOS
 
-#PATH for installer
-
-#grep installer-scripts ~/.bashrc > /dev/null
-#if [ $? -eq 1 ]; then
-#    echo '' >> ~/.bashrc
-#    echo '#PATH for installer' >> ~/.bashrc
-#    echo 'export PATH=$PATH:~/git/lin4neuro-xenial/installer-scripts' >> ~/.bashrc
-#fi
 
 echo "Finished!"
 

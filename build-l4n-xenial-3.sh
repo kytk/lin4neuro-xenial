@@ -2,13 +2,17 @@
 
 #Part3: Check if software is installed.
 
+log=$(date +%Y%m%d%H%M%S)-part3.log
+exec &> >(tee -a "$log")
+
+
 echo "Check if neuroimaging software is properly installed."
 
 
 #Slicer
-echo "Run Slicer"
-Slicer &
-wait
+#echo "Run Slicer"
+#Slicer &
+#wait
 
 #Aliza
 echo "Run Aliza"
@@ -51,7 +55,7 @@ ROBEX
 
 #Virtual MRI
 echo "Virtual MRI"
-virtual-mri &
+java -jar /usr/local/vmri/vmri.jar
 wait
 
 

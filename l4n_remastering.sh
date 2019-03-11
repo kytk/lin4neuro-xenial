@@ -1,6 +1,6 @@
 #!/bin/bash
 #Remastering with Remastersys for Lin4Neuro 16.04
-#31-Mar-2018 K. Nemoto
+#12-Mar-2019 K. Nemoto
 
 #Execute as a normal user!
 
@@ -11,7 +11,7 @@ if [ "$(whoami)" = "root" ]; then
 fi
 
 #Log
-log=`date +%Y%m%d%H%M%S`-remastersys.log
+log=$(date +%Y%m%d%H%M%S)-remastering.log
 exec &> >(tee -a "$log")
 
 #Setting of path of the setting scripts
@@ -22,6 +22,12 @@ if [ ! -e /etc/skel/.local ]; then
         sudo mkdir -p /etc/skel/.local/share/applications
 	sudo mkdir -p /etc/skel/.local/share/desktop-directories
 fi
+
+#ubiquity
+sudo apt-get -y install ubiquity-frontend-gtk
+
+#Clean up systems
+bash cleanup_system.sh
 
 #Remove old kernels
 sudo apt-get -y autoremove --purge
@@ -65,9 +71,6 @@ if [ ! -e /etc/skel/Documents ]; then
 		   Templates Videos
 fi
 
-#ubiquity
-sudo apt-get -y install ubiquity-frontend-gtk
-
 #remove 40cdrom from ubiquity
 if [ -e /usr/lib/ubiquity/apt-setup/generators/40cdrom ]; then
 	sudo rm /usr/lib/ubiquity/apt-setup/generators/40cdrom
@@ -83,7 +86,7 @@ sudo apt-get -y autoremove
 while true; do
 
 	echo "Ready for remastering."
-	echo "Do you want to proceed remastering with Remastersys (yes/no)?"
+	echo "Do you want to proceed remastering (yes/no)?"
 
 	read answer
 
